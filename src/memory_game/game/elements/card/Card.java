@@ -4,14 +4,25 @@
  */
 package memory_game.game.elements.card;
 
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author ACER
  */
 public class Card {
+    private static int cardCount = 1;
+    private int id;
     private Card pair;
     private boolean isFlipped;
-    private int id;
-    // TODO
-    
+    private String name;
+    private ImageIcon image;
+
+    public Card(String name, ImageIcon image) {
+        this.name = name;
+        this.image = image;
+        id = Card.cardCount;
+        Card.cardCount++;
+    }
+        
 }
