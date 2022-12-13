@@ -48,15 +48,15 @@ public class Menu extends javax.swing.JPanel {
         setPreferredSize(new java.awt.Dimension(800, 600));
         setLayout(null);
 
-        jPanel1.setBackground(new java.awt.Color(255, 61, 61));
+        jPanel1.setBackground(new java.awt.Color(212, 108, 81));
         jPanel1.setPreferredSize(new java.awt.Dimension(500, 600));
         jPanel1.setLayout(new java.awt.BorderLayout());
 
-        jPanel2.setBackground(new java.awt.Color(255, 61, 61));
+        jPanel2.setBackground(new java.awt.Color(212, 108, 81));
         jPanel2.setPreferredSize(new java.awt.Dimension(500, 200));
         jPanel2.setLayout(new java.awt.BorderLayout());
 
-        jPanel3.setBackground(new java.awt.Color(255, 61, 61));
+        jPanel3.setBackground(new java.awt.Color(212, 108, 81));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logo1.png"))); // NOI18N
         jPanel3.add(jLabel2);
@@ -67,7 +67,7 @@ public class Menu extends javax.swing.JPanel {
 
         jPanel4.setLayout(new java.awt.BorderLayout());
 
-        jPanel5.setBackground(new java.awt.Color(255, 61, 61));
+        jPanel5.setBackground(new java.awt.Color(212, 108, 81));
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -82,10 +82,10 @@ public class Menu extends javax.swing.JPanel {
 
         jPanel4.add(jPanel5, java.awt.BorderLayout.PAGE_START);
 
-        jPanel6.setBackground(new java.awt.Color(255, 61, 61));
+        jPanel6.setBackground(new java.awt.Color(212, 108, 81));
         jPanel6.setLayout(new java.awt.GridLayout(7, 1));
 
-        jPanel7.setBackground(new java.awt.Color(255, 61, 61));
+        jPanel7.setBackground(new java.awt.Color(212, 108, 81));
 
         startbtn.setText("Start");
         startbtn.setPreferredSize(new java.awt.Dimension(150, 30));
@@ -93,7 +93,7 @@ public class Menu extends javax.swing.JPanel {
 
         jPanel6.add(jPanel7);
 
-        jPanel8.setBackground(new java.awt.Color(255, 61, 61));
+        jPanel8.setBackground(new java.awt.Color(212, 108, 81));
 
         leaderbtn.setText("Leaderboard");
         leaderbtn.setPreferredSize(new java.awt.Dimension(150, 30));
@@ -101,7 +101,7 @@ public class Menu extends javax.swing.JPanel {
 
         jPanel6.add(jPanel8);
 
-        jPanel9.setBackground(new java.awt.Color(255, 61, 61));
+        jPanel9.setBackground(new java.awt.Color(212, 108, 81));
 
         exitbtn.setText("Exit");
         exitbtn.setPreferredSize(new java.awt.Dimension(150, 30));
