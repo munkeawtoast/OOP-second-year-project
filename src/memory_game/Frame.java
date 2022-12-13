@@ -2,15 +2,21 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package memoryGame.img;
+package memory_game;
 
 /**
  *
  * @author Gungai
  */
+import memory_game.mainmenu.StartMenu;
+import memory_game.mainmenu.Menu;
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
+
+// what is this? -Pine
+// i think project should only have one main function -Pine
+
 public class Frame implements ActionListener {
     JFrame f;
     Menu menu;
