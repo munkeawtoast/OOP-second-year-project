@@ -13,6 +13,7 @@ import memory_game.mainmenu.Menu;
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
+import memory_game.mainmenu.InsertName;
 
 // what is this? -Pine
 // i think project should only have one main function -Pine
@@ -21,6 +22,7 @@ public class Frame implements ActionListener {
     JFrame f;
     Menu menu;
     StartMenu startmenu;
+    InsertName insertname;
     public Frame(){
         f = new JFrame("POKEMON MEMORY CARD GAME");
         f.setSize(800,600);
@@ -30,24 +32,62 @@ public class Frame implements ActionListener {
         f.setResizable(false);
         f.setLocationRelativeTo(null);
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-          StartMenu startmenu = new StartMenu();
+          
          
         menu.getStartBtn().addActionListener(this);
         menu.getLeaderBtn().addActionListener(this);
         menu.getExitBtn().addActionListener(this);
     }
-    public static void main(String[] args) {
-        new Frame();
-    }
+ 
 
     @Override
     public void actionPerformed(ActionEvent e) {
-       if(e.getSource().equals(menu.getExitBtn())){
+       if(e.getActionCommand().equals("Exit")){
+//           exit byn click
            System.exit(0);
+            
        }
-       if(e.getSource().equals(menu.getStartBtn())){
-           menu.add(startmenu);
+       else if(e.getActionCommand().equals("Start")){
+//           start btn click
+            InsertName insertname = new InsertName();
+            insertname.getNextBtn().addActionListener(this);
+            insertname.getReturnBtn().addActionListener(this);
+            f.setContentPane(insertname);
+            f.invalidate();
+            f.validate();
+         
        }
+       else if (e.getActionCommand().equals("Easy")){
+//           Easy btn click
+      
+       }
+       else if (e.getActionCommand().equals("Leaderboard")){
+//           leaderboard btn click
+           
+       }
+       else if (e.getActionCommand().equals("Normal")){
+//           normal btn click
+       }
+       else if (e.getActionCommand().equals("Hard")){
+//           hard btn click
+       }
+       else if (e.getActionCommand().equals("Next")){
+            
+            StartMenu startmenu = new StartMenu();
+            f.setContentPane(startmenu);
+            f.invalidate();
+            f.validate();
+            startmenu.getEasyBtn().addActionListener(this);
+            startmenu.getNormalBtn().addActionListener(this);
+            startmenu.getHardBtn().addActionListener(this);
+       }
+       else if (e.getActionCommand().equals("return1")){
+           f.setContentPane(menu);
+            f.invalidate();
+            f.validate();
+       }
+       
+       
     
 }
 }

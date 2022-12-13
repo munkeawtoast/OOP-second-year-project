@@ -43,6 +43,7 @@ public class StartMenu extends javax.swing.JPanel {
         hardbtn = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
+        setMaximumSize(new java.awt.Dimension(800, 600));
         setPreferredSize(new java.awt.Dimension(800, 600));
         setLayout(null);
 
@@ -94,7 +95,7 @@ public class StartMenu extends javax.swing.JPanel {
 
         jPanel8.setBackground(new java.awt.Color(255, 61, 61));
 
-        normalbtn.setText("Leaderboard");
+        normalbtn.setText("Normal");
         normalbtn.setPreferredSize(new java.awt.Dimension(150, 30));
         jPanel8.add(normalbtn);
 
@@ -122,6 +123,7 @@ public class StartMenu extends javax.swing.JPanel {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/back.jpg"))); // NOI18N
         jLabel1.setText("jLabel1");
+        jLabel1.setPreferredSize(new java.awt.Dimension(800, 600));
         add(jLabel1);
         jLabel1.setBounds(0, 0, 800, 600);
     }// </editor-fold>//GEN-END:initComponents
@@ -148,13 +150,13 @@ public class StartMenu extends javax.swing.JPanel {
     private javax.swing.JButton normalbtn;
     // End of variables declaration//GEN-END:variables
 
-    public JButton getStartBtn(){
+    public JButton getEasyBtn(){
         return this.easybtn;
     }
-    public JButton getLeaderBtn(){
+    public JButton getNormalBtn(){
         return this.normalbtn;
     }
-    public JButton getExitBtn(){
+    public JButton getHardBtn(){
         return this.hardbtn;
     }
 }
