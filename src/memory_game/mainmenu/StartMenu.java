@@ -120,7 +120,7 @@ public class StartMenu extends javax.swing.JPanel {
         add(jPanel1);
         jPanel1.setBounds(140, 0, 500, 600);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/memoryGame/img/back.jpg"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/back.jpg"))); // NOI18N
         jLabel1.setText("jLabel1");
         add(jLabel1);
         jLabel1.setBounds(0, 0, 800, 600);

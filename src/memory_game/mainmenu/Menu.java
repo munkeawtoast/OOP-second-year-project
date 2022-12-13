@@ -56,7 +56,7 @@ public class Menu extends javax.swing.JPanel {
 
         jPanel3.setBackground(new java.awt.Color(255, 61, 61));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/memoryGame/img/logo1.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logo1.png"))); // NOI18N
         jPanel3.add(jLabel2);
 
         jPanel2.add(jPanel3, java.awt.BorderLayout.PAGE_END);
@@ -114,8 +114,7 @@ public class Menu extends javax.swing.JPanel {
         add(jPanel1);
         jPanel1.setBounds(140, 0, 500, 600);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/memoryGame/img/back.jpg"))); // NOI18N
-        jLabel1.setText("jLabel1");
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/back.jpg"))); // NOI18N
         add(jLabel1);
         jLabel1.setBounds(0, 0, 800, 600);
     }// </editor-fold>//GEN-END:initComponents
