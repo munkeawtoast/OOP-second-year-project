@@ -13,6 +13,7 @@ import memory_game.mainmenu.Menu;
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
+import memory_game.mainmenu.EasyPanel;
 import memory_game.mainmenu.InsertName;
 
 // what is this? -Pine
@@ -23,7 +24,7 @@ public class Frame implements ActionListener {
     Menu menu  = new Menu();
     StartMenu startmenu = new StartMenu();
     InsertName insertname = new InsertName();
-
+    
     public Frame() {
         f = new JFrame("POKEMON MEMORY CARD GAME");
         f.setSize(800, 600);
@@ -61,6 +62,10 @@ public class Frame implements ActionListener {
 
         } else if (e.getActionCommand().equals("Easy")) {
 //           Easy btn click
+            EasyPanel easy = new EasyPanel();
+            f.setContentPane(easy);
+            f.invalidate();
+            f.validate();
 
         } else if (e.getActionCommand().equals("Leaderboard")) {
 //           leaderboard btn click

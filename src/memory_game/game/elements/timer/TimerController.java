@@ -1,6 +1,8 @@
 
 package memory_game.game.elements.timer;
 
+import javax.swing.JLabel;
+
 public class TimerController {
     MyTimer model;
     TimerView view;
@@ -10,6 +12,9 @@ public class TimerController {
         model = new MyTimer((ignored) -> {
             view.setTime(model.getTimeElapsed());
         });
+    }
+    public JLabel getTimeLabel(){
+        return this.view;
     }
 
 

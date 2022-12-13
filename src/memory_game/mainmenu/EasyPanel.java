@@ -4,17 +4,26 @@
  */
 package memory_game.mainmenu;
 
+import java.awt.BorderLayout;
+import javax.swing.JFrame;
+import memory_game.game.elements.timer.TimerController;
+
 /**
  *
  * @author Gungai
  */
 public class EasyPanel extends javax.swing.JPanel {
-
+    private TimerController time;
+  
     /**
      * Creates new form EasyPanel
      */
     public EasyPanel() {
         initComponents();
+        time = new TimerController();
+       
+        time.getTimeLabel().setFont(new java.awt.Font("Segoe UI", 0, 48));
+         jPanel4.add(time.getTimeLabel());
     }
 
     /**
@@ -26,32 +35,62 @@ public class EasyPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        score = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        gridPanel = new javax.swing.JPanel();
 
         setPreferredSize(new java.awt.Dimension(800, 600));
         setLayout(new java.awt.BorderLayout());
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 800, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
+        jPanel3.setBackground(new java.awt.Color(255, 204, 51));
+        jPanel3.setPreferredSize(new java.awt.Dimension(800, 75));
+        jPanel3.setRequestFocusEnabled(false);
+        jPanel3.setLayout(new java.awt.BorderLayout());
 
-        add(jPanel1, java.awt.BorderLayout.PAGE_START);
+        jPanel2.setPreferredSize(new java.awt.Dimension(300, 75));
+        jPanel2.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 0));
 
-        jPanel2.setLayout(new java.awt.GridLayout());
-        add(jPanel2, java.awt.BorderLayout.CENTER);
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
+        jLabel2.setText("Score:");
+        jPanel2.add(jLabel2);
+
+        score.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
+        score.setText("0");
+        jPanel2.add(score);
+
+        jPanel3.add(jPanel2, java.awt.BorderLayout.LINE_START);
+
+        jPanel4.setPreferredSize(new java.awt.Dimension(300, 75));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
+        jLabel1.setText("Time: ");
+        jPanel4.add(jLabel1);
+
+        jPanel3.add(jPanel4, java.awt.BorderLayout.LINE_END);
+
+        add(jPanel3, java.awt.BorderLayout.PAGE_START);
+
+        gridPanel.setBackground(new java.awt.Color(204, 255, 153));
+        gridPanel.setPreferredSize(new java.awt.Dimension(800, 525));
+        gridPanel.setLayout(new java.awt.GridLayout(4, 3));
+        add(gridPanel, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel gridPanel;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JLabel score;
     // End of variables declaration//GEN-END:variables
+
 }
+
+

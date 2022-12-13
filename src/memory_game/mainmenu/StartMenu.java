@@ -54,11 +54,11 @@ public class StartMenu extends javax.swing.JPanel {
         jPanel1.setPreferredSize(new java.awt.Dimension(500, 600));
         jPanel1.setLayout(new java.awt.BorderLayout());
 
-        jPanel2.setBackground(new java.awt.Color(255, 61, 61));
+        jPanel2.setBackground(new java.awt.Color(255, 179, 107));
         jPanel2.setPreferredSize(new java.awt.Dimension(500, 200));
         jPanel2.setLayout(new java.awt.BorderLayout());
 
-        jPanel3.setBackground(new java.awt.Color(255, 61, 61));
+        jPanel3.setBackground(new java.awt.Color(255, 179, 107));
 
         jLabel2.setFont(new java.awt.Font("Rockwell Nova Cond", 0, 48)); // NOI18N
         jLabel2.setText("Choose Difficulty");
@@ -70,7 +70,7 @@ public class StartMenu extends javax.swing.JPanel {
 
         jPanel4.setLayout(new java.awt.BorderLayout());
 
-        jPanel5.setBackground(new java.awt.Color(255, 61, 61));
+        jPanel5.setBackground(new java.awt.Color(255, 179, 107));
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -85,11 +85,11 @@ public class StartMenu extends javax.swing.JPanel {
 
         jPanel4.add(jPanel5, java.awt.BorderLayout.PAGE_START);
 
-        jPanel6.setBackground(new java.awt.Color(255, 61, 61));
+        jPanel6.setBackground(new java.awt.Color(255, 179, 107));
         jPanel6.setPreferredSize(new java.awt.Dimension(500, 40));
         jPanel6.setLayout(new java.awt.GridLayout(6, 1));
 
-        jPanel7.setBackground(new java.awt.Color(255, 61, 61));
+        jPanel7.setBackground(new java.awt.Color(255, 179, 107));
         jPanel7.setPreferredSize(new java.awt.Dimension(500, 40));
 
         easybtn.setText("Easy");
@@ -98,7 +98,7 @@ public class StartMenu extends javax.swing.JPanel {
 
         jPanel6.add(jPanel7);
 
-        jPanel8.setBackground(new java.awt.Color(255, 61, 61));
+        jPanel8.setBackground(new java.awt.Color(255, 179, 107));
         jPanel8.setPreferredSize(new java.awt.Dimension(500, 40));
 
         normalbtn.setText("Normal");
@@ -107,7 +107,7 @@ public class StartMenu extends javax.swing.JPanel {
 
         jPanel6.add(jPanel8);
 
-        jPanel9.setBackground(new java.awt.Color(255, 61, 61));
+        jPanel9.setBackground(new java.awt.Color(255, 179, 107));
         jPanel9.setPreferredSize(new java.awt.Dimension(500, 40));
 
         hardbtn.setText("Hard");
@@ -121,7 +121,7 @@ public class StartMenu extends javax.swing.JPanel {
 
         jPanel6.add(jPanel9);
 
-        jPanel10.setBackground(new java.awt.Color(255, 61, 61));
+        jPanel10.setBackground(new java.awt.Color(255, 179, 107));
         jPanel10.setPreferredSize(new java.awt.Dimension(500, 40));
 
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
@@ -137,21 +137,27 @@ public class StartMenu extends javax.swing.JPanel {
 
         jPanel6.add(jPanel10);
 
-        jPanel11.setBackground(new java.awt.Color(255, 61, 61));
+        jPanel11.setBackground(new java.awt.Color(255, 179, 107));
         jPanel11.setPreferredSize(new java.awt.Dimension(500, 40));
         jPanel11.setLayout(new java.awt.BorderLayout());
 
-        returnBtn.setBackground(new java.awt.Color(255, 61, 61));
+        returnBtn.setBackground(new java.awt.Color(255, 179, 107));
         returnBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/return.png"))); // NOI18N
         returnBtn.setActionCommand("return2");
         returnBtn.setBorder(javax.swing.BorderFactory.createCompoundBorder());
         returnBtn.setPreferredSize(new java.awt.Dimension(70, 40));
         returnBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                returnBtnMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 returnBtnMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 returnBtnMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                returnBtnMousePressed(evt);
             }
         });
         returnBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -194,6 +200,16 @@ public class StartMenu extends javax.swing.JPanel {
     private void returnBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_returnBtnActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_returnBtnActionPerformed
+
+    private void returnBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_returnBtnMouseClicked
+           // TODO add your handling code here:
+           
+    }//GEN-LAST:event_returnBtnMouseClicked
+
+    private void returnBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_returnBtnMousePressed
+        // TODO add your handling code here:
+         returnBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/return.png")));
+    }//GEN-LAST:event_returnBtnMousePressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
