@@ -117,7 +117,7 @@ public class Menu extends javax.swing.JPanel {
         jPanel1.setBounds(140, 0, 500, 600);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/back.jpg"))); // NOI18N
-        jLabel1.setPreferredSize(new java.awt.Dimension(1280, 720));
+        jLabel1.setPreferredSize(new java.awt.Dimension(800, 600));
         add(jLabel1);
         jLabel1.setBounds(0, 0, 800, 600);
     }// </editor-fold>//GEN-END:initComponents
