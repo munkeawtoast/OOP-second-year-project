@@ -62,10 +62,19 @@ public class Frame implements ActionListener {
 
         } else if (e.getActionCommand().equals("Easy")) {
 //           Easy btn click
-            EasyPanel easy = new EasyPanel();
-            f.setContentPane(easy);
+ java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                //do animation here if want
+                //sleep here
+                EasyPanel easy = new EasyPanel();
+                 f.setContentPane(easy);
             f.invalidate();
             f.validate();
+            }
+        });
+            
+           
 
         } else if (e.getActionCommand().equals("Leaderboard")) {
 //           leaderboard btn click
