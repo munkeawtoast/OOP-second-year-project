@@ -4,6 +4,7 @@
  */
 package memory_game.game.elements.card;
 
+import java.awt.Image;
 import javax.swing.ImageIcon;
 
 /**
@@ -15,14 +16,50 @@ public class Card {
     private int id;
     private Card pair;
     private boolean isFlipped;
+    private int flipSize;
+    private boolean isFlipping;
     private String name;
     private ImageIcon image;
+    private ImageIcon backImage;
 
     public Card(String name, ImageIcon image) {
         this.name = name;
         this.image = image;
+//        this.backImage = new ImageIcon(); // ADD BACKIMAGE
+        this.backImage = new ImageIcon("resources/images/return2.png");
         id = Card.cardCount;
         Card.cardCount++;
     }
-        
+
+    void setIsFlipped(boolean isFlipped) {
+        this.isFlipped = isFlipped;
+    }
+
+    void setIsFlipping(boolean isFlipping) {
+        this.isFlipping = isFlipping;
+    }
+    
+    boolean getIsFlipping() {
+        return isFlipping;
+    }
+    
+    boolean getIsFlipped() {
+        return isFlipped;
+    }
+    
+    int getFlipSize() {
+        return flipSize;
+    }
+    
+    void setFlipSize(int size) {
+        this.flipSize = size;
+    }
+    
+    ImageIcon getFrontImage() {
+        return image;
+    }
+    
+    ImageIcon getBackImage() {
+        return backImage;
+    }
 }
