@@ -5,6 +5,9 @@
 package memory_game.mainmenu;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -15,6 +18,7 @@ import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import memory_game.game.elements.timer.TimerController;
 
 /**
@@ -22,7 +26,7 @@ import memory_game.game.elements.timer.TimerController;
  * @author Gungai
  */
 public class EasyPanel extends javax.swing.JPanel implements ActionListener {
-
+    javax.swing.JPanel[] cardpanels = new javax.swing.JPanel[12];
     Tile[] tiles = new Tile[12];
     ImageIcon[] icons = new ImageIcon[6];
     int status, scoree;
@@ -41,6 +45,7 @@ public class EasyPanel extends javax.swing.JPanel implements ActionListener {
 
         time.getTimeLabel().setFont(new java.awt.Font("Segoe UI", 0, 48));
         jPanel4.add(time.getTimeLabel());
+        
         initGame();
 
     }
@@ -49,9 +54,18 @@ public class EasyPanel extends javax.swing.JPanel implements ActionListener {
         scoree = 0;
         int x = 0;
         for (int i = 0; i < tiles.length; i++) {
+            
+            cardpanels[i] = new javax.swing.JPanel();
+            cardpanels[i].setOpaque(false);
+            cardpanels[i].setBackground(Color.WHITE);
+            cardpanels[i].setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 10));
             tiles[i] = new Tile(icons[x], new ImageIcon(getClass().getResource("/images/backcard.png")));
             tiles[i].addActionListener(this);
-            gamePanel.add(tiles[i]);
+           
+            
+            tiles[i].setPreferredSize(new Dimension(90,120));
+            cardpanels[i].add(tiles[i]);
+            gamePanel.add(cardpanels[i]);
             if ((i + 1) % 2 == 0) {
                 x++;
             }
@@ -95,8 +109,8 @@ public class EasyPanel extends javax.swing.JPanel implements ActionListener {
                             System.out.println(ex);
                         }
                     }
-                    predict1.setNoIcon();
-                    predict2.setNoIcon();
+                    predict1.showTile();
+                    predict2.showTile();
                     for (int i = 0; i < tiles.length; i++) {
                         if (!tiles[i].isNoIcon()) {
                             won = false;
@@ -137,7 +151,7 @@ public class EasyPanel extends javax.swing.JPanel implements ActionListener {
             }
         }
         for (int i = 0; i < 12; i++) {
-            gamePanel.add(tiles[al.get(i)]);
+            gamePanel.add(cardpanels[al.get(i)]);
             tiles[al.get(i)].hideTile();
         }
     }
@@ -185,16 +199,19 @@ public class EasyPanel extends javax.swing.JPanel implements ActionListener {
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         gamePanel = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(800, 600));
-        setLayout(new java.awt.BorderLayout());
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel3.setBackground(new java.awt.Color(204, 255, 153));
+        jPanel3.setOpaque(false);
         jPanel3.setPreferredSize(new java.awt.Dimension(800, 75));
         jPanel3.setRequestFocusEnabled(false);
         jPanel3.setLayout(new java.awt.BorderLayout());
 
         jPanel2.setBackground(new java.awt.Color(204, 255, 153));
+        jPanel2.setOpaque(false);
         jPanel2.setPreferredSize(new java.awt.Dimension(300, 75));
         jPanel2.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 0));
 
@@ -209,6 +226,7 @@ public class EasyPanel extends javax.swing.JPanel implements ActionListener {
         jPanel3.add(jPanel2, java.awt.BorderLayout.LINE_START);
 
         jPanel4.setBackground(new java.awt.Color(204, 255, 153));
+        jPanel4.setOpaque(false);
         jPanel4.setPreferredSize(new java.awt.Dimension(300, 75));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
@@ -221,10 +239,14 @@ public class EasyPanel extends javax.swing.JPanel implements ActionListener {
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logo1.png"))); // NOI18N
         jPanel3.add(jLabel3, java.awt.BorderLayout.CENTER);
 
-        add(jPanel3, java.awt.BorderLayout.PAGE_START);
+        add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        gamePanel.setLayout(new java.awt.GridLayout(3, 4, 20, 20));
-        add(gamePanel, java.awt.BorderLayout.CENTER);
+        gamePanel.setOpaque(false);
+        gamePanel.setLayout(new java.awt.GridLayout(3, 4, 50, 0));
+        add(gamePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 75, 800, 525));
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/back.jpg"))); // NOI18N
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 600));
     }// </editor-fold>//GEN-END:initComponents
 
 
@@ -233,6 +255,7 @@ public class EasyPanel extends javax.swing.JPanel implements ActionListener {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;

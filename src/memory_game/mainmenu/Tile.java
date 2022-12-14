@@ -16,7 +16,7 @@ class Tile extends JButton {
     public Tile(ImageIcon icon1, ImageIcon icon2) {
         this.icon1 = icon1;
         this.icon2 = icon2;
-        setSize(70,80);
+        setSize(120,150);
         setFocusable(false);
     }
 
