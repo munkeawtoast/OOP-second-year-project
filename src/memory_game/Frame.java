@@ -8,29 +8,30 @@ package memory_game;
  *
  * @author Gungai
  */
-import memory_game.mainmenu.StartMenu;
-import memory_game.mainmenu.Menu;
+import memory_game.Panel.StartMenu;
+import memory_game.Panel.Menu;
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
-import memory_game.mainmenu.EasyPanel;
-import memory_game.mainmenu.InsertName;
+import memory_game.Panel.EasyPanel;
+import memory_game.Panel.InsertName;
+import memory_game.Panel.NormalPanel;
 
 // what is this? -Pine
 // i think project should only have one main function -Pine
 public class Frame implements ActionListener {
 
     JFrame f;
-    Menu menu  = new Menu();
+    Menu menu = new Menu();
     StartMenu startmenu = new StartMenu();
     InsertName insertname = new InsertName();
-    
+
     public Frame() {
         f = new JFrame("POKEMON MEMORY CARD GAME");
         f.setSize(800, 600);
 
         f.add(menu);
-        
+
         f.setVisible(true);
         f.setResizable(false);
         f.setLocationRelativeTo(null);
@@ -62,25 +63,35 @@ public class Frame implements ActionListener {
 
         } else if (e.getActionCommand().equals("Easy")) {
 //           Easy btn click
- java.awt.EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                //do animation here if want
-                //sleep here
-                EasyPanel easy = new EasyPanel();
-                 f.setContentPane(easy);
-            f.invalidate();
-            f.validate();
-            }
-        });
-            
-           
+            java.awt.EventQueue.invokeLater(new Runnable() {
+                @Override
+                public void run() {
+                    //do animation here if want
+                    //sleep here
+                    EasyPanel easy = new EasyPanel();
+                    f.setContentPane(easy);
+                    f.invalidate();
+                    f.validate();
+                }
+            });
 
         } else if (e.getActionCommand().equals("Leaderboard")) {
 //           leaderboard btn click
 
         } else if (e.getActionCommand().equals("Normal")) {
 //           normal btn click
+
+            java.awt.EventQueue.invokeLater(new Runnable() {
+                @Override
+                public void run() {
+                    //do animation here if want
+                    //sleep here
+                    NormalPanel normal = new NormalPanel();
+                    f.setContentPane(normal);
+                    f.invalidate();
+                    f.validate();
+                }
+            });
         } else if (e.getActionCommand().equals("Hard")) {
 //           hard btn click
         } else if (e.getActionCommand().equals("Next")) {

@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 
-package memory_game.mainmenu;
+package memory_game.Panel;
 
 import javax.swing.JButton;
 import javax.swing.JTextField;
@@ -53,14 +53,17 @@ public class InsertName extends javax.swing.JPanel {
         jPanel1.setLayout(null);
 
         jPanel2.setBackground(new java.awt.Color(255, 61, 61));
+        jPanel2.setOpaque(false);
         jPanel2.setPreferredSize(new java.awt.Dimension(500, 600));
         jPanel2.setLayout(new java.awt.BorderLayout());
 
         jPanel3.setBackground(new java.awt.Color(255, 179, 107));
+        jPanel3.setOpaque(false);
         jPanel3.setPreferredSize(new java.awt.Dimension(500, 200));
         jPanel3.setLayout(new java.awt.BorderLayout());
 
         jPanel4.setBackground(new java.awt.Color(255, 179, 107));
+        jPanel4.setOpaque(false);
 
         jLabel2.setFont(new java.awt.Font("Rockwell Nova Cond", 0, 48)); // NOI18N
         jLabel2.setText("Insert Yout Name");
@@ -70,9 +73,11 @@ public class InsertName extends javax.swing.JPanel {
 
         jPanel2.add(jPanel3, java.awt.BorderLayout.PAGE_START);
 
+        jPanel5.setOpaque(false);
         jPanel5.setLayout(new java.awt.BorderLayout());
 
         jPanel6.setBackground(new java.awt.Color(255, 179, 107));
+        jPanel6.setOpaque(false);
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -88,10 +93,12 @@ public class InsertName extends javax.swing.JPanel {
         jPanel5.add(jPanel6, java.awt.BorderLayout.PAGE_START);
 
         jPanel7.setBackground(new java.awt.Color(255, 179, 107));
+        jPanel7.setOpaque(false);
         jPanel7.setPreferredSize(new java.awt.Dimension(500, 40));
         jPanel7.setLayout(new java.awt.GridLayout(6, 1));
 
         jPanel8.setBackground(new java.awt.Color(255, 179, 107));
+        jPanel8.setOpaque(false);
         jPanel8.setPreferredSize(new java.awt.Dimension(500, 40));
 
         NameTF.setName(""); // NOI18N
@@ -101,10 +108,12 @@ public class InsertName extends javax.swing.JPanel {
         jPanel7.add(jPanel8);
 
         jPanel9.setBackground(new java.awt.Color(255, 179, 107));
+        jPanel9.setOpaque(false);
         jPanel9.setPreferredSize(new java.awt.Dimension(500, 40));
         jPanel7.add(jPanel9);
 
         jPanel10.setBackground(new java.awt.Color(255, 179, 107));
+        jPanel10.setOpaque(false);
         jPanel10.setPreferredSize(new java.awt.Dimension(500, 40));
 
         nextBtn.setText("Next");
@@ -113,6 +122,7 @@ public class InsertName extends javax.swing.JPanel {
         jPanel7.add(jPanel10);
 
         jPanel11.setBackground(new java.awt.Color(255, 179, 107));
+        jPanel11.setOpaque(false);
         jPanel11.setPreferredSize(new java.awt.Dimension(500, 40));
 
         javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
@@ -129,6 +139,7 @@ public class InsertName extends javax.swing.JPanel {
         jPanel7.add(jPanel11);
 
         jPanel13.setBackground(new java.awt.Color(255, 179, 107));
+        jPanel13.setOpaque(false);
         jPanel13.setPreferredSize(new java.awt.Dimension(500, 40));
         jPanel13.setLayout(new java.awt.BorderLayout());
 

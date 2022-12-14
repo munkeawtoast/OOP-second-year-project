@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package memory_game.mainmenu;
+package memory_game.Panel;
 
 import javax.swing.JButton;
 
@@ -50,25 +50,30 @@ public class Menu extends javax.swing.JPanel {
         setLayout(null);
 
         jPanel1.setBackground(new java.awt.Color(255, 61, 61));
+        jPanel1.setOpaque(false);
         jPanel1.setPreferredSize(new java.awt.Dimension(500, 600));
         jPanel1.setLayout(new java.awt.BorderLayout());
 
         jPanel2.setBackground(new java.awt.Color(255, 179, 107));
+        jPanel2.setOpaque(false);
         jPanel2.setPreferredSize(new java.awt.Dimension(500, 200));
         jPanel2.setLayout(new java.awt.BorderLayout());
 
         jPanel3.setBackground(new java.awt.Color(255, 179, 107));
+        jPanel3.setOpaque(false);
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logo1.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logo_new.png"))); // NOI18N
         jPanel3.add(jLabel2);
 
         jPanel2.add(jPanel3, java.awt.BorderLayout.PAGE_END);
 
         jPanel1.add(jPanel2, java.awt.BorderLayout.PAGE_START);
 
+        jPanel4.setOpaque(false);
         jPanel4.setLayout(new java.awt.BorderLayout());
 
         jPanel5.setBackground(new java.awt.Color(255, 179, 107));
+        jPanel5.setOpaque(false);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -84,9 +89,11 @@ public class Menu extends javax.swing.JPanel {
         jPanel4.add(jPanel5, java.awt.BorderLayout.PAGE_START);
 
         jPanel6.setBackground(new java.awt.Color(255, 179, 107));
+        jPanel6.setOpaque(false);
         jPanel6.setLayout(new java.awt.GridLayout(7, 1));
 
         jPanel7.setBackground(new java.awt.Color(255, 179, 107));
+        jPanel7.setOpaque(false);
 
         startbtn.setText("Start");
         startbtn.setPreferredSize(new java.awt.Dimension(150, 30));
@@ -95,6 +102,7 @@ public class Menu extends javax.swing.JPanel {
         jPanel6.add(jPanel7);
 
         jPanel8.setBackground(new java.awt.Color(255, 179, 107));
+        jPanel8.setOpaque(false);
 
         leaderbtn.setText("Leaderboard");
         leaderbtn.setPreferredSize(new java.awt.Dimension(150, 30));
@@ -103,6 +111,7 @@ public class Menu extends javax.swing.JPanel {
         jPanel6.add(jPanel8);
 
         jPanel9.setBackground(new java.awt.Color(255, 179, 107));
+        jPanel9.setOpaque(false);
 
         exitbtn.setText("Exit");
         exitbtn.setPreferredSize(new java.awt.Dimension(150, 30));

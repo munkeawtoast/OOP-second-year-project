@@ -1,4 +1,4 @@
-package memory_game.mainmenu;
+package memory_game.game.elements.card;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -7,11 +7,11 @@ import javax.swing.JButton;
  *
  * @author Rajesh Kumar Sahanee
  */
-class Tile extends JButton {
+public class Tile extends JButton {
 
     ImageIcon icon1;
     ImageIcon icon2;
-    private boolean hidden, noIcon;
+    private boolean hidden, Finish;
 
     public Tile(ImageIcon icon1, ImageIcon icon2) {
         this.icon1 = icon1;
@@ -30,17 +30,17 @@ class Tile extends JButton {
         hidden = true;
     }
 
-    public synchronized void setNoIcon() {
-        setIcon(null);
-        noIcon = true;
+    public synchronized void setFinish() {
+        showTile();
+        Finish = true;
     }
 
     public ImageIcon getImage() {
         return icon1;
     }
 
-    public synchronized boolean isNoIcon() {
-        return noIcon;
+    public synchronized boolean isFinish() {
+        return Finish;
     }
 
 }
