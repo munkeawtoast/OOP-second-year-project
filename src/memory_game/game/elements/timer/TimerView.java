@@ -25,7 +25,7 @@ public class TimerView extends JLabel{
     public void setTime(int time) {
         int minutes = time / 60;
         int seconds = time % 60;
-        this.setText(minutes + ":" + seconds);
+        this.setText(String.format("%02d", minutes) + ":" + String.format("%02d", seconds));
     }
     public JLabel getTimeLabel(){
         return this;
