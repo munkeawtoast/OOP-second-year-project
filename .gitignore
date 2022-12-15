@@ -14,3 +14,7 @@ nb-configuration.xml
 *.jar
 *.war
 *.ear
+nbproject/private/private.properties
+nbproject/project.properties
+nbproject/private/private.properties
+nbproject/project.properties
