@@ -16,6 +16,12 @@ public class TimerController {
     public JLabel getTimeLabel(){
         return this.view;
     }
+    public MyTimer getTimeModel(){
+        return this.model;
+    }
+    public void stopTime(){
+        model.stopTime();
+    }
 
 
     

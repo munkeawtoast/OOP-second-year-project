@@ -20,6 +20,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import memory_game.game.Player;
 import memory_game.game.elements.timer.TimerController;
 
 /**
@@ -34,6 +35,23 @@ public class EasyPanel extends javax.swing.JPanel implements ActionListener {
     Tile predict1, predict2;
     private boolean won, helping;
     private TimerController time;
+    Alert alert = new Alert();
+
+    public boolean isWon() {
+        return won;
+    }
+
+    public void setWon(boolean won) {
+        this.won = won;
+    }
+
+    public Alert getAlert() {
+        return alert;
+    }
+
+    public void setAlert(Alert alert) {
+        this.alert = alert;
+    }
     
 
     /**
@@ -85,6 +103,22 @@ public class EasyPanel extends javax.swing.JPanel implements ActionListener {
 
     }
 
+    public int getScoree() {
+        return scoree;
+    }
+
+    public void setScoree(int scoree) {
+        this.scoree = scoree;
+    }
+
+    public TimerController getTimeController() {
+        return time;
+    }
+
+    public void setTimeController(TimerController time) {
+        this.time = time;
+    }
+
     private void initIcons() {
         ImageIcon icon;
         for (int i = 0; i < icons.length; i++) {
@@ -101,7 +135,7 @@ public class EasyPanel extends javax.swing.JPanel implements ActionListener {
     private void check() {
 
         if (predict1 != predict2 && predict1.getImage() == predict2.getImage()) {
-
+                
             new Thread() {
                 @Override
                 public void run() {
@@ -127,26 +161,34 @@ public class EasyPanel extends javax.swing.JPanel implements ActionListener {
                             won = true;
                         }
                     }
-                    if (won) {
-                        String endtime = time.getTimeLabel().getText();
-                        System.out.println(endtime);
-                        JOptionPane.showMessageDialog(gamePanel, "You Won! Your Score is " + scoree);
-
-                        initGame();
+                      if(won){
+                       
+                        time.stopTime();
+                       
+                       alert.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                        alert.setVisible(true);
+                     
+                        
+//                        JOptionPane.showMessageDialog(gamePanel, "You Won! Your Score is " + scoree);
+                           
+//                        initGame();
                     }
+                    System.out.println(won);
+                    
+                   
                 }
             }.start();//animation
             predict1.removeActionListener(this);
             predict2.removeActionListener(this);
             scoree += 100;
             score.setText("" + scoree);
-
         } else {
             predict1.hideTile();
             predict2.hideTile();
             scoree -= 10;
             score.setText("" + scoree);
         }
+       
     }
     
       private void shuffle() {
@@ -182,6 +224,7 @@ public class EasyPanel extends javax.swing.JPanel implements ActionListener {
                         check();
                         Thread.sleep(600);
                         status = 0;
+                       
                     } catch (Exception e) {
                         System.out.println(e);
                     }
@@ -246,10 +289,11 @@ public class EasyPanel extends javax.swing.JPanel implements ActionListener {
         jPanel3.add(jPanel4, java.awt.BorderLayout.LINE_END);
 
         jPanel1.setOpaque(false);
-        jPanel3.add(jPanel1, java.awt.BorderLayout.CENTER);
 
         jLabel3.setBackground(new java.awt.Color(204, 255, 153));
-        jPanel3.add(jLabel3, java.awt.BorderLayout.CENTER);
+        jPanel1.add(jLabel3);
+
+        jPanel3.add(jPanel1, java.awt.BorderLayout.CENTER);
 
         add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 

@@ -56,6 +56,22 @@ public class NormalPanel extends javax.swing.JPanel implements ActionListener {
 
     }
 
+    public int getScoree() {
+        return scoree;
+    }
+
+    public void setScoree(int scoree) {
+        this.scoree = scoree;
+    }
+
+    public TimerController getTimeController() {
+        return time;
+    }
+
+    public void setTimeController(TimerController time) {
+        this.time = time;
+    }
+
     private void initGame() {
         scoree = 0;
         int x = 0;
@@ -203,6 +219,7 @@ public class NormalPanel extends javax.swing.JPanel implements ActionListener {
         score = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         gamePanel = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
@@ -241,6 +258,9 @@ public class NormalPanel extends javax.swing.JPanel implements ActionListener {
 
         jPanel3.add(jPanel4, java.awt.BorderLayout.LINE_END);
 
+        jPanel1.setOpaque(false);
+        jPanel3.add(jPanel1, java.awt.BorderLayout.CENTER);
+
         jLabel3.setBackground(new java.awt.Color(204, 255, 153));
         jPanel3.add(jLabel3, java.awt.BorderLayout.CENTER);
 
@@ -261,6 +281,7 @@ public class NormalPanel extends javax.swing.JPanel implements ActionListener {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;

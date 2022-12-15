@@ -19,6 +19,9 @@ public class MyTimer extends Timer{
     int getTimeElapsed() {
         return timeElapsed;
     }
+    public void stopTime(){
+        this.setDelay(9999999);
+    }
     
     
 }
