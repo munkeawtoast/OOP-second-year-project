@@ -23,7 +23,7 @@ public class GameGUIView extends JPanel implements IGameView {
     private TimerView timer;
     private JLabel scoreLabel;
     private Image backgroundImage;
-
+    
     public GameGUIView(GameController gameController) {
         this.gameController = gameController;
         this.game = gameController.getModel();

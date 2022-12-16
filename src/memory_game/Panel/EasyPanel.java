@@ -62,8 +62,8 @@ public class EasyPanel extends javax.swing.JPanel implements ActionListener {
        
         time = new TimerController();
 
-        time.getTimeLabel().setFont(new java.awt.Font("Segoe UI", 0, 36));
-        jPanel4.add(time.getTimeLabel());
+        time.getView().getTimeLabel().setFont(new java.awt.Font("Segoe UI", 0, 36));
+        jPanel4.add(time.getView().getTimeLabel());
          ImageIcon icon = new ImageIcon(this.getClass().getResource("/images/logo_new.png")); // load the image to a imageIcon
         Image image = icon.getImage(); // transform it 
         Image newimg = image.getScaledInstance(103, 80,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  

@@ -150,7 +150,7 @@ public class Frame implements ActionListener {
         else if (e.getActionCommand().equals("Restart")){
             if(mode.equals("easy")){
                     p.setScore(easy.getScoree());
-                    p.setTime(easy.getTimeController().getTimeLabel().getText());
+                    p.setTime(easy.getTimeController().getView().getTimeLabel().getText());
                     easy = new EasyPanel();
                     easy.getAlert().getRestartBtn().addActionListener(this);
                     easy.getAlert().getExtiBtn().addActionListener(this);
@@ -170,11 +170,11 @@ public class Frame implements ActionListener {
             p.setName(insertname.getNameTF().getText());
              if(mode.equals("easy")){
                 p.setScore(easy.getScoree());
-                p.setTime(easy.getTimeController().getTimeLabel().getText());
+                p.setTime(easy.getTimeController().getView().getTimeLabel().getText());
             }
             else if (mode.equals("normal")){
                 p.setScore(normal.getScoree());
-                p.setTime(normal.getTimeController().getTimeLabel().getText());
+                p.setTime(normal.getTimeController().getView().getTimeLabel().getText());
             }
             else if (mode.equals("hard")){
                 
