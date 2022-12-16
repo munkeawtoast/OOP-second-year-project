@@ -57,9 +57,10 @@ public class Game {
         intList = new ArrayList<>();
         for (int i = 0; i < 15; i++) {
             intList.add(i);
-            frontImage = new ImageIcon(getClass().getResource("images/card0.jpg"));
-            backImage = new ImageIcon(getClass().getResource("images/backcard.png"));
-            cardList.add(new CardController(playerName, gridSize, frontImage, backImage));
+            frontImage = new ImageIcon(getClass().getResource("/images/card0.jpg"));
+            backImage = new ImageIcon(getClass().getResource("/images/backcard.png"));
+            cardList.add(new CardController("test" + i + "0", gridSize, frontImage, backImage));
+            cardList.add(new CardController("test" + i + "1", gridSize, frontImage, backImage));
         }
         
         Collections.shuffle(intList);

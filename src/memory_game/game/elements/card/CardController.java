@@ -17,7 +17,7 @@ public class CardController {
 
     public CardController(String cardName, Dimension size, ImageIcon frontImage, ImageIcon backImage) {
         model = new Card(cardName, size, backImage, backImage);
-        view = new CardView(model);
+        view = new CardView(this);
     }
 
     public Card getModel() {

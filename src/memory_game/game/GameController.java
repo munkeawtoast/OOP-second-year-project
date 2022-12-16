@@ -34,6 +34,8 @@ public class GameController implements WindowListener, ActionListener {
     }
     
     private synchronized void initialize() {
+        model.initialize();
+        
         // register clicks
         for (CardController cardController : model.getCardList()) {
             cardController.getView().addActionListener(this);

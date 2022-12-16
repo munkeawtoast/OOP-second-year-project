@@ -45,6 +45,15 @@ public class Card {
     public Card getPair() {
         return pair;
     }
+
+    public ImageIcon getImageBack() {
+        return imageBack;
+    }
+
+    public ImageIcon getImageFront() {
+        return imageFront;
+    }
+    
     
     
         
