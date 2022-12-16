@@ -4,6 +4,8 @@
  */
 package memory_game.game.elements.card;
 
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author ACER
@@ -12,7 +14,7 @@ public class CardController {
     private Card model;
     private CardView view;
 
-    public CardController(Card model, CardView view) {
+    public CardController(ImageIcon frontImage, ImageIcon backImage) {
         this.model = model;
         this.view = view;
     }
