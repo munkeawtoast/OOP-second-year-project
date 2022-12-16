@@ -5,15 +5,25 @@
 package memory_game.game.elements.card;
 
 
+import java.awt.Dimension;
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
+import javax.swing.border.Border;
 
 public class CardView extends JButton {
+    public static final Dimension SMALL = new Dimension(100, 150);
+    public static final Dimension MEDIUM = new Dimension(100, 150);
+    public static final Dimension LARGE = new Dimension(100, 150);
+    
     private CardController controller;
     private Card model;
     private boolean isAnimating = false;
 
     public CardView(CardController cardController) {
         super(cardController.getModel().getImageBack());
+        Border emptyBorder = BorderFactory.createEmptyBorder();
+        setBorder(emptyBorder);
+//        setPreferredSize(new Dimension(200, 300));
         this.controller = cardController;
         this.model = cardController.getModel();
     }

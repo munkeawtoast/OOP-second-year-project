@@ -4,6 +4,7 @@ package memory_game.game;
 import java.awt.GridLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
 import memory_game.game.elements.card.CardController;
 import memory_game.game.elements.timer.TimerView;
 
@@ -23,16 +24,19 @@ public class GameGUIView extends JPanel implements IGameView {
     
     @Override
     public void initialize() {
+        // padding
+        setBorder(new EmptyBorder(30, 30, 30, 30));
+        
         cardGrid = new JPanel();
         switch (game.getDifficulty()) {
             case Game.EASY -> {
-                cardGrid.setLayout(new GridLayout(4, 3));
+                cardGrid.setLayout(new GridLayout(3, 4, 30, 30));
             }
             case Game.MEDIUM -> {
-                cardGrid.setLayout(new GridLayout(5, 4));
+                cardGrid.setLayout(new GridLayout(4, 5, 30, 30));
             }
             case Game.HARD -> {
-                cardGrid.setLayout(new GridLayout(6, 5));
+                cardGrid.setLayout(new GridLayout(5, 6, 30, 30));
             }
         }
         

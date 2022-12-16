@@ -6,8 +6,10 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.IntStream;
 import javax.swing.ImageIcon;
 import memory_game.game.elements.card.CardController;
+import memory_game.game.elements.card.CardView;
 import memory_game.game.elements.timer.TimerController;
 
 
@@ -15,7 +17,8 @@ import memory_game.game.elements.timer.TimerController;
 public class Game {
     public static final int EASY = 0;
     public static final int MEDIUM = 1;
-    public static final int  HARD = 2;
+    public static final int HARD = 2;
+    
     
     private String playerName;
     private int difficulty;
@@ -35,7 +38,7 @@ public class Game {
     public void initialize() {
         List<Integer> intList;
         ImageIcon frontImage, backImage;
-        int count;
+        int count = 0;
         Dimension gridSize = new Dimension();
         switch(difficulty) {
             case EASY -> {
@@ -54,16 +57,23 @@ public class Game {
         
         
         // add to cardList
+        int[] intArray = IntStream.range(0, 15).toArray();
         intList = new ArrayList<>();
-        for (int i = 0; i < 15; i++) {
+        for (int i : intArray) {
             intList.add(i);
-            frontImage = new ImageIcon(getClass().getResource("/images/card0.jpg"));
-            backImage = new ImageIcon(getClass().getResource("/images/backcard.png"));
-            cardList.add(new CardController("test" + i + "0", gridSize, frontImage, backImage));
-            cardList.add(new CardController("test" + i + "1", gridSize, frontImage, backImage));
         }
         
+        // shuffle and cut
         Collections.shuffle(intList);
+        intList = intList.subList(0, count);
+        
+        for (int i : intList) {
+            frontImage = new ImageIcon(getClass().getResource("/images/card0.jpg"));
+            backImage = new ImageIcon(getClass().getResource("/images/backcard.png"));
+            cardList.add(new CardController("test" + i + "0", CardView.MEDIUM, frontImage, backImage));
+            cardList.add(new CardController("test" + i + "1", CardView.MEDIUM, frontImage, backImage));
+        }
+        
         
     }
 
