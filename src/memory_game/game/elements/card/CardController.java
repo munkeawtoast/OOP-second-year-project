@@ -4,6 +4,9 @@
  */
 package memory_game.game.elements.card;
 
+import java.awt.Dimension;
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author ACER
@@ -12,9 +15,9 @@ public class CardController {
     private Card model;
     private CardView view;
 
-    public CardController(Card model, CardView view) {
-        this.model = model;
-        this.view = view;
+    public CardController(String cardName, Dimension size, ImageIcon frontImage, ImageIcon backImage) {
+        model = new Card(cardName, size, backImage, backImage);
+        view = new CardView(this);
     }
 
     public Card getModel() {
@@ -23,6 +26,10 @@ public class CardController {
 
     public CardView getView() {
         return view;
+    }
+    
+    public void triggerClickAnim() {
+        
     }
     
     //TODO
