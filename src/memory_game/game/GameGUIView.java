@@ -2,28 +2,27 @@
 package memory_game.game;
 
 import java.awt.GridLayout;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import memory_game.game.elements.card.CardController;
 import memory_game.game.elements.timer.TimerView;
 
 
-public class GameGUIView extends JFrame implements IGameView {
+public class GameGUIView extends JPanel implements IGameView {
+    private GameController gameController;
     private Game game;
     private JPanel cardGrid;
     private TimerView timer;
     private JLabel scoreLabel;
 
-    public GameGUIView(Game game) {
-        this.game = game;
-        this.timer = game.getTimerController().get
+    public GameGUIView(GameController gameController) {
+        this.gameController = gameController;
+        this.game = gameController.getModel();
+        this.timer = game.getTimerController().getView();
     }
     
     @Override
     public void initialize() {
-        
-        timer 
         cardGrid = new JPanel();
         switch (game.getDifficulty()) {
             case Game.EASY -> {
@@ -41,10 +40,7 @@ public class GameGUIView extends JFrame implements IGameView {
             cardGrid.add(cardController.getView());
         }
         
-        pack();
-        setVisible(true);
-        
-        
+        this.add(cardGrid);
     }
     
     @Override
@@ -63,9 +59,7 @@ public class GameGUIView extends JFrame implements IGameView {
     }
 
     @Override
-    public void handleGameStart() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+    public void handleGameStart() {}
 
     @Override
     public void handleGameEnd() {
