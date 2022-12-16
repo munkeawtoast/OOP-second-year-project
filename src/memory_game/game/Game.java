@@ -3,6 +3,7 @@ package memory_game.game;
 
 import java.awt.Dimension;
 import java.net.URL;
+import java.security.InvalidParameterException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -39,19 +40,18 @@ public class Game {
         List<Integer> intList;
         ImageIcon frontImage, backImage;
         int count = 0;
-        Dimension gridSize = new Dimension();
         switch(difficulty) {
             case EASY -> {
                 count = 3*4/2;
-                gridSize = new Dimension(4, 3);
             }
             case MEDIUM -> {
                 count = 4*5/2;
-                gridSize = new Dimension(5, 4);
             }
             case HARD -> {
                 count = 5*6/2;
-                gridSize = new Dimension(6, 5);
+            }
+            default -> {
+                throw new InvalidParameterException("Must be EASY, MEDIUM or HARD!");
             }
         }
         

@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JFrame;
 import memory_game.game.elements.card.CardController;
+import memory_game.game.elements.card.CardView;
 
 
 public class GameController implements WindowListener, ActionListener {
@@ -49,8 +50,6 @@ public class GameController implements WindowListener, ActionListener {
         }
         
         
-        
-        
     }
 
     
@@ -65,7 +64,7 @@ public class GameController implements WindowListener, ActionListener {
     public Game getModel() {
         return model;
     }
-
+    
     @Override
     public void windowOpened(WindowEvent e) {}
 
@@ -89,7 +88,13 @@ public class GameController implements WindowListener, ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        if (e.getSource() instanceof CardView) {
+            if (model.getPredict1() == null) {
+                
+            } else if (model.getPredict2() == null) {
+                
+            }
+        }
     }
     
 }
