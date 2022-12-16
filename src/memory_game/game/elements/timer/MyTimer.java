@@ -20,13 +20,8 @@ public class MyTimer extends Timer{
         return timeElapsed;
     }
     public void stopTime(){
-        this.setDelay(999999999);
+        this.setDelay(9999999);
     }
     
-    public String getFormattedTime() {
-        
-        int minutes = timeElapsed / 60;
-        int seconds = timeElapsed % 60;
-        return String.format("%02d", minutes) + ":" + String.format("%02d", seconds);
-    }
+    
 }

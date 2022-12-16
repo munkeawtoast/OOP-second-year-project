@@ -4,8 +4,6 @@
  */
 package memory_game.game.elements.card;
 
-import java.awt.Dimension;
-import java.awt.Image;
 import javax.swing.ImageIcon;
 
 /**
@@ -16,45 +14,15 @@ public class Card {
     private static int cardCount = 1;
     private int id;
     private Card pair;
-    private boolean isHidden;
-    private boolean isFinished;
+    private boolean isFlipped;
     private String name;
-    private ImageIcon imageFront;
-    private ImageIcon imageBack;
+    private ImageIcon image;
 
-    public Card(String name, Dimension size, ImageIcon imageFront, ImageIcon imageBack) {
+    public Card(String name, ImageIcon image) {
         this.name = name;
-        Image iFront = imageFront.getImage().getScaledInstance(size.width, size.height, Image.SCALE_SMOOTH);
-        Image iBack = imageBack.getImage().getScaledInstance(size.width, size.height, Image.SCALE_SMOOTH);
-        
-        this.imageFront = new ImageIcon(iFront);
-        this.imageBack = new ImageIcon(iBack);
-        
+        this.image = image;
         id = Card.cardCount;
         Card.cardCount++;
     }
-
-    public void setPair(Card pair) {
-        this.pair = pair;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public Card getPair() {
-        return pair;
-    }
-
-    public ImageIcon getImageBack() {
-        return imageBack;
-    }
-
-    public ImageIcon getImageFront() {
-        return imageFront;
-    }
-    
-    
-    
         
 }
