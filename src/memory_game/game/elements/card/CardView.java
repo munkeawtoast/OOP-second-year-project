@@ -4,34 +4,10 @@
  */
 package memory_game.game.elements.card;
 
-
-import javax.swing.JButton;
-
-public class CardView extends JButton {
-    private CardController controller;
-    private Card model;
-    private boolean isAnimating = false;
-
-    public CardView(CardController cardController) {
-        super(cardController.getModel().getImageBack());
-        this.controller = cardController;
-        this.model = cardController.getModel();
-    }
-    
-    public void animateFlip() {
-        
-    }
-    
-    public void animatePair() {
-        
-    }
-
-    public void setIsAnimating(boolean isAnimating) {
-        this.isAnimating = isAnimating;
-    }
-    
-    public boolean getIsAnimating() {
-        return isAnimating;
-    }
+/**
+ *
+ * @author ACER
+ */
+public class CardView {
+    // TODO
 }
-    

@@ -2,6 +2,6 @@
 package memory_game.game;
 
 
-public class GameController {
+public class GameView {
     
 }
