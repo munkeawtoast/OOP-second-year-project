@@ -59,7 +59,7 @@ public class GameGUIView extends JPanel implements IGameView {
             imageWidth = (int) (imageHeight * imageAspectRatio);
         }
 
-        g.drawImage(IMAGE_EASY, (getWidth() - imageWidth) / 2, (getHeight() - imageHeight) / 2, imageWidth, imageHeight, this);
+        g.drawImage(backgroundImage, (getWidth() - imageWidth) / 2, (getHeight() - imageHeight) / 2, imageWidth, imageHeight, this);
     }
     
     
