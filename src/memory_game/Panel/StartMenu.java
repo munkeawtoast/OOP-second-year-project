@@ -4,6 +4,7 @@
  */
 package memory_game.Panel;
 
+import java.awt.Color;
 import javax.swing.JButton;
 
 /**
@@ -17,6 +18,7 @@ public class StartMenu extends javax.swing.JPanel {
      */
     public StartMenu() {
         initComponents();
+        returnBtn.setBackground(new Color(0,0,0,0));
     }
 
     /**
@@ -51,26 +53,32 @@ public class StartMenu extends javax.swing.JPanel {
         setLayout(null);
 
         jPanel1.setBackground(new java.awt.Color(255, 61, 61));
+        jPanel1.setOpaque(false);
         jPanel1.setPreferredSize(new java.awt.Dimension(500, 600));
         jPanel1.setLayout(new java.awt.BorderLayout());
 
         jPanel2.setBackground(new java.awt.Color(255, 179, 107));
+        jPanel2.setOpaque(false);
         jPanel2.setPreferredSize(new java.awt.Dimension(500, 200));
         jPanel2.setLayout(new java.awt.BorderLayout());
 
         jPanel3.setBackground(new java.awt.Color(255, 179, 107));
+        jPanel3.setOpaque(false);
 
         jLabel2.setFont(new java.awt.Font("Rockwell Nova Cond", 0, 48)); // NOI18N
         jLabel2.setText("Choose Difficulty");
+        jLabel2.setOpaque(true);
         jPanel3.add(jLabel2);
 
         jPanel2.add(jPanel3, java.awt.BorderLayout.PAGE_END);
 
         jPanel1.add(jPanel2, java.awt.BorderLayout.PAGE_START);
 
+        jPanel4.setOpaque(false);
         jPanel4.setLayout(new java.awt.BorderLayout());
 
         jPanel5.setBackground(new java.awt.Color(255, 179, 107));
+        jPanel5.setOpaque(false);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -86,10 +94,12 @@ public class StartMenu extends javax.swing.JPanel {
         jPanel4.add(jPanel5, java.awt.BorderLayout.PAGE_START);
 
         jPanel6.setBackground(new java.awt.Color(255, 179, 107));
+        jPanel6.setOpaque(false);
         jPanel6.setPreferredSize(new java.awt.Dimension(500, 40));
         jPanel6.setLayout(new java.awt.GridLayout(6, 1));
 
         jPanel7.setBackground(new java.awt.Color(255, 179, 107));
+        jPanel7.setOpaque(false);
         jPanel7.setPreferredSize(new java.awt.Dimension(500, 40));
 
         easybtn.setText("Easy");
@@ -99,6 +109,7 @@ public class StartMenu extends javax.swing.JPanel {
         jPanel6.add(jPanel7);
 
         jPanel8.setBackground(new java.awt.Color(255, 179, 107));
+        jPanel8.setOpaque(false);
         jPanel8.setPreferredSize(new java.awt.Dimension(500, 40));
 
         normalbtn.setText("Normal");
@@ -108,6 +119,7 @@ public class StartMenu extends javax.swing.JPanel {
         jPanel6.add(jPanel8);
 
         jPanel9.setBackground(new java.awt.Color(255, 179, 107));
+        jPanel9.setOpaque(false);
         jPanel9.setPreferredSize(new java.awt.Dimension(500, 40));
 
         hardbtn.setText("Hard");
@@ -122,6 +134,7 @@ public class StartMenu extends javax.swing.JPanel {
         jPanel6.add(jPanel9);
 
         jPanel10.setBackground(new java.awt.Color(255, 179, 107));
+        jPanel10.setOpaque(false);
         jPanel10.setPreferredSize(new java.awt.Dimension(500, 40));
 
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
@@ -138,10 +151,11 @@ public class StartMenu extends javax.swing.JPanel {
         jPanel6.add(jPanel10);
 
         jPanel11.setBackground(new java.awt.Color(255, 179, 107));
+        jPanel11.setOpaque(false);
         jPanel11.setPreferredSize(new java.awt.Dimension(500, 40));
         jPanel11.setLayout(new java.awt.BorderLayout());
 
-        returnBtn.setBackground(new java.awt.Color(255, 179, 107));
+        returnBtn.setBackground(new java.awt.Color(0, 0, 0));
         returnBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/return.png"))); // NOI18N
         returnBtn.setActionCommand("return2");
         returnBtn.setBorder(javax.swing.BorderFactory.createCompoundBorder());
