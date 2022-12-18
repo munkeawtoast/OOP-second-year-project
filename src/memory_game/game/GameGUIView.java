@@ -1,14 +1,15 @@
 
 package memory_game.game;
 
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 import memory_game.game.elements.card.CardController;
+import memory_game.game.elements.card.CardView;
 import memory_game.game.elements.timer.TimerView;
 
 
@@ -16,6 +17,7 @@ public class GameGUIView extends JPanel implements IGameView {
     private static final Image IMAGE_EASY = new ImageIcon(GameGUIView.class.getResource("/images/back.jpg")).getImage();
     private static final Image IMAGE_MEDIUM = new ImageIcon(GameGUIView.class.getResource("/images/back_medium.jpg")).getImage();
     private static final Image IMAGE_HARD = new ImageIcon(GameGUIView.class.getResource("/images/back_hard.jpg")).getImage();
+    private static final int CARD_GAP = 30;
     
     private GameController gameController;
     private Game game;
@@ -23,6 +25,7 @@ public class GameGUIView extends JPanel implements IGameView {
     private TimerView timer;
     private JLabel scoreLabel;
     private Image backgroundImage;
+    
     
     public GameGUIView(GameController gameController) {
         this.gameController = gameController;
@@ -69,33 +72,39 @@ public class GameGUIView extends JPanel implements IGameView {
     
     @Override
     public void initialize() {
-        // padding
-        setBorder(new EmptyBorder(30, 30, 30, 30));
         
+        Dimension grid = new Dimension();
         
         cardGrid = new JPanel();
         switch (game.getDifficulty()) {
             case Game.TEST -> {
-                cardGrid.setLayout(new GridLayout(1, 2, 30, 30));
+                grid = new Dimension(2, 1);
             }
             case Game.EASY -> {
-                cardGrid.setLayout(new GridLayout(3, 4, 30, 30));
+                grid = new Dimension(4, 3);
             }
             case Game.MEDIUM -> {
-                cardGrid.setLayout(new GridLayout(4, 5, 30, 30));
+                grid = new Dimension(5, 4);
             }
             case Game.HARD -> {
-                cardGrid.setLayout(new GridLayout(5, 6, 30, 30));
+                grid = new Dimension(6, 5);
             }
         }
+        
+        cardGrid.setLayout(new GridLayout(grid.height, grid.width, CARD_GAP, CARD_GAP));
         
         for (CardController cardController : game.getCardList()) {
             cardGrid.add(cardController.getView());
         }
         
-        
         cardGrid.setOpaque(false);
         this.add(cardGrid);
+        
+        // padding
+        Dimension newSize = cardGrid.getPreferredSize();
+        newSize.height += 60;
+        newSize.width += 90;
+        cardGrid.setPreferredSize(newSize);
     }
     
     @Override

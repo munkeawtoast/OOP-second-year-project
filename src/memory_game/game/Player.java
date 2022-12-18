@@ -9,34 +9,35 @@ package memory_game.game;
  * @author Gungai
  */
 public class Player {
-        private String name;
-        private int score;
-        private String mode;
-        private String time;
-        public Player(){
-            this.name = "";
-            this.score= 0;
-            this.mode = "";
-            this.time = "";
-        }
-        public Player(String name, int score){
-            this.name = name;
-            this.score = score;
-            this.mode = "";
-            this.time = "";
-        }
-         public Player(String name, int score, String mode){
-            this.name = name;
-            this.score = score;
-            this.mode = mode;
-            this.time = "";
-        }
-           public Player(String name, int score, String mode, String time){
-            this.name = name;
-            this.score = score;
-            this.mode = mode;
-            this.time = time;
-        }
+    private String name;
+    private int score;
+    private String mode;
+    private String time;
+    
+    public Player(){
+        this.name = "";    
+        this.score= 0;
+        this.mode = "";
+        this.time = "";
+    }
+    public Player(String name, int score){
+        this.name = name;
+        this.score = score;
+        this.mode = "";
+        this.time = "";
+    }
+    public Player(String name, int score, String mode){
+        this.name = name;
+        this.score = score;
+        this.mode = mode;
+        this.time = "";
+    }
+      public Player(String name, int score, String mode, String time){
+        this.name = name;
+        this.score = score;
+        this.mode = mode;
+        this.time = time;
+    }
 
     public String getTime() {
         return time;
@@ -71,8 +72,9 @@ public class Player {
     public void setMode(String mode) {
         this.mode = mode;
     }
-   @Override
-   public String toString(){
+    
+    @Override
+    public String toString(){
        return "player name: " + name + "score: " + score + "time: " + time + "mode: "+ mode;
-   }
+    }
 }

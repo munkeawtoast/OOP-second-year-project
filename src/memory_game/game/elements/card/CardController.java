@@ -5,9 +5,9 @@
 package memory_game.game.elements.card;
 
 import java.awt.Dimension;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
+import memory_game.game.util.*;
 
 /**
  *
@@ -16,9 +16,7 @@ import javax.swing.ImageIcon;
 public class CardController {
     public static final String ANIM_GOOD = "animation-good";
     public static final String ANIM_BAD = "animation-bad";
-    public static final String ANIM_PICK = "animation-pick";
-    
-    
+    public static final String ANIM_PICK = "animation-pick";    
     private Card model;
     private CardView view;
 
@@ -35,25 +33,61 @@ public class CardController {
         return view;
     }
     
-    public void triggerGood() {
-        
+    private void triggerGood() {
+        new Thread(() -> {
+            TransitionPlayer up = view.getUpTransition();
+            TransitionPlayer good = view.getFadeTransition(); // bad
+            if (!view.getIsAnimating()) {
+                synchronized (up) {
+                    up.start();
+                }
+            }
+            synchronized(good) {
+                good.start();
+            }
+            view.setIsAnimating(false);
+        }).start();
     }
     
-    public void triggerBad() {
-        
+    private void triggerBad() {
+        new Thread(() -> {
+            TransitionPlayer up = view.getUpTransition();
+            TransitionPlayer shake = view.getShakeTransition();
+            TransitionPlayer down = view.getDownTransition();
+            if (!view.getIsAnimating()) {
+                synchronized (this) {
+                    up.start();
+                }    
+            }
+            synchronized(this) {
+                shake.start();
+            }
+//            synchronized(this) {
+//                down.start();
+//            }
+            view.setIsAnimating(false);
+        }).start();
     }
     
-    public void triggerSelect() {
+    private void triggerPick() {
+        System.out.println(view.getIsAnimating());
+        if (view.getIsAnimating()) { return; }
+        view.setIsAnimating(true);
+        view.getUpTransition().start();
         
     }
-    
-    public void runAnimation(String type) {
-        int percent = 0;
-        int time;
+     
+     public void runAnimation(String type) {
+        
         switch(type) {
+            case ANIM_GOOD -> {
+                triggerGood();
+            }
+            case ANIM_BAD -> {
+                triggerBad();
+            }
             case ANIM_PICK -> {
-                view.animateUp();
-                
+                triggerPick();
             }
         }
     }

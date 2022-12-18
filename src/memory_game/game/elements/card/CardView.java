@@ -32,23 +32,19 @@ public class CardView extends JButton {
         this.model = cardController.getModel();
     }
     
-    public void animateFlip() {
-        
+    public TransitionPlayer getFadeTransition() {
+        return new TransitionPlayer(this, Transition.SHAKE, Transition.OPACITY, 250, 1);
     }
     
-    public void animateGood() {
-        
+    public TransitionPlayer getShakeTransition() {
+        return new TransitionPlayer(this, Transition.SHAKE, Transition.EAST, 100, 30);
     }
     
-    public void animateBad() {
-        
+    public TransitionPlayer getUpTransition() {
+        return new TransitionPlayer(this, Transition.EASE_IN_SINE, Transition.NORTH, 250, 30);
     }
-    
-    public void animateUp() {
-        new TransitionPlayer(this, Transition.EASE_IN_OUT_CUBIC, Transition.UP, 1000, 30).start();
-    }
-    public void animateDown() {
-        new TransitionPlayer(this, Transition.EASE_IN_OUT_CUBIC, Transition.DOWN, 1000, 30).start();
+    public TransitionPlayer getDownTransition() {
+        return new TransitionPlayer(this, Transition.EASE_IN_SINE, Transition.SOUTH, 250, 30);
     }
     
     public void setIsAnimating(boolean isAnimating) {
