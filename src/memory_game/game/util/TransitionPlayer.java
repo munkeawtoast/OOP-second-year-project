@@ -30,7 +30,6 @@ public class TransitionPlayer extends Thread {
         this.direction = direction;
         this.duration = duration;
         this.amount = amount;
-        this.initialPosition = target.getLocation();
     }
 
     protected synchronized void checkPaused() {
@@ -63,6 +62,7 @@ public class TransitionPlayer extends Thread {
 
     @Override
     public void run() {
+        this.initialPosition = target.getLocation();
         try {
             while (elapsedPercentage < 1) {
                 checkPaused();

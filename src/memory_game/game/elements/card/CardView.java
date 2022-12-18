@@ -25,6 +25,7 @@ public class CardView extends JButton {
 
     public CardView(CardController cardController) {
         super(cardController.getModel().getImageBack());
+        this.controller = cardController;
         Border emptyBorder = BorderFactory.createEmptyBorder();
         setBorder(emptyBorder);
 //        setPreferredSize(new Dimension(200, 300));
@@ -59,6 +60,12 @@ public class CardView extends JButton {
         return controller;
     }
     
+    public void changeToFront() {
+        setIcon(controller.getModel().getImageFront());
+    }
     
+    public void changeToBack() {
+        setIcon(controller.getModel().getImageBack());
+    }
 }
     

@@ -103,6 +103,8 @@ public class GameController implements WindowListener, ActionListener {
                 
                 if (model.getPredict1().isPair(model.getPredict2())) {
                     currentAnim = CardController.ANIM_GOOD;
+                    model.getPredict1().getView().setEnabled(false);
+                    model.getPredict2().getView().setEnabled(false);
                     
                 } else {
                     currentAnim = CardController.ANIM_BAD;

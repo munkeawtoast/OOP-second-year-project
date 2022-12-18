@@ -5,6 +5,7 @@
 package memory_game.game.elements.card;
 
 import java.awt.Dimension;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import memory_game.game.util.*;
@@ -24,6 +25,7 @@ public class CardController {
         model = new Card(cardName, size, backImage, backImage);
         view = new CardView(this);
     }
+    
 
     public Card getModel() {
         return model;
@@ -33,52 +35,107 @@ public class CardController {
         return view;
     }
     
+    public void setPair(Card card) {
+        model.setPair(card);
+    }
+    
     private void triggerGood() {
         new Thread(() -> {
+            view.changeToFront();
             TransitionPlayer up = view.getUpTransition();
-            TransitionPlayer good = view.getFadeTransition(); // bad
+            TransitionPlayer down = view.getDownTransition();
+            view.changeToFront();
             if (!view.getIsAnimating()) {
-                synchronized (up) {
-                    up.start();
+                up.start();
+                try {
+                    up.join(250);
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(CardController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            } else {
+                Thread temp = new Thread(() -> {
+                    while (true) {}
+                });
+                temp.start();
+                try {
+                    temp.join(250);
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(CardController.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
-            synchronized(good) {
-                good.start();
+            
+            Thread temp = new Thread(() -> {
+                while (true) {}
+            });
+            temp.start();
+            try {
+                temp.join(250);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(CardController.class.getName()).log(Level.SEVERE, null, ex);
             }
+            
+            down.start();
+            try {
+                down.join(250);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(CardController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            view.changeToFront();
             view.setIsAnimating(false);
         }).start();
     }
     
     private void triggerBad() {
         new Thread(() -> {
+            view.changeToFront();
             TransitionPlayer up = view.getUpTransition();
             TransitionPlayer shake = view.getShakeTransition();
             TransitionPlayer down = view.getDownTransition();
             if (!view.getIsAnimating()) {
-                synchronized (this) {
-                    up.start();
-                }    
+                up.start();
+                try {
+                    up.join(250);
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(CardController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            } else {
+                Thread temp = new Thread(() -> {
+                    while (true) {}
+                });
+                temp.start();
+                try {
+                    temp.join(250);
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(CardController.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
-            synchronized(this) {
-                shake.start();
+            
+            shake.start();
+            try {
+                shake.join(100);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(CardController.class.getName()).log(Level.SEVERE, null, ex);
             }
-//            synchronized(this) {
-//                down.start();
-//            }
+            down.start();
+            try {
+                down.join();
+            } catch (InterruptedException ex) {
+                Logger.getLogger(CardController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            view.changeToBack();
             view.setIsAnimating(false);
         }).start();
     }
     
     private void triggerPick() {
-        System.out.println(view.getIsAnimating());
         if (view.getIsAnimating()) { return; }
         view.setIsAnimating(true);
+        view.changeToFront(); ///////////////////////////////////////////////////////
         view.getUpTransition().start();
         
     }
      
      public void runAnimation(String type) {
-        
         switch(type) {
             case ANIM_GOOD -> {
                 triggerGood();
