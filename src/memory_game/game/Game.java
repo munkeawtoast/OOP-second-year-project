@@ -2,6 +2,7 @@
 package memory_game.game;
 
 import java.awt.Dimension;
+import java.io.Serializable;
 import java.net.URL;
 import java.security.InvalidParameterException;
 import java.util.ArrayList;
@@ -14,7 +15,8 @@ import memory_game.game.elements.card.CardView;
 import memory_game.game.elements.timer.TimerController;
 
 
-public class Game implements Comparable<Game>{
+
+public class Game implements Comparable<Game>, Serializable{
     public static final int TEST = -1;
     public static final int EASY = 0;
     public static final int MEDIUM = 1;
@@ -129,7 +131,10 @@ public class Game implements Comparable<Game>{
     public void setScore(int score){
         this.Score = score;
     }
-    
+    @Override
+    public String toString(){
+        return "Name: "+ this.getPlayerName();
+    }
     
     
 }

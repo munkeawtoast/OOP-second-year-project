@@ -15,8 +15,12 @@ import javax.swing.*;
 import java.awt.event.*;
 import java.io.ByteArrayInputStream;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import javax.sound.sampled.AudioFormat;
 import javax.sound.sampled.AudioInputStream;
@@ -37,7 +41,7 @@ import memory_game.game.Player;
 
 // what is this? -Pine
 // i think project should only have one main function -Pine
-public class Frame extends JFrame implements ActionListener {
+public class Frame extends JFrame implements ActionListener, WindowListener {
 
     Menu menu = new Menu();
     StartMenu startmenu = new StartMenu();
@@ -52,7 +56,7 @@ public class Frame extends JFrame implements ActionListener {
         setTitle("Pokemon Matching Card Game");
         setVisible(true);
         setResizable(false);
-
+        addWindowListener(this);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setContentPane(menu);
         setSize(800, 600);
@@ -87,12 +91,18 @@ public class Frame extends JFrame implements ActionListener {
         } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
             e.printStackTrace();
         }
-        ArrayList<Game> players = new ArrayList<>();
-        for (int i = 0; i < 30; i++) {
-            players.add(new Game("game", 2));
-            players.get(i).setScore(i + 10);
-        }
-        board.updateBoard(players);
+        
+//        TEST BOARD FUNCTION
+//        ArrayList<Game> players = new ArrayList<>();
+//        for (int i = 0; i < 5; i++) {
+//            players.add(new Game("game", 2));
+//            players.get(i).setScore(i + 10);
+//        }
+//        board.updateBoard(players);
+//            Game test = new Game("EIEIE", 1);
+//            test.setScore(300);
+//           board.getModel().addList(test);
+//           board.updateBoard(board.getModel().getList());
 
     }
 
@@ -243,5 +253,64 @@ public class Frame extends JFrame implements ActionListener {
         game = new GameController(name, difficulty, this);
         setContentPane(game.getGUIView());
         pack();
+    }
+
+    @Override
+   public void windowOpened(WindowEvent e) {
+    File f = new File("LeaderBoard.dat");
+    if (f.exists()) {
+        System.out.println("Board data found");
+        try (FileInputStream fis = new FileInputStream(f);
+             ObjectInputStream ois = new ObjectInputStream(fis)) {
+            ArrayList<Game> savelist = (ArrayList<Game>) ois.readObject();
+           
+            board.updateBoard(savelist);
+             fis.close();
+                ois.close();
+        } catch (IOException ie) {
+            System.out.println("An error occurred while reading from the file: " + ie);
+        } catch (ClassNotFoundException ce) {
+            System.out.println("Class not found: " + ce);
+        } 
+    }
+}
+
+
+    @Override
+    public void windowClosing(WindowEvent e) {
+        ArrayList<Game> games = board.getModel().getList();
+        try(FileOutputStream fos = new FileOutputStream("LeaderBoard.dat");
+                ObjectOutputStream oos = new ObjectOutputStream(fos)){
+                oos.writeObject(board.getModel().getList());
+            System.out.println("save successfull");
+        }
+        catch(IOException ie){
+            ie.printStackTrace();
+        }
+    }
+
+    @Override
+    public void windowClosed(WindowEvent e) {
+      
+    }
+
+    @Override
+    public void windowIconified(WindowEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void windowDeiconified(WindowEvent e) {
+        
+    }
+
+    @Override
+    public void windowActivated(WindowEvent e) {
+       
+    }
+
+    @Override
+    public void windowDeactivated(WindowEvent e) {
+       
     }
 }
