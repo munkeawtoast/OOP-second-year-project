@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package memory_game.Panel;
+package memory_game.Panel.LeaderBoard;
 
 import java.awt.Color;
 import java.awt.Component;
@@ -23,8 +23,10 @@ import javax.swing.table.DefaultTableModel;
 import memory_game.game.Player;
 import java.awt.*;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.plaf.basic.BasicScrollPaneUI;
 import memory_game.Panel.customElement.ScrollBarCustom;
+
 /**
  *
  * @author thanakorn
@@ -39,30 +41,39 @@ public class LeaderBoardView extends javax.swing.JPanel {
      */
     public LeaderBoardView() {
         initComponents();
-        
-          model = new DefaultTableModel();
+
+        model = new DefaultTableModel();
         model.addColumn("#");
         model.addColumn("Name");
         model.addColumn("Time");
         model.addColumn("Score");
         scrollpane.getViewport().setOpaque(false);
-       
-     
+
         table.setShowGrid(false);
         table.setBackground(new Color(0, 0, 0, 0));
         table.setEnabled(false);
         scrollpane.setBorder(new EmptyBorder(0, 0, 0, 0));
         table.setRowHeight(40);
-       
+
         table.getTableHeader().setBackground(new Color(0, 0, 0, 0));
-         
+        table.getTableHeader().setEnabled(false);
 
-table.getTableHeader().setFont(new Font("Arial", Font.PLAIN, 24));
-scrollpane.setVerticalScrollBar(new ScrollBarCustom() );
-returnBtn.setBackground(new Color(0,0,0,0));
-        
+        table.getTableHeader().setFont(new Font("Arial", Font.BOLD, 24));
+        scrollpane.setVerticalScrollBar(new ScrollBarCustom());
+        table.setEnabled(false);
 
-        
+// Get the default renderer for the cells in the table
+        DefaultTableCellRenderer renderer = (DefaultTableCellRenderer) table.getDefaultRenderer(Object.class);
+
+// Set the horizontal alignment to be centered
+        renderer.setHorizontalAlignment(JLabel.CENTER);
+        DefaultTableCellRenderer renderer2 = (DefaultTableCellRenderer) table.getTableHeader().getDefaultRenderer();
+
+// Set the horizontal alignment to be centered
+renderer2.setHorizontalAlignment(JLabel.CENTER);
+
+// Set the renderer to be used for all header cells
+table.getTableHeader().setDefaultRenderer(renderer2);
 
     }
 
@@ -108,9 +119,10 @@ returnBtn.setBackground(new Color(0,0,0,0));
         jPanel5.setPreferredSize(new java.awt.Dimension(800, 70));
         jPanel5.setLayout(new java.awt.BorderLayout());
 
-        returnBtn.setBackground(new java.awt.Color(242, 242, 242));
+        returnBtn.setBackground(new java.awt.Color(0, 0, 0));
         returnBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/return.png"))); // NOI18N
-        returnBtn.setActionCommand("return3");
+        returnBtn.setActionCommand("return2");
+        returnBtn.setBorder(javax.swing.BorderFactory.createCompoundBorder());
         returnBtn.setPreferredSize(new java.awt.Dimension(70, 40));
         returnBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -121,6 +133,9 @@ returnBtn.setBackground(new Color(0,0,0,0));
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 returnBtnMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                returnBtnMousePressed(evt);
             }
         });
         returnBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -164,29 +179,29 @@ returnBtn.setBackground(new Color(0,0,0,0));
         add(jPanel2, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void returnBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_returnBtnActionPerformed
+    private void returnBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_returnBtnMouseClicked
         // TODO add your handling code here:
-    
-        
-    }//GEN-LAST:event_returnBtnActionPerformed
+
+    }//GEN-LAST:event_returnBtnMouseClicked
 
     private void returnBtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_returnBtnMouseEntered
-        // TODO add your handling code here
-        returnBtn.setBackground(new Color(0,0,0,0));
-         returnBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/return2.png")));
+        // TODO add your handling code here:
+        returnBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/return2.png")));
     }//GEN-LAST:event_returnBtnMouseEntered
 
     private void returnBtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_returnBtnMouseExited
         // TODO add your handling code here:
-        returnBtn.setBackground(new Color(0,0,0,0));
-         returnBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/return.png")));
+        returnBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/return.png")));
     }//GEN-LAST:event_returnBtnMouseExited
 
-    private void returnBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_returnBtnMouseClicked
+    private void returnBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_returnBtnMousePressed
         // TODO add your handling code here:
-         returnBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/return.png")));
-         returnBtn.setBackground(new Color(0,0,0,0));
-    }//GEN-LAST:event_returnBtnMouseClicked
+        returnBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/return.png")));
+    }//GEN-LAST:event_returnBtnMousePressed
+
+    private void returnBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_returnBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_returnBtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -11,9 +11,9 @@ import javax.swing.JButton;
 import javax.swing.border.Border;
 
 public class CardView extends JButton {
-    public static final Dimension SMALL = new Dimension(100, 150);
-    public static final Dimension MEDIUM = new Dimension(100, 150);
-    public static final Dimension LARGE = new Dimension(100, 150);
+    public static final Dimension SMALL = new Dimension(70, 93);
+    public static final Dimension MEDIUM = new Dimension(80, 106);
+    public static final Dimension LARGE = new Dimension(90, 120);
     
     private CardController controller;
     private Card model;

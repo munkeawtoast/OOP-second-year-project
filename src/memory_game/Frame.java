@@ -15,32 +15,33 @@ import javax.swing.*;
 import java.awt.event.*;
 import memory_game.Panel.EasyPanel;
 import memory_game.Panel.InsertName;
+import memory_game.Panel.LeaderBoard.LeaderBoardController;
 import memory_game.Panel.NormalPanel;
+import memory_game.game.Game;
+import memory_game.game.GameController;
 import memory_game.game.Player;
 
 // what is this? -Pine
 // i think project should only have one main function -Pine
-public class Frame implements ActionListener {
+public class Frame extends JFrame implements ActionListener {
     String mode;
     JFrame f;
     Menu menu = new Menu();
     StartMenu startmenu = new StartMenu();
     InsertName insertname = new InsertName();
-    Player p;
-    EasyPanel easy;
-    NormalPanel normal;
+    GameController game;
+    LeaderBoardController board = new LeaderBoardController();
 
     public Frame() {
-        f = new JFrame("POKEMON MEMORY CARD GAME");
-        f.setSize(800, 600);
-        p = new Player();
-        f.add(menu);
+        
+       
 
-        f.setVisible(true);
-        f.setResizable(false);
-        f.setLocationRelativeTo(null);
-        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
+        setVisible(true);
+        setResizable(false);
+        
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setContentPane(menu);
+        setSize(800,600);
         insertname.getNextBtn().addActionListener(this);
         insertname.getReturnBtn().addActionListener(this);
         menu.getStartBtn().addActionListener(this);
@@ -86,106 +87,58 @@ public class Frame implements ActionListener {
         } else if (e.getActionCommand().equals("Start")) {
 //           start btn click
 
-            f.setContentPane(insertname);
-            f.invalidate();
-            f.validate();
+            setContentPane(insertname);
+            pack();
 
         } else if (e.getActionCommand().equals("Easy")) {
 //           Easy btn click
-            mode = "easy";
-                    
-                    easy = new EasyPanel();
-                    easy.getAlert().getRestartBtn().addActionListener(this);
-                    easy.getAlert().getExtiBtn().addActionListener(this);
-                    f.setContentPane(easy);
-                    f.invalidate();
-                    f.validate();
-//                      if (easy.isWon()) {
-//                        String endtime = easy.getTimeController().getTimeLabel().getText();
-//                        System.out.println(endtime);
-//                       easy.getAlert().setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-//                       easy.getAlert().setVisible(true);
-//                     
-//                        
-////                        JOptionPane.showMessageDialog(gamePanel, "You Won! Your Score is " + scoree);
-//                           
-////                        initGame();
-//                    }
+            loadGame(insertname.getName(), Game.EASY);
+         
            
 
         } else if (e.getActionCommand().equals("Leaderboard")) {
+             setContentPane(board.getView());
+            pack();
 //           leaderboard btn click
 
         } else if (e.getActionCommand().equals("Normal")) {
 //           normal btn click
-            mode = "normal";
-            java.awt.EventQueue.invokeLater(new Runnable() {
-                @Override
-                public void run() {
-                    //do animation here if want
-                    //sleep here
-                    NormalPanel normal = new NormalPanel();
-                    f.setContentPane(normal);
-                    f.invalidate();
-                    f.validate();
-                }
-            });
+            
         } else if (e.getActionCommand().equals("Hard")) {
 //           hard btn click
         } else if (e.getActionCommand().equals("Next")) {
             
-            f.setContentPane(startmenu);
-            f.invalidate();
-            f.validate();
+            setContentPane(startmenu);
+           pack();
 
         } else if (e.getActionCommand().equals("return1")) {
-            f.setContentPane(menu);
-            f.invalidate();
-            f.validate();
+            setContentPane(menu);
+            invalidate();
+            validate();
         } else if (e.getActionCommand().equals("return2")) {
-            f.setContentPane(insertname);
-            f.invalidate();
-            f.validate();
+            setContentPane(insertname);
+            invalidate();
+            validate();
+        } else if (e.getActionCommand().equals("return3")) {
+            setContentPane(menu);
+            invalidate();
+            validate();
         }
+        
         else if (e.getActionCommand().equals("Restart")){
-            if(mode.equals("easy")){
-                    p.setScore(easy.getScoree());
-                    p.setTime(easy.getTimeController().getView().getTimeLabel().getText());
-                    easy = new EasyPanel();
-                    easy.getAlert().getRestartBtn().addActionListener(this);
-                    easy.getAlert().getExtiBtn().addActionListener(this);
-                    easy.getAlert().setVisible(false);
-                    f.setContentPane(easy);
-                    f.invalidate();
-                    f.validate();
-                    
-            }
-            p.setMode(mode);
-            p.setName(insertname.getNameTF().getText());
-            System.out.println(p);
+          
            
         }
         else if (e.getActionCommand().equals("Tomenu")){
-            p.setMode(mode);
-            p.setName(insertname.getNameTF().getText());
-             if(mode.equals("easy")){
-                p.setScore(easy.getScoree());
-                p.setTime(easy.getTimeController().getView().getTimeLabel().getText());
-            }
-            else if (mode.equals("normal")){
-                p.setScore(normal.getScoree());
-                p.setTime(normal.getTimeController().getView().getTimeLabel().getText());
-            }
-            else if (mode.equals("hard")){
-                
-            }
-            f.setContentPane(menu);
-            f.invalidate();
-            f.validate();
-             System.out.println(p);
+          
            
                     
         }
 
+    }
+     public void loadGame(String name, int difficulty) {
+        game = new GameController(name, difficulty, this);
+        setContentPane(game.getGUIView());
+        pack();
     }
 }

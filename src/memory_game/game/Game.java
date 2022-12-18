@@ -15,7 +15,7 @@ import memory_game.game.elements.timer.TimerController;
 
 
     
-public class Game {
+public class Game implements Comparable<Game>{
     public static final int EASY = 0;
     public static final int MEDIUM = 1;
     public static final int HARD = 2;
@@ -118,7 +118,13 @@ public class Game {
     }
     
     
-    
+      @Override
+  public int compareTo(Game other) {
+    return other.Score - this.Score;
+  }
+  public void setScore(int score){
+    this.Score = score;
+}
     
     
     
