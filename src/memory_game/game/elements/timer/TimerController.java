@@ -1,8 +1,10 @@
 
 package memory_game.game.elements.timer;
 
+import java.io.Serializable;
 
-public class TimerController {
+
+public class TimerController implements Serializable{
     MyTimer model;
     TimerView view;
 

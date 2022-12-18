@@ -50,12 +50,12 @@ public class LeaderBoardView extends javax.swing.JPanel {
         scrollpane.getViewport().setOpaque(false);
 
         table.setShowGrid(false);
-        table.setBackground(new Color(0, 0, 0, 30));
+        table.setBackground(new Color(0, 0, 0, 0));
         table.setEnabled(false);
         scrollpane.setBorder(new EmptyBorder(0, 0, 0, 0));
         table.setRowHeight(40);
         table.getTableHeader().setSize(100, 80);
-        table.getTableHeader().setBackground(new Color(0,0,0,50));
+        table.getTableHeader().setBackground(new Color(0,0,0,0));
         table.getTableHeader().setBorder(null);
         table.getTableHeader().setEnabled(false);
         table.getTableHeader().setForeground(new Color(255,255,255));

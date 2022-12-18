@@ -24,5 +24,7 @@ public class LeaderBoardModel {
     public void setList(ArrayList<Game> list) {
         this.list = list;
     }
-    
+    public void addList(Game game){
+        this.list.add(game);
+    }
 }

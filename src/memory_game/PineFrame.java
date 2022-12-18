@@ -16,13 +16,17 @@ public class PineFrame extends JFrame {
     GameController game;
     public PineFrame() {
         super("MemoryGame");
-        loadGame(Game.TEST);
+
+        loadGame("eiei", Game.EASY);
+
+        
+
         
         setVisible(true);
     }
     
-    public void loadGame(int difficulty) {
-        game = new GameController("munkeawtoast", difficulty, this);
+    public void loadGame(String name, int difficulty) {
+        game = new GameController(name, difficulty, this);
         setContentPane(game.getGUIView());
         pack();
     }
