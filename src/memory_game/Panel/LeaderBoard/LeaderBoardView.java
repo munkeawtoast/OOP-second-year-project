@@ -50,15 +50,16 @@ public class LeaderBoardView extends javax.swing.JPanel {
         scrollpane.getViewport().setOpaque(false);
 
         table.setShowGrid(false);
-        table.setBackground(new Color(0, 0, 0, 0));
+        table.setBackground(new Color(0, 0, 0, 30));
         table.setEnabled(false);
         scrollpane.setBorder(new EmptyBorder(0, 0, 0, 0));
         table.setRowHeight(40);
-
-        table.getTableHeader().setBackground(new Color(0, 0, 0, 0));
+        table.getTableHeader().setSize(100, 80);
+        table.getTableHeader().setBackground(new Color(0,0,0,50));
+        table.getTableHeader().setBorder(null);
         table.getTableHeader().setEnabled(false);
-
-        table.getTableHeader().setFont(new Font("Arial", Font.BOLD, 24));
+        table.getTableHeader().setForeground(new Color(255,255,255));
+        table.getTableHeader().setFont(new Font("Arial", Font.BOLD, 36));
         scrollpane.setVerticalScrollBar(new ScrollBarCustom());
         table.setEnabled(false);
 
@@ -74,6 +75,7 @@ renderer2.setHorizontalAlignment(JLabel.CENTER);
 
 // Set the renderer to be used for all header cells
 table.getTableHeader().setDefaultRenderer(renderer2);
+table.setForeground(new Color(255,192,95));
 
     }
 
@@ -155,10 +157,8 @@ table.getTableHeader().setDefaultRenderer(renderer2);
         jPanel4.setPreferredSize(new java.awt.Dimension(50, 0));
         jPanel2.add(jPanel4, java.awt.BorderLayout.LINE_START);
 
-        scrollpane.setBorder(null);
         scrollpane.setOpaque(false);
 
-        table.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
         table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -171,7 +171,6 @@ table.getTableHeader().setDefaultRenderer(renderer2);
             }
         ));
         table.setOpaque(false);
-        table.setSize(new java.awt.Dimension(740, 80));
         scrollpane.setViewportView(table);
 
         jPanel2.add(scrollpane, java.awt.BorderLayout.CENTER);
@@ -217,7 +216,7 @@ table.getTableHeader().setDefaultRenderer(renderer2);
     // End of variables declaration//GEN-END:variables
 
     public JTable getTable() {
-        return table;
+            return table;
     }
 
     public void setTable(JTable table) {
@@ -259,5 +258,9 @@ table.getTableHeader().setDefaultRenderer(renderer2);
         }
 
         g.drawImage(backgroundImage, (getWidth() - imageWidth) / 2, (getHeight() - imageHeight) / 2, imageWidth, imageHeight, this);
+    }
+
+    public JButton getReturnBtn() {
+        return returnBtn;
     }
 }

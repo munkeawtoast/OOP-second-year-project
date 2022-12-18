@@ -65,9 +65,8 @@ public class StartMenu extends javax.swing.JPanel {
         jPanel3.setBackground(new java.awt.Color(255, 179, 107));
         jPanel3.setOpaque(false);
 
-        jLabel2.setFont(new java.awt.Font("Rockwell Nova Cond", 0, 48)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Helvetica Neue", 0, 48)); // NOI18N
         jLabel2.setText("Choose Difficulty");
-        jLabel2.setOpaque(true);
         jPanel3.add(jLabel2);
 
         jPanel2.add(jPanel3, java.awt.BorderLayout.PAGE_END);
