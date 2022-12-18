@@ -88,10 +88,23 @@ public class GameController implements WindowListener, ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() instanceof CardView) {
+        if (e.getSource() instanceof CardView cardView) {
+            CardController cardController = cardView.getController();
             if (model.getPredict1() == null) {
-                
+                model.setPredict1(cardController);
+                model.getPredict1().runAnimation(CardController.ANIM_PICK);
             } else if (model.getPredict2() == null) {
+                model.setPredict2(cardController);
+                String currentAnim;
+                
+                if (model.getPredict1().isPair(model.getPredict2())) {
+                    currentAnim = CardController.ANIM_GOOD;
+                    
+                } else {
+                    currentAnim = CardController.ANIM_BAD;
+                }
+                model.getPredict1().runAnimation(currentAnim);
+                model.getPredict2().runAnimation(currentAnim);
                 
             }
         }

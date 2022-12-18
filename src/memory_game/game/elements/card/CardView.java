@@ -6,9 +6,12 @@ package memory_game.game.elements.card;
 
 
 import java.awt.Dimension;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.border.Border;
+import memory_game.game.util.*;
 
 public class CardView extends JButton {
     public static final Dimension SMALL = new Dimension(70, 93);
@@ -18,6 +21,7 @@ public class CardView extends JButton {
     private CardController controller;
     private Card model;
     private boolean isAnimating = false;
+    private boolean isHover = false;
 
     public CardView(CardController cardController) {
         super(cardController.getModel().getImageBack());
@@ -32,10 +36,18 @@ public class CardView extends JButton {
         
     }
     
-    public void animatePair() {
+    public void animateGood() {
         
     }
-
+    
+    public void animateBad() {
+        
+    }
+    
+    public void animateUp() {
+        new TransitionPlayer(this, Transition.EASE_IN_OUT_CUBIC, TransitionPlayer.UP, 250).start();
+    }
+    
     public void setIsAnimating(boolean isAnimating) {
         this.isAnimating = isAnimating;
     }
@@ -43,5 +55,11 @@ public class CardView extends JButton {
     public boolean getIsAnimating() {
         return isAnimating;
     }
+
+    public CardController getController() {
+        return controller;
+    }
+    
+    
 }
     

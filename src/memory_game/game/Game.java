@@ -14,8 +14,8 @@ import memory_game.game.elements.card.CardView;
 import memory_game.game.elements.timer.TimerController;
 
 
-    
 public class Game implements Comparable<Game>{
+    public static final int TEST = -1;
     public static final int EASY = 0;
     public static final int MEDIUM = 1;
     public static final int HARD = 2;
@@ -41,6 +41,9 @@ public class Game implements Comparable<Game>{
         ImageIcon frontImage, backImage;
         int count = 0;
         switch(difficulty) {
+            case TEST -> {
+                count = 1;
+            }
             case EASY -> {
                 count = 3*4/2;
             }
@@ -116,15 +119,16 @@ public class Game implements Comparable<Game>{
     public TimerController getTimer() {
         return timer;
     }
+
     
+    @Override
+    public int compareTo(Game other) {
+        return other.Score - this.Score;
+    }
     
-      @Override
-  public int compareTo(Game other) {
-    return other.Score - this.Score;
-  }
-  public void setScore(int score){
-    this.Score = score;
-}
+    public void setScore(int score){
+        this.Score = score;
+    }
     
     
     

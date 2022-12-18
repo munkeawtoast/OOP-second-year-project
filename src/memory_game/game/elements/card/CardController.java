@@ -5,6 +5,8 @@
 package memory_game.game.elements.card;
 
 import java.awt.Dimension;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 
 /**
@@ -12,6 +14,11 @@ import javax.swing.ImageIcon;
  * @author ACER
  */
 public class CardController {
+    public static final String ANIM_GOOD = "animation-good";
+    public static final String ANIM_BAD = "animation-bad";
+    public static final String ANIM_PICK = "animation-pick";
+    
+    
     private Card model;
     private CardView view;
 
@@ -28,8 +35,31 @@ public class CardController {
         return view;
     }
     
-    public void triggerClickAnim() {
+    public void triggerGood() {
         
+    }
+    
+    public void triggerBad() {
+        
+    }
+    
+    public void triggerSelect() {
+        
+    }
+    
+    public void runAnimation(String type) {
+        int percent = 0;
+        int time;
+        switch(type) {
+            case ANIM_PICK -> {
+                view.animateUp();
+                
+            }
+        }
+    }
+    
+    public boolean isPair(CardController cardController) {
+        return this.getModel().getPair() == cardController.getModel();
     }
     
     //TODO

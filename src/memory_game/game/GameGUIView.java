@@ -29,6 +29,9 @@ public class GameGUIView extends JPanel implements IGameView {
         this.game = gameController.getModel();
         this.timer = game.getTimerController().getView();
         switch(game.getDifficulty()) {
+            case Game.TEST -> {
+                this.backgroundImage = IMAGE_EASY;
+            }
             case Game.EASY -> {
                 this.backgroundImage = IMAGE_EASY;
             }
@@ -72,6 +75,9 @@ public class GameGUIView extends JPanel implements IGameView {
         
         cardGrid = new JPanel();
         switch (game.getDifficulty()) {
+            case Game.TEST -> {
+                cardGrid.setLayout(new GridLayout(1, 2, 30, 30));
+            }
             case Game.EASY -> {
                 cardGrid.setLayout(new GridLayout(3, 4, 30, 30));
             }
