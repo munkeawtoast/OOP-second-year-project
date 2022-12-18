@@ -9,6 +9,11 @@ package memory_game.game.util;
  * @author munkeawtoast
  */
 public class Transition {
+    public static final int UP = 0;
+    public static final int RIGHT = 1;
+    public static final int DOWN = 2;
+    public static final int LEFT = 3;
+        
     public static final int EASE_IN_OUT_CUBIC = 0;
     
     // เอามาจาก https://easings.net/#easeInOutCubic จ้า
