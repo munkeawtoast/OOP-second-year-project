@@ -45,7 +45,10 @@ public class CardView extends JButton {
     }
     
     public void animateUp() {
-        new TransitionPlayer(this, Transition.EASE_IN_OUT_CUBIC, TransitionPlayer.UP, 250).start();
+        new TransitionPlayer(this, Transition.EASE_IN_OUT_CUBIC, Transition.UP, 1000, 30).start();
+    }
+    public void animateDown() {
+        new TransitionPlayer(this, Transition.EASE_IN_OUT_CUBIC, Transition.DOWN, 1000, 30).start();
     }
     
     public void setIsAnimating(boolean isAnimating) {
