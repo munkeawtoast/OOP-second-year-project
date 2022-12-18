@@ -22,7 +22,7 @@ public class CardController {
     private CardView view;
 
     public CardController(String cardName, Dimension size, ImageIcon frontImage, ImageIcon backImage) {
-        model = new Card(cardName, size, backImage, backImage);
+        model = new Card(cardName, size, frontImage, backImage);
         view = new CardView(this);
     }
     

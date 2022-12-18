@@ -28,6 +28,8 @@ public class GameGUIView extends JPanel implements IGameView {
     
     
     public GameGUIView(GameController gameController) {
+        setPreferredSize(new Dimension(800,600));
+        
         this.gameController = gameController;
         this.game = gameController.getModel();
         this.timer = game.getTimerController().getView();

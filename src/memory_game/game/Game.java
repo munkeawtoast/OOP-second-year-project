@@ -73,14 +73,16 @@ public class Game implements Comparable<Game>, Serializable{
         intList = intList.subList(0, count);
         
         for (int i : intList) {
-            frontImage = new ImageIcon(getClass().getResource("/images/card0.jpg"));
-            backImage = new ImageIcon(getClass().getResource("/images/backcard.png"));
+            System.out.println(i);
+            frontImage = new ImageIcon(getClass().getResource("/images/card"+i+".jpg"));
+            backImage = new ImageIcon(getClass().getResource("/images/backcard.่jpg"));
             CardController cardController1 = new CardController("test" + i + "0", CardView.MEDIUM, frontImage, backImage);
             CardController cardController2 = new CardController("test" + i + "0", CardView.MEDIUM, frontImage, backImage);
             cardController1.setPair(cardController2.getModel());
             cardController2.setPair(cardController1.getModel());
             cardList.add(cardController1);
             cardList.add(cardController2);
+            Collections.shuffle(cardList);
         }
         
         
