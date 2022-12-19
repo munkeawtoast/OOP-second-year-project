@@ -19,6 +19,7 @@ public class StartMenu extends javax.swing.JPanel {
     public StartMenu() {
         initComponents();
         returnBtn.setBackground(new Color(0,0,0,0));
+        returnBtn.setBackground(new Color(0,0,0,0));
     }
 
     /**
