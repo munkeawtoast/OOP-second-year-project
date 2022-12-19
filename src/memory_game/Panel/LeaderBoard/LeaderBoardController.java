@@ -12,7 +12,7 @@ import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.table.DefaultTableModel;
 import memory_game.game.Game;
-import memory_game.game.Player;
+
 
 /**
  *

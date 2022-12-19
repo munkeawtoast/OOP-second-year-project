@@ -20,7 +20,7 @@ import javax.swing.JTable;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
-import memory_game.game.Player;
+
 import java.awt.*;
 import javax.swing.JButton;
 import javax.swing.JLabel;

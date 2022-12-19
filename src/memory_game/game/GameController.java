@@ -5,9 +5,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JFrame;
+import memory_game.Sound.Sound;
 import memory_game.game.elements.card.CardController;
 import memory_game.game.elements.card.CardView;
 
@@ -16,6 +19,8 @@ public class GameController implements WindowListener, ActionListener {
     private JFrame frame;
     private Game model;
     private List<IGameView> views;
+    private boolean gameOver;
+    Sound clicksound;
 
     
     /**
@@ -90,6 +95,9 @@ public class GameController implements WindowListener, ActionListener {
     public void actionPerformed(ActionEvent e) {
         
         if (e.getSource() instanceof CardView cardView) {
+            
+                 
+            playClickSound();
             CardController cardController = cardView.getController();
             
             if (cardController == model.getPredict1()) { return; }
@@ -97,24 +105,60 @@ public class GameController implements WindowListener, ActionListener {
             if (model.getPredict1() == null) {
                 model.setPredict1(cardController);
                 model.getPredict1().runAnimation(CardController.ANIM_PICK);
+               
             } else if (model.getPredict2() == null) {
                 model.setPredict2(cardController);
                 String currentAnim;
                 
                 if (model.getPredict1().isPair(model.getPredict2())) {
                     currentAnim = CardController.ANIM_GOOD;
-                    model.getPredict1().getView().setEnabled(false);
-                    model.getPredict2().getView().setEnabled(false);
-                    
+                    model.setScore(model.getScore()+500);
+                    System.out.println("Score + 500");
+//                   
                 } else {
                     currentAnim = CardController.ANIM_BAD;
+                    model.setScore(model.getScore()-100);
+                    playWrongSound();
+                    System.out.println("Score-100");
                 }
                 model.getPredict1().runAnimation(currentAnim);
                 model.getPredict2().runAnimation(currentAnim);
                 model.setPredict1(null);
                 model.setPredict2(null);
+                System.out.println("Player Name: " + model.getPlayerName()+ "Score: "+ model.getScore());
+                
             }
         }
+    }
+    public void playClickSound(){
+         new Thread() {
+                @Override
+                public void run() {
+                    try {
+                        clicksound = new Sound(getClass().getResource("/sounds/card.wav"));
+                    } catch (Exception e) {
+                    }
+                    InputStream stream
+                            = new ByteArrayInputStream(clicksound.getSamples());
+                    clicksound.play(stream);
+                }
+            }.start();
+    }
+    public void playWrongSound(){
+         new Thread() {
+                @Override
+                public void run() {
+                   
+                    try {
+                       Thread.sleep(300);
+                        clicksound = new Sound(getClass().getResource("/sounds/wrong.wav"));
+                    } catch (Exception e) {
+                    }
+                    InputStream stream
+                            = new ByteArrayInputStream(clicksound.getSamples());
+                    clicksound.play(stream);
+                }
+            }.start();
     }
     
 }

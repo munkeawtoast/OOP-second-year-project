@@ -20,7 +20,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import memory_game.game.Player;
+
 import memory_game.game.elements.timer.TimerController;
 
 /**

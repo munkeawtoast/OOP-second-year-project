@@ -5,9 +5,11 @@
 package memory_game.game.elements.card;
 
 import java.awt.Dimension;
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
+import memory_game.Sound.Sound;
 import memory_game.game.util.*;
 
 /**
@@ -20,6 +22,7 @@ public class CardController {
     public static final String ANIM_PICK = "animation-pick";    
     private Card model;
     private CardView view;
+    Sound clicksound;
 
     public CardController(String cardName, Dimension size, ImageIcon frontImage, ImageIcon backImage) {
         model = new Card(cardName, size, frontImage, backImage);
@@ -40,6 +43,7 @@ public class CardController {
     }
     
     private void triggerGood() {
+        view.setEnabled(false);
         new Thread(() -> {
             view.changeToFront();
             TransitionPlayer up = view.getUpTransition();
@@ -86,6 +90,7 @@ public class CardController {
     }
     
     private void triggerBad() {
+        view.setEnabled(false);
         new Thread(() -> {
             view.changeToFront();
             TransitionPlayer up = view.getUpTransition();
@@ -124,14 +129,18 @@ public class CardController {
             }
             view.changeToBack();
             view.setIsAnimating(false);
+            view.setEnabled(true);
         }).start();
     }
     
     private void triggerPick() {
+        view.setEnabled(false);
         if (view.getIsAnimating()) { return; }
         view.setIsAnimating(true);
         view.changeToFront(); ///////////////////////////////////////////////////////
         view.getUpTransition().start();
+        view.setEnabled(true);
+        
         
     }
      

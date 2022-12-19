@@ -25,6 +25,7 @@ public class CardView extends JButton {
 
     public CardView(CardController cardController) {
         super(cardController.getModel().getImageBack());
+        this.setDisabledIcon(cardController.getModel().getImageFront());
         this.controller = cardController;
         Border emptyBorder = BorderFactory.createEmptyBorder();
         setBorder(emptyBorder);

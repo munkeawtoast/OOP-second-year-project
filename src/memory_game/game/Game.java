@@ -75,7 +75,7 @@ public class Game implements Comparable<Game>, Serializable{
         for (int i : intList) {
             System.out.println(i);
             frontImage = new ImageIcon(getClass().getResource("/images/card"+i+".jpg"));
-            backImage = new ImageIcon(getClass().getResource("/images/backcard.่jpg"));
+            backImage = new ImageIcon(getClass().getResource("/images/backcard.png"));
             CardController cardController1 = new CardController("test" + i + "0", CardView.MEDIUM, frontImage, backImage);
             CardController cardController2 = new CardController("test" + i + "0", CardView.MEDIUM, frontImage, backImage);
             cardController1.setPair(cardController2.getModel());
@@ -135,7 +135,13 @@ public class Game implements Comparable<Game>, Serializable{
     }
     
     public void setScore(int score){
+        if(score<0){
+            this.Score = 0;
+        }
+        
+    else{
         this.Score = score;
+}
     }
     @Override
     public String toString(){

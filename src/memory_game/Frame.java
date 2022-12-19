@@ -37,7 +37,7 @@ import memory_game.Panel.NormalPanel;
 import memory_game.Sound.Sound;
 import memory_game.game.Game;
 import memory_game.game.GameController;
-import memory_game.game.Player;
+
 
 // what is this? -Pine
 // i think project should only have one main function -Pine
@@ -53,6 +53,7 @@ public class Frame extends JFrame implements ActionListener, WindowListener {
     Sound bgsound;
 
     public Frame() {
+        playBackgroundMusic();
         setTitle("Pokemon Matching Card Game");
         setVisible(true);
         setResizable(false);
@@ -70,27 +71,6 @@ public class Frame extends JFrame implements ActionListener, WindowListener {
         startmenu.getHardBtn().addActionListener(this);
         startmenu.getReturnBtn().addActionListener(this);
         board.getView().getReturnBtn().addActionListener(this);
-        try {
-            // Load the audio file
-            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(this.getClass().getResource("/sounds/music.wav"));
-            // Get the audio format and create a new Clip object
-            AudioFormat audioFormat = audioInputStream.getFormat();
-            DataLine.Info info = new DataLine.Info(Clip.class, audioFormat);
-            Clip clip = (Clip) AudioSystem.getLine(info);
-
-            // Open the audio file and start playing it
-            clip.open(audioInputStream);
-            clip.loop(Clip.LOOP_CONTINUOUSLY);
-
-            // Set the volume to 50%
-            FloatControl gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
-            float gain = 0.3f;
-            float dB = (float) (Math.log(gain) / Math.log(10.0) * 20.0);
-            gainControl.setValue(dB);
-
-        } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
-            e.printStackTrace();
-        }
         
 //        TEST BOARD FUNCTION
 //        ArrayList<Game> players = new ArrayList<>();
@@ -133,110 +113,46 @@ public class Frame extends JFrame implements ActionListener, WindowListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equals("Exit")) {
-            new Thread() {
-                @Override
-                public void run() {
-                    try {
-                        clicksound = new Sound(getClass().getResource("/sounds/click.wav"));
-                    } catch (Exception e) {
-                    }
-                    InputStream stream
-                            = new ByteArrayInputStream(clicksound.getSamples());
-                    clicksound.play(stream);
-                }
-            }.start();//clicksound
+            playClickSound();
 //           exit byn click
             System.exit(0);
 
         } else if (e.getActionCommand().equals("Start")) {
 //           start btn click
-            new Thread() {
-                @Override
-                public void run() {
-                    try {
-                        clicksound = new Sound(getClass().getResource("/sounds/click.wav"));
-                    } catch (Exception e) {
-                    }
-                    InputStream stream
-                            = new ByteArrayInputStream(clicksound.getSamples());
-                    clicksound.play(stream);
-                }
-            }.start();//clicksound
+           playClickSound();
             setContentPane(insertname);
             pack();
 
         } else if (e.getActionCommand().equals("Easy")) {
 //           Easy btn click
-            loadGame(insertname.getName(), Game.EASY);
+            loadGame(insertname.getNameTF().getText(), Game.EASY);
 
         } else if (e.getActionCommand().equals("Leaderboard")) {
-            new Thread() {
-                @Override
-                public void run() {
-                    try {
-                        clicksound = new Sound(getClass().getResource("/sounds/click.wav"));
-                    } catch (Exception e) {
-                    }
-                    InputStream stream
-                            = new ByteArrayInputStream(clicksound.getSamples());
-                    clicksound.play(stream);
-                }
-            }.start();//clicksound
+           playClickSound();
             setContentPane(board.getView());
             pack();
 //           leaderboard btn click
 
         } else if (e.getActionCommand().equals("Normal")) {
+            playClickSound();
 //           normal btn click
 
         } else if (e.getActionCommand().equals("Hard")) {
+            playClickSound();
 //           hard btn click
         } else if (e.getActionCommand().equals("Next")) {
-            new Thread() {
-                @Override
-                public void run() {
-                    try {
-                        clicksound = new Sound(getClass().getResource("/sounds/click.wav"));
-                    } catch (Exception e) {
-                    }
-                    InputStream stream
-                            = new ByteArrayInputStream(clicksound.getSamples());
-                    clicksound.play(stream);
-                }
-            }.start();//clicksound
+           playClickSound();
 
             setContentPane(startmenu);
             pack();
 
         } else if (e.getActionCommand().equals("return1")) {
-            new Thread() {
-                @Override
-                public void run() {
-                    try {
-                        backclicksound = new Sound(getClass().getResource("/sounds/backclick.wav"));
-                    } catch (Exception e) {
-                    }
-                    InputStream stream
-                            = new ByteArrayInputStream(backclicksound.getSamples());
-                    backclicksound.play(stream);
-                }
-            }.start();//returnclicksound
+           playBackClickSound();
             setContentPane(menu);
             invalidate();
             validate();
         } else if (e.getActionCommand().equals("return2")) {
-            new Thread() {
-                @Override
-                public void run() {
-                    try {
-                        backclicksound = new Sound(getClass().getResource("/sounds/backclick.wav"));
-                    } catch (Exception e) {
-                    }
-                    InputStream stream
-                            = new ByteArrayInputStream(backclicksound.getSamples());
-                    backclicksound.play(stream);
-                }
-            }.start();//clicksound
+            playBackClickSound();
             setContentPane(insertname);
             invalidate();
             validate();
@@ -312,5 +228,57 @@ public class Frame extends JFrame implements ActionListener, WindowListener {
     @Override
     public void windowDeactivated(WindowEvent e) {
        
+    }
+    public void playClickSound(){
+        new Thread() {
+                @Override
+                public void run() {
+                    try {
+                        clicksound = new Sound(getClass().getResource("/sounds/click.wav"));
+                    } catch (Exception e) {
+                    }
+                    InputStream stream
+                            = new ByteArrayInputStream(clicksound.getSamples());
+                    clicksound.play(stream);
+                }
+            }.start();//clicksound
+    }
+    public void playBackClickSound(){
+        new Thread() {
+                @Override
+                public void run() {
+                    try {
+                        clicksound = new Sound(getClass().getResource("/sounds/backclick.wav"));
+                    } catch (Exception e) {
+                    }
+                    InputStream stream
+                            = new ByteArrayInputStream(clicksound.getSamples());
+                    clicksound.play(stream);
+                }
+            }.start();//clicksound
+    }
+    public void playBackgroundMusic(){
+        try {
+            // Load the audio file
+            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(this.getClass().getResource("/sounds/music.wav"));
+            // Get the audio format and create a new Clip object
+            AudioFormat audioFormat = audioInputStream.getFormat();
+            DataLine.Info info = new DataLine.Info(Clip.class, audioFormat);
+            Clip clip = (Clip) AudioSystem.getLine(info);
+
+            // Open the audio file and start playing it
+            clip.open(audioInputStream);
+            clip.loop(Clip.LOOP_CONTINUOUSLY);
+
+            // Set the volume to 50%
+            FloatControl gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+            float gain = 0.3f;
+            float dB = (float) (Math.log(gain) / Math.log(10.0) * 20.0);
+            gainControl.setValue(dB);
+
+        } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
+            e.printStackTrace();
+        }
+        
     }
 }

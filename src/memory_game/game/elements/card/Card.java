@@ -32,6 +32,7 @@ public class Card {
         
         id = Card.cardCount;
         Card.cardCount++;
+        this.isFinished = false;
     }
 
     public void setPair(Card pair) {
@@ -53,7 +54,9 @@ public class Card {
     public ImageIcon getImageFront() {
         return imageFront;
     }
-    
+    public void setIsFinish(){
+        this.isFinished = true;
+    }
     
     
         
