@@ -123,6 +123,7 @@ public class InsertName extends javax.swing.JPanel {
         nextBtn.setActionCommand("Next");
         nextBtn.setBorder(null);
         nextBtn.setBorderPainted(false);
+        nextBtn.setContentAreaFilled(false);
         nextBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         nextBtn.setFocusable(false);
         nextBtn.setMargin(new java.awt.Insets(0, 0, 0, 0));
@@ -158,6 +159,7 @@ public class InsertName extends javax.swing.JPanel {
         returnBtn.setActionCommand("return1");
         returnBtn.setBorder(null);
         returnBtn.setBorderPainted(false);
+        returnBtn.setContentAreaFilled(false);
         returnBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         returnBtn.setMargin(new java.awt.Insets(0, 0, 0, 0));
         returnBtn.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/images/return2.png"))); // NOI18N

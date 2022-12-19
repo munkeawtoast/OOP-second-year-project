@@ -107,6 +107,7 @@ public class Menu extends javax.swing.JPanel {
         startbtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/playbutton.png"))); // NOI18N
         startbtn.setActionCommand("Start");
         startbtn.setBorderPainted(false);
+        startbtn.setContentAreaFilled(false);
         startbtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         startbtn.setFocusable(false);
         startbtn.setPreferredSize(new java.awt.Dimension(163, 60));
@@ -136,6 +137,7 @@ public class Menu extends javax.swing.JPanel {
         leaderbtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/ldbbutton.png"))); // NOI18N
         leaderbtn.setActionCommand("Leaderboard");
         leaderbtn.setBorderPainted(false);
+        leaderbtn.setContentAreaFilled(false);
         leaderbtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         leaderbtn.setPreferredSize(new java.awt.Dimension(163, 41));
         leaderbtn.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/images/ldbbutton-hover.png"))); // NOI18N
@@ -149,6 +151,7 @@ public class Menu extends javax.swing.JPanel {
 
         exitbtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/exitbutton.png"))); // NOI18N
         exitbtn.setActionCommand("Exit");
+        exitbtn.setContentAreaFilled(false);
         exitbtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         exitbtn.setPreferredSize(new java.awt.Dimension(163, 41));
         exitbtn.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/images/exitbutton-hover.png"))); // NOI18N
@@ -168,6 +171,7 @@ public class Menu extends javax.swing.JPanel {
         mutebtn.setActionCommand("unmute");
         mutebtn.setBorder(null);
         mutebtn.setBorderPainted(false);
+        mutebtn.setContentAreaFilled(false);
         mutebtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         mutebtn.setFocusable(false);
         mutebtn.setMargin(new java.awt.Insets(0, 0, 0, 0));
@@ -185,6 +189,7 @@ public class Menu extends javax.swing.JPanel {
         unmutebtn.setActionCommand("mute");
         unmutebtn.setBorder(null);
         unmutebtn.setBorderPainted(false);
+        unmutebtn.setContentAreaFilled(false);
         unmutebtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         unmutebtn.setFocusable(false);
         unmutebtn.setMargin(new java.awt.Insets(0, 0, 0, 0));

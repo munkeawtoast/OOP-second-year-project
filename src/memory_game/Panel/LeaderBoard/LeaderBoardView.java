@@ -128,6 +128,7 @@ public class LeaderBoardView extends javax.swing.JPanel {
         returnBtn.setActionCommand("return1");
         returnBtn.setBorder(null);
         returnBtn.setBorderPainted(false);
+        returnBtn.setContentAreaFilled(false);
         returnBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         returnBtn.setMargin(new java.awt.Insets(0, 0, 0, 0));
         returnBtn.setSize(new java.awt.Dimension(30, 30));
@@ -150,7 +151,7 @@ public class LeaderBoardView extends javax.swing.JPanel {
                 returnBtnActionPerformed(evt);
             }
         });
-        jPanel5.add(returnBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 0, -1, 30));
+        jPanel5.add(returnBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 0, 30, 30));
 
         jPanel2.add(jPanel5, java.awt.BorderLayout.PAGE_END);
 

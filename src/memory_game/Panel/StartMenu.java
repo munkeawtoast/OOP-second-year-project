@@ -103,6 +103,7 @@ public class StartMenu extends javax.swing.JPanel {
 
         easybtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/easybtn.png"))); // NOI18N
         easybtn.setActionCommand("Easy");
+        easybtn.setContentAreaFilled(false);
         easybtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         easybtn.setPreferredSize(new java.awt.Dimension(116, 41));
         easybtn.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/images/easybtn-hover.png"))); // NOI18N
@@ -116,6 +117,7 @@ public class StartMenu extends javax.swing.JPanel {
 
         normalbtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/normalbtn.png"))); // NOI18N
         normalbtn.setActionCommand("Normal");
+        normalbtn.setContentAreaFilled(false);
         normalbtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         normalbtn.setPreferredSize(new java.awt.Dimension(116, 41));
         normalbtn.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/images/normalbtn-hover.png"))); // NOI18N
@@ -129,6 +131,7 @@ public class StartMenu extends javax.swing.JPanel {
 
         hardbtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/hardbtn.png"))); // NOI18N
         hardbtn.setActionCommand("Hard");
+        hardbtn.setContentAreaFilled(false);
         hardbtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         hardbtn.setPreferredSize(new java.awt.Dimension(116, 41));
         hardbtn.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/images/hardbtn-hover.png"))); // NOI18N
@@ -167,6 +170,7 @@ public class StartMenu extends javax.swing.JPanel {
         returnBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/return.png"))); // NOI18N
         returnBtn.setActionCommand("return2");
         returnBtn.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        returnBtn.setContentAreaFilled(false);
         returnBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         returnBtn.setMargin(new java.awt.Insets(0, 0, 0, 0));
         returnBtn.setSize(new java.awt.Dimension(30, 30));
@@ -189,7 +193,7 @@ public class StartMenu extends javax.swing.JPanel {
                 returnBtnActionPerformed(evt);
             }
         });
-        jPanel11.add(returnBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 50));
+        jPanel11.add(returnBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 30));
 
         jPanel6.add(jPanel11);
 
