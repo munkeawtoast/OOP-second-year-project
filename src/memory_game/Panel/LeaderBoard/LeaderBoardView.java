@@ -78,7 +78,7 @@ renderer2.setBorder(new EmptyBorder(0,0,0,0));
 
 // Set the renderer to be used for all header cells
 table.getTableHeader().setDefaultRenderer(renderer2);
-table.setForeground(new Color(255,192,95));
+table.setForeground(new Color(255,255,255));
 
 
    returnBtn.setBackground(new Color(0,0,0,0));
@@ -165,6 +165,7 @@ table.setForeground(new Color(255,192,95));
 
         scrollpane.setOpaque(false);
 
+        table.setFont(new java.awt.Font("Helvetica Neue", 0, 24)); // NOI18N
         table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
