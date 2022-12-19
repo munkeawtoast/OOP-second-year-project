@@ -102,8 +102,10 @@ public class StartMenu extends javax.swing.JPanel {
         jPanel7.setOpaque(false);
         jPanel7.setPreferredSize(new java.awt.Dimension(500, 40));
 
-        easybtn.setText("Easy");
-        easybtn.setPreferredSize(new java.awt.Dimension(150, 30));
+        easybtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/easybtn.png"))); // NOI18N
+        easybtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        easybtn.setPreferredSize(new java.awt.Dimension(116, 41));
+        easybtn.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/images/easybtn-hover.png"))); // NOI18N
         jPanel7.add(easybtn);
 
         jPanel6.add(jPanel7);
@@ -112,8 +114,11 @@ public class StartMenu extends javax.swing.JPanel {
         jPanel8.setOpaque(false);
         jPanel8.setPreferredSize(new java.awt.Dimension(500, 40));
 
-        normalbtn.setText("Normal");
-        normalbtn.setPreferredSize(new java.awt.Dimension(150, 30));
+        normalbtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/normalbtn.png"))); // NOI18N
+        normalbtn.setActionCommand("Normal");
+        normalbtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        normalbtn.setPreferredSize(new java.awt.Dimension(116, 41));
+        normalbtn.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/images/normalbtn-hover.png"))); // NOI18N
         jPanel8.add(normalbtn);
 
         jPanel6.add(jPanel8);
@@ -122,8 +127,11 @@ public class StartMenu extends javax.swing.JPanel {
         jPanel9.setOpaque(false);
         jPanel9.setPreferredSize(new java.awt.Dimension(500, 40));
 
-        hardbtn.setText("Hard");
-        hardbtn.setPreferredSize(new java.awt.Dimension(150, 30));
+        hardbtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/hardbtn.png"))); // NOI18N
+        hardbtn.setActionCommand("Hard");
+        hardbtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        hardbtn.setPreferredSize(new java.awt.Dimension(116, 41));
+        hardbtn.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/images/hardbtn-hover.png"))); // NOI18N
         hardbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 hardbtnActionPerformed(evt);
@@ -153,13 +161,15 @@ public class StartMenu extends javax.swing.JPanel {
         jPanel11.setBackground(new java.awt.Color(255, 179, 107));
         jPanel11.setOpaque(false);
         jPanel11.setPreferredSize(new java.awt.Dimension(500, 40));
-        jPanel11.setLayout(new java.awt.BorderLayout());
+        jPanel11.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         returnBtn.setBackground(new java.awt.Color(0, 0, 0));
         returnBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/return.png"))); // NOI18N
         returnBtn.setActionCommand("return2");
         returnBtn.setBorder(javax.swing.BorderFactory.createCompoundBorder());
-        returnBtn.setPreferredSize(new java.awt.Dimension(70, 40));
+        returnBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        returnBtn.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        returnBtn.setSize(new java.awt.Dimension(30, 30));
         returnBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 returnBtnMouseClicked(evt);
@@ -179,7 +189,7 @@ public class StartMenu extends javax.swing.JPanel {
                 returnBtnActionPerformed(evt);
             }
         });
-        jPanel11.add(returnBtn, java.awt.BorderLayout.LINE_START);
+        jPanel11.add(returnBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 50));
 
         jPanel6.add(jPanel11);
 

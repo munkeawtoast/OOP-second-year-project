@@ -51,6 +51,7 @@ public class Menu extends javax.swing.JPanel {
         jPanel9 = new javax.swing.JPanel();
         exitbtn = new javax.swing.JButton();
         mutebtn = new javax.swing.JButton();
+        unmutebtn = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 102, 102));
@@ -106,8 +107,10 @@ public class Menu extends javax.swing.JPanel {
         startbtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/playbutton.png"))); // NOI18N
         startbtn.setActionCommand("Start");
         startbtn.setBorderPainted(false);
+        startbtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         startbtn.setFocusable(false);
         startbtn.setPreferredSize(new java.awt.Dimension(163, 60));
+        startbtn.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/images/playbutton-hover.png"))); // NOI18N
         startbtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 startbtnMouseClicked(evt);
@@ -132,7 +135,10 @@ public class Menu extends javax.swing.JPanel {
 
         leaderbtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/ldbbutton.png"))); // NOI18N
         leaderbtn.setActionCommand("Leaderboard");
+        leaderbtn.setBorderPainted(false);
+        leaderbtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         leaderbtn.setPreferredSize(new java.awt.Dimension(163, 41));
+        leaderbtn.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/images/ldbbutton-hover.png"))); // NOI18N
         jPanel8.add(leaderbtn);
 
         jPanel6.add(jPanel8);
@@ -143,7 +149,9 @@ public class Menu extends javax.swing.JPanel {
 
         exitbtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/exitbutton.png"))); // NOI18N
         exitbtn.setActionCommand("Exit");
+        exitbtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         exitbtn.setPreferredSize(new java.awt.Dimension(163, 41));
+        exitbtn.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/images/exitbutton-hover.png"))); // NOI18N
         jPanel9.add(exitbtn);
 
         jPanel6.add(jPanel9);
@@ -155,14 +163,39 @@ public class Menu extends javax.swing.JPanel {
         add(jPanel1);
         jPanel1.setBounds(140, 0, 500, 600);
 
-        mutebtn.setText("mute");
+        mutebtn.setForeground(new java.awt.Color(242, 242, 242));
+        mutebtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/sound_on.png"))); // NOI18N
+        mutebtn.setActionCommand("unmute");
+        mutebtn.setBorder(null);
+        mutebtn.setBorderPainted(false);
+        mutebtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        mutebtn.setFocusable(false);
+        mutebtn.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        mutebtn.setSize(new java.awt.Dimension(30, 30));
         mutebtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mutebtnActionPerformed(evt);
             }
         });
         add(mutebtn);
-        mutebtn.setBounds(50, 500, 78, 23);
+        mutebtn.setBounds(90, 500, 30, 30);
+
+        unmutebtn.setForeground(new java.awt.Color(242, 242, 242));
+        unmutebtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/sound_mute.png"))); // NOI18N
+        unmutebtn.setActionCommand("mute");
+        unmutebtn.setBorder(null);
+        unmutebtn.setBorderPainted(false);
+        unmutebtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        unmutebtn.setFocusable(false);
+        unmutebtn.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        unmutebtn.setSize(new java.awt.Dimension(30, 30));
+        unmutebtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                unmutebtnActionPerformed(evt);
+            }
+        });
+        add(unmutebtn);
+        unmutebtn.setBounds(40, 500, 30, 30);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/bg_gif.gif"))); // NOI18N
         add(jLabel1);
@@ -194,6 +227,10 @@ public class Menu extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_mutebtnActionPerformed
 
+    private void unmutebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_unmutebtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_unmutebtnActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton exitbtn;
@@ -211,6 +248,7 @@ public class Menu extends javax.swing.JPanel {
     private javax.swing.JButton leaderbtn;
     private javax.swing.JButton mutebtn;
     private javax.swing.JButton startbtn;
+    private javax.swing.JButton unmutebtn;
     // End of variables declaration//GEN-END:variables
 
     public JButton getStartBtn(){
@@ -225,6 +263,11 @@ public class Menu extends javax.swing.JPanel {
     public JButton getMutebtn(){
         return this.mutebtn;
     }
+
+    public JButton getUnmutebtn() {
+        return unmutebtn;
+    }
+    
 }
 
 

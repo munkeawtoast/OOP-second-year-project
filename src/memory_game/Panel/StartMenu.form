@@ -163,9 +163,17 @@
                   <SubComponents>
                     <Component class="javax.swing.JButton" name="easybtn">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="Easy"/>
+                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                          <Image iconType="3" name="/images/easybtn.png"/>
+                        </Property>
+                        <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                          <Color id="Hand Cursor"/>
+                        </Property>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                          <Dimension value="[150, 30]"/>
+                          <Dimension value="[116, 41]"/>
+                        </Property>
+                        <Property name="rolloverIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                          <Image iconType="3" name="/images/easybtn-hover.png"/>
                         </Property>
                       </Properties>
                     </Component>
@@ -186,9 +194,18 @@
                   <SubComponents>
                     <Component class="javax.swing.JButton" name="normalbtn">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="Normal"/>
+                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                          <Image iconType="3" name="/images/normalbtn.png"/>
+                        </Property>
+                        <Property name="actionCommand" type="java.lang.String" value="Normal"/>
+                        <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                          <Color id="Hand Cursor"/>
+                        </Property>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                          <Dimension value="[150, 30]"/>
+                          <Dimension value="[116, 41]"/>
+                        </Property>
+                        <Property name="rolloverIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                          <Image iconType="3" name="/images/normalbtn-hover.png"/>
                         </Property>
                       </Properties>
                     </Component>
@@ -209,9 +226,18 @@
                   <SubComponents>
                     <Component class="javax.swing.JButton" name="hardbtn">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="Hard"/>
+                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                          <Image iconType="3" name="/images/hardbtn.png"/>
+                        </Property>
+                        <Property name="actionCommand" type="java.lang.String" value="Hard"/>
+                        <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                          <Color id="Hand Cursor"/>
+                        </Property>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                          <Dimension value="[150, 30]"/>
+                          <Dimension value="[116, 41]"/>
+                        </Property>
+                        <Property name="rolloverIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                          <Image iconType="3" name="/images/hardbtn-hover.png"/>
                         </Property>
                       </Properties>
                       <Events>
@@ -255,7 +281,9 @@
                     </Property>
                   </Properties>
 
-                  <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
+                  <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
+                    <Property name="useNullLayout" type="boolean" value="false"/>
+                  </Layout>
                   <SubComponents>
                     <Component class="javax.swing.JButton" name="returnBtn">
                       <Properties>
@@ -271,8 +299,14 @@
                             <CompoundBorder/>
                           </Border>
                         </Property>
-                        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                          <Dimension value="[70, 40]"/>
+                        <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                          <Color id="Hand Cursor"/>
+                        </Property>
+                        <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
+                          <Insets value="[0, 0, 0, 0]"/>
+                        </Property>
+                        <Property name="size" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                          <Dimension value="[30, 30]"/>
                         </Property>
                       </Properties>
                       <Events>
@@ -283,8 +317,8 @@
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="returnBtnActionPerformed"/>
                       </Events>
                       <Constraints>
-                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
-                          <BorderConstraints direction="Before"/>
+                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                          <AbsoluteConstraints x="0" y="0" width="-1" height="50"/>
                         </Constraint>
                       </Constraints>
                     </Component>

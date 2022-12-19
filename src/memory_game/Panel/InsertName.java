@@ -7,6 +7,7 @@ package memory_game.Panel;
 
 import java.awt.Color;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 /**
@@ -104,7 +105,7 @@ public class InsertName extends javax.swing.JPanel {
         jPanel8.setPreferredSize(new java.awt.Dimension(500, 40));
 
         NameTF.setName(""); // NOI18N
-        NameTF.setPreferredSize(new java.awt.Dimension(150, 30));
+        NameTF.setPreferredSize(new java.awt.Dimension(150, 50));
         jPanel8.add(NameTF);
 
         jPanel7.add(jPanel8);
@@ -118,7 +119,13 @@ public class InsertName extends javax.swing.JPanel {
         jPanel10.setOpaque(false);
         jPanel10.setPreferredSize(new java.awt.Dimension(500, 40));
 
-        nextBtn.setText("Next");
+        nextBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/nextbtn.png"))); // NOI18N
+        nextBtn.setActionCommand("Next");
+        nextBtn.setBorderPainted(false);
+        nextBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        nextBtn.setFocusable(false);
+        nextBtn.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        nextBtn.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/images/nextbtn-hover.png"))); // NOI18N
         jPanel10.add(nextBtn);
 
         jPanel7.add(jPanel10);
@@ -149,7 +156,8 @@ public class InsertName extends javax.swing.JPanel {
         returnBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/return.png"))); // NOI18N
         returnBtn.setActionCommand("return1");
         returnBtn.setBorder(javax.swing.BorderFactory.createCompoundBorder());
-        returnBtn.setPreferredSize(new java.awt.Dimension(70, 40));
+        returnBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        returnBtn.setMargin(new java.awt.Insets(0, 0, 0, 0));
         returnBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 returnBtnMouseClicked(evt);
@@ -261,5 +269,11 @@ public class InsertName extends javax.swing.JPanel {
     }
     public JButton getReturnBtn(){
         return this.returnBtn;
+    }
+
+   
+
+    public JLabel getJLabel() {
+        return jLabel2;
     }
 }

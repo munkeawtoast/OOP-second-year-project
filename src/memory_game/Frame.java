@@ -8,10 +8,13 @@ package memory_game;
  *
  * @author Gungai
  */
+import java.awt.Font;
+import java.awt.FontFormatException;
+import java.awt.GraphicsEnvironment;
 import memory_game.Panel.StartMenu;
 import memory_game.Panel.Menu;
-import java.awt.*;
-import javax.swing.*;
+
+
 import java.awt.event.*;
 import java.io.ByteArrayInputStream;
 import java.io.File;
@@ -30,6 +33,8 @@ import javax.sound.sampled.DataLine;
 import javax.sound.sampled.FloatControl;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import memory_game.Panel.Alert;
 
 import memory_game.Panel.InsertName;
@@ -50,10 +55,24 @@ public class Frame extends JFrame implements ActionListener, WindowListener {
     LeaderBoardController board = new LeaderBoardController();
     Sound clicksound;
     private int gamemode;
-
+    Font pixelFont_30;
+    Font pixelFont_24;
     Clip clip;
 
-    public Frame() {
+    public Frame() throws FontFormatException {
+        //add new font 
+        	try{
+            // load a custom font in your project folder
+			pixelFont_30 = Font.createFont(Font.TRUETYPE_FONT, new File("PixelFont.ttf")).deriveFont(30f);
+                        pixelFont_24 = Font.createFont(Font.TRUETYPE_FONT, new File("PixelFont.ttf")).deriveFont(24f);	
+			GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+			ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File("PixelFont.ttf")));			
+		}
+		catch(IOException | FontFormatException e){
+			
+		}
+        
+        
         playBackgroundMusic();
         setTitle("Pokemon Matching Card Game");
 
@@ -75,6 +94,12 @@ public class Frame extends JFrame implements ActionListener, WindowListener {
         startmenu.getReturnBtn().addActionListener(this);
         menu.getMutebtn().addActionListener(this);
         board.getView().getReturnBtn().addActionListener(this);
+        menu.getUnmutebtn().addActionListener(this);
+        insertname.getNameTF().setFont(pixelFont_30);
+        insertname.getJLabel().setFont(pixelFont_30);
+        board.getView().getTable().setFont(pixelFont_24);
+        board.getView().getTable().getTableHeader().setFont(pixelFont_30);
+        board.getView().getHeaderText().setFont(pixelFont_30);
 
 //        TEST BOARD FUNCTION
 //        ArrayList<Game> players = new ArrayList<>();
@@ -118,6 +143,9 @@ public class Frame extends JFrame implements ActionListener, WindowListener {
         if (e.getActionCommand().equals("Exit")) {
 
 //           exit byn click
+
+            
+            playClickSound();
             ArrayList<Game> games = board.getModel().getList();
             try ( FileOutputStream fos = new FileOutputStream("LeaderBoard.dat");  ObjectOutputStream oos = new ObjectOutputStream(fos)) {
                 oos.writeObject(board.getModel().getList());
@@ -140,7 +168,6 @@ public class Frame extends JFrame implements ActionListener, WindowListener {
             loadGame(insertname.getNameTF().getText(), gamemode);
 
         } else if (e.getActionCommand().equals("Leaderboard")) {
-            stopMusic();
             playClickSound();
             setContentPane(board.getView());
             pack();
@@ -194,7 +221,12 @@ public class Frame extends JFrame implements ActionListener, WindowListener {
             pack();
 
         } else if (e.getActionCommand().equals("mute")) {
+            System.out.println("Mute");
             muteMusic();
+        }
+         else if (e.getActionCommand().equals("unmute")) {
+            unMuteMusic();
+            System.out.println("Unmute");
         }
 
     }
@@ -307,10 +339,7 @@ public class Frame extends JFrame implements ActionListener, WindowListener {
             clip.open(audioInputStream);
             clip.loop(Clip.LOOP_CONTINUOUSLY);
 
-            FloatControl gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
-            float gain = 0.3f;
-            float dB = (float) (Math.log(gain) / Math.log(10.0) * 20.0);
-            gainControl.setValue(dB);
+         
 
         } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
             e.printStackTrace();
@@ -327,7 +356,13 @@ public class Frame extends JFrame implements ActionListener, WindowListener {
 
     public void muteMusic() {
         FloatControl gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
-        float gain = 0.3f;
+        float gain = 0.0f;
+        float dB = (float) (Math.log(gain) / Math.log(10.0) * 20.0);
+        gainControl.setValue(dB);
+    }
+    public void unMuteMusic() {
+        FloatControl gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+        float gain = 1f;
         float dB = (float) (Math.log(gain) / Math.log(10.0) * 20.0);
         gainControl.setValue(dB);
     }

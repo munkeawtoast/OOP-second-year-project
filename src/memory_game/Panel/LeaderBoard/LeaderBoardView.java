@@ -5,17 +5,14 @@
 package memory_game.Panel.LeaderBoard;
 
 import java.awt.Color;
-import java.awt.Component;
-import java.awt.Dimension;
+
 import java.awt.Graphics;
 import java.awt.Image;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
+
 import javax.swing.ImageIcon;
-import javax.swing.JFrame;
+
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
+
 import javax.swing.JTable;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -24,7 +21,7 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.plaf.basic.BasicScrollPaneUI;
+
 import memory_game.Panel.customElement.ScrollBarCustom;
 
 /**
@@ -34,7 +31,7 @@ import memory_game.Panel.customElement.ScrollBarCustom;
 public class LeaderBoardView extends javax.swing.JPanel {
 
     private DefaultTableModel model;
-    private static final Image backgroundImage = new ImageIcon(LeaderBoardView.class.getResource("/images/back.jpg")).getImage();
+    private static final Image backgroundImage = new ImageIcon(LeaderBoardView.class.getResource("/images/boardbg.png")).getImage();
 
     /**
      * Creates new form LeaderBoard
@@ -55,33 +52,31 @@ public class LeaderBoardView extends javax.swing.JPanel {
         scrollpane.setBorder(new EmptyBorder(0, 0, 0, 0));
         table.setRowHeight(40);
         table.getTableHeader().setSize(100, 80);
-        table.getTableHeader().setBackground(new Color(0,0,0,0));
+        table.getTableHeader().setBackground(new Color(0, 0, 0, 0));
         table.getTableHeader().setBorder(null);
         table.getTableHeader().setEnabled(false);
-        table.getTableHeader().setForeground(new Color(255,255,255));
-        table.getTableHeader().setFont(new Font("Arial", Font.BOLD, 36));
+        table.getTableHeader().setForeground(new Color(222, 222, 222));
+        
         scrollpane.setVerticalScrollBar(new ScrollBarCustom());
         table.setEnabled(false);
 
 // Get the default renderer for the cells in the table
         DefaultTableCellRenderer renderer = (DefaultTableCellRenderer) table.getDefaultRenderer(Object.class);
-        
+
 // Set the horizontal alignment to be centered
         renderer.setHorizontalAlignment(JLabel.CENTER);
         DefaultTableCellRenderer renderer2 = (DefaultTableCellRenderer) table.getTableHeader().getDefaultRenderer();
 
 // Set the horizontal alignment to be centered
-renderer2.setHorizontalAlignment(JLabel.CENTER);
-renderer2.setBackground(new Color(0,0,0,0));
-renderer2.setBorder(new EmptyBorder(0,0,0,0));
-
+        renderer2.setHorizontalAlignment(JLabel.CENTER);
+        renderer2.setBackground(new Color(0, 0, 0, 0));
+        renderer2.setBorder(new EmptyBorder(0, 0, 0, 0));
 
 // Set the renderer to be used for all header cells
-table.getTableHeader().setDefaultRenderer(renderer2);
-table.setForeground(new Color(255,255,255));
+        table.getTableHeader().setDefaultRenderer(renderer2);
+        table.setForeground(new Color(190, 190, 190));
 
-
-   returnBtn.setBackground(new Color(0,0,0,0));
+        returnBtn.setBackground(new Color(0, 0, 0, 0));
 
     }
 
@@ -95,7 +90,7 @@ table.setForeground(new Color(255,255,255));
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
+        HeaderText = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         returnBtn = new javax.swing.JButton();
@@ -109,13 +104,14 @@ table.setForeground(new Color(255,255,255));
 
         jPanel1.setOpaque(false);
         jPanel1.setPreferredSize(new java.awt.Dimension(800, 150));
-        jPanel1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 20));
+        jPanel1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 60));
 
-        jLabel4.setFont(new java.awt.Font("Helvetica Neue", 0, 36)); // NOI18N
-        jLabel4.setText("LeaderBoard LOGO");
-        jLabel4.setPreferredSize(new java.awt.Dimension(200, 100));
-        jLabel4.setSize(new java.awt.Dimension(200, 100));
-        jPanel1.add(jLabel4);
+        HeaderText.setFont(new java.awt.Font("Helvetica Neue", 0, 36)); // NOI18N
+        HeaderText.setForeground(new java.awt.Color(255, 255, 255));
+        HeaderText.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        HeaderText.setText("LeaderBoard ");
+        HeaderText.setSize(new java.awt.Dimension(200, 100));
+        jPanel1.add(HeaderText);
 
         add(jPanel1, java.awt.BorderLayout.PAGE_START);
 
@@ -124,7 +120,7 @@ table.setForeground(new Color(255,255,255));
         jPanel2.setLayout(new java.awt.BorderLayout());
 
         jPanel5.setOpaque(false);
-        jPanel5.setPreferredSize(new java.awt.Dimension(800, 70));
+        jPanel5.setPreferredSize(new java.awt.Dimension(800, 100));
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         returnBtn.setBackground(new java.awt.Color(0, 0, 0));
@@ -163,7 +159,9 @@ table.setForeground(new Color(255,255,255));
         jPanel4.setPreferredSize(new java.awt.Dimension(50, 0));
         jPanel2.add(jPanel4, java.awt.BorderLayout.LINE_START);
 
+        scrollpane.setAutoscrolls(true);
         scrollpane.setOpaque(false);
+        scrollpane.setPreferredSize(new java.awt.Dimension(452, 350));
 
         table.setFont(new java.awt.Font("Helvetica Neue", 0, 24)); // NOI18N
         table.setModel(new javax.swing.table.DefaultTableModel(
@@ -178,6 +176,7 @@ table.setForeground(new Color(255,255,255));
             }
         ));
         table.setOpaque(false);
+        table.setPreferredSize(new java.awt.Dimension(300, 300));
         scrollpane.setViewportView(table);
 
         jPanel2.add(scrollpane, java.awt.BorderLayout.CENTER);
@@ -211,7 +210,7 @@ table.setForeground(new Color(255,255,255));
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel HeaderText;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -223,7 +222,7 @@ table.setForeground(new Color(255,255,255));
     // End of variables declaration//GEN-END:variables
 
     public JTable getTable() {
-            return table;
+        return table;
     }
 
     public void setTable(JTable table) {
@@ -269,5 +268,9 @@ table.setForeground(new Color(255,255,255));
 
     public JButton getReturnBtn() {
         return returnBtn;
+    }
+
+    public JLabel getHeaderText() {
+        return HeaderText;
     }
 }
