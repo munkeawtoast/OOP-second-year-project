@@ -6,13 +6,14 @@ package memory_game.game.elements.card;
 
 import java.awt.Dimension;
 import java.awt.Image;
+import java.io.Serializable;
 import javax.swing.ImageIcon;
 
 /**
  *
  * @author ACER
  */
-public class Card {
+public class Card implements Serializable {
     private static int cardCount = 1;
     private int id;
     private Card pair;

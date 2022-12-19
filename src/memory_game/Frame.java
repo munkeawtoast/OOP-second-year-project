@@ -30,10 +30,11 @@ import javax.sound.sampled.DataLine;
 import javax.sound.sampled.FloatControl;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
-import memory_game.Panel.EasyPanel;
+import memory_game.Panel.Alert;
+
 import memory_game.Panel.InsertName;
 import memory_game.Panel.LeaderBoard.LeaderBoardController;
-import memory_game.Panel.NormalPanel;
+
 import memory_game.Sound.Sound;
 import memory_game.game.Game;
 import memory_game.game.GameController;
@@ -48,13 +49,15 @@ public class Frame extends JFrame implements ActionListener, WindowListener {
     GameController game;
     LeaderBoardController board = new LeaderBoardController();
     Sound clicksound;
+    private int gamemode;
     
     Clip clip;
 
     public Frame() {
         playBackgroundMusic();
         setTitle("Pokemon Matching Card Game");
-
+      
+      
         setVisible(true);
         setResizable(false);
         addWindowListener(this);
@@ -71,6 +74,7 @@ public class Frame extends JFrame implements ActionListener, WindowListener {
         startmenu.getNormalBtn().addActionListener(this);
         startmenu.getHardBtn().addActionListener(this);
         startmenu.getReturnBtn().addActionListener(this);
+        menu.getMutebtn().addActionListener(this);
         board.getView().getReturnBtn().addActionListener(this);
 
 //        TEST BOARD FUNCTION
@@ -113,8 +117,15 @@ public class Frame extends JFrame implements ActionListener, WindowListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equals("Exit")) {
-            playClickSound();
+         
 //           exit byn click
+ ArrayList<Game> games = board.getModel().getList();
+        try ( FileOutputStream fos = new FileOutputStream("LeaderBoard.dat");  ObjectOutputStream oos = new ObjectOutputStream(fos)) {
+            oos.writeObject(board.getModel().getList());
+            System.out.println("save successfull");
+        } catch (IOException ie) {
+            ie.printStackTrace();
+        }
             System.exit(0);
 
         } else if (e.getActionCommand().equals("Start")) {
@@ -124,8 +135,10 @@ public class Frame extends JFrame implements ActionListener, WindowListener {
             pack();
 
         } else if (e.getActionCommand().equals("Easy")) {
+            
 //           Easy btn click
-            loadGame(insertname.getNameTF().getText(), Game.EASY);
+            gamemode = Game.EASY;
+            loadGame(insertname.getNameTF().getText(), gamemode);
 
         } else if (e.getActionCommand().equals("Leaderboard")) {
             stopMusic();
@@ -135,14 +148,16 @@ public class Frame extends JFrame implements ActionListener, WindowListener {
 //           leaderboard btn click
 
         } else if (e.getActionCommand().equals("Normal")) {
+            gamemode = Game.MEDIUM;
             playClickSound();
-             loadGame(insertname.getNameTF().getText(), Game.MEDIUM);
+             loadGame(insertname.getNameTF().getText(), gamemode);
 //           normal btn click
 
         } else if (e.getActionCommand().equals("Hard")) {
+            gamemode = Game.HARD;
             //           hard btn click
             playClickSound();
-             loadGame(insertname.getNameTF().getText(), Game.HARD);
+             loadGame(insertname.getNameTF().getText(), gamemode);
             
 
         } else if (e.getActionCommand().equals("Next")) {
@@ -166,17 +181,35 @@ public class Frame extends JFrame implements ActionListener, WindowListener {
             validate();
 
         } else if (e.getActionCommand().equals("Restart")) {
+            loadGame(insertname.getNameTF().getText(), gamemode);
+            System.out.println("restart");
+            board.getModel().addToList(game.getModel());
+             board.updateBoard(board.getModel().getList());
 
         } else if (e.getActionCommand().equals("Tomenu")) {
+            setContentPane(menu);
+            board.getModel().addToList(game.getModel());
+             board.updateBoard(board.getModel().getList());
+            System.out.println("Exit");
+            invalidate();
+            validate();
+            pack();
 
+        }
+        else if (e.getActionCommand().equals("mute")){
+            muteMusic();
         }
 
     }
 
     public void loadGame(String name, int difficulty) {
         game = new GameController(name, difficulty, this);
+       
         setContentPane(game.getGUIView());
         pack();
+       game.getAlert().getRestartBtn().addActionListener(this);
+       game.getAlert().getExtiBtn().addActionListener(this);
+        
     }
 
     @Override
@@ -277,7 +310,7 @@ public class Frame extends JFrame implements ActionListener, WindowListener {
             clip.open(audioInputStream);
             clip.loop(Clip.LOOP_CONTINUOUSLY);
 
-            // Set the volume to 50%
+         
             FloatControl gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
             float gain = 0.3f;
             float dB = (float) (Math.log(gain) / Math.log(10.0) * 20.0);
@@ -294,4 +327,10 @@ public class Frame extends JFrame implements ActionListener, WindowListener {
               clip.close();
           }
         }
+      public void muteMusic(){
+            FloatControl gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+            float gain = 0.3f;
+            float dB = (float) (Math.log(gain) / Math.log(10.0) * 20.0);
+            gainControl.setValue(dB);
+      }
 }

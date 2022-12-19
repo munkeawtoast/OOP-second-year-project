@@ -25,6 +25,9 @@ public class Game implements Comparable<Game>, Serializable{
     public static final int MEDIUM_SCORE_INCREASE = 400;
     public static final int HARD_SCORE_INCREASE = 500;
     public static final int SCORE_DECREASE = 100;
+    private static final int  EASY_WIN_NUM = 6;
+    private static final int  MEDIUM_WIN_NUM = 8;
+    private static final int  HARD_WIN_NUM = 12;
     
     
     
@@ -37,6 +40,9 @@ public class Game implements Comparable<Game>, Serializable{
     private boolean animationIsRunning;
     private int scoreIncrease;
     private int scoreDecrease;
+    
+ 
+    private int winnum;
 
     public Game(String playerName, int difficulty) {
         this.playerName = playerName;
@@ -55,15 +61,19 @@ public class Game implements Comparable<Game>, Serializable{
             }
             case EASY -> {
                 this.scoreIncrease = EASY_SCORE_INCREASE;
+                this.winnum = EASY_WIN_NUM;
                 count = 3*4/2;
+                
             }
             case MEDIUM -> {
                 this.scoreIncrease = MEDIUM_SCORE_INCREASE;
-                count = 4*5/2;
+                this.winnum = MEDIUM_WIN_NUM;
+                count = 4*4/2;
             }
             case HARD -> {
                 this.scoreIncrease = HARD_SCORE_INCREASE;
-                count = 5*6/2;
+                this.winnum = HARD_WIN_NUM;
+                count = 6*4/2;
             }
             default -> {
                 throw new InvalidParameterException("Must be TEST, EASY, MEDIUM or HARD!");
@@ -146,6 +156,13 @@ public class Game implements Comparable<Game>, Serializable{
     public int getScoreDecrease() {
         return scoreDecrease;
     }
+
+
+
+    public int getWinnum() {
+        return winnum;
+    }
+    
 
    
     

@@ -10,18 +10,20 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JFrame;
+import memory_game.Panel.Alert;
 import memory_game.Sound.Sound;
 import memory_game.game.elements.card.CardController;
 import memory_game.game.elements.card.CardView;
 
 
 public class GameController implements WindowListener, ActionListener {
+    private Alert alert;
     private JFrame frame;
     private Game model;
     private List<IGameView> views;
-    private boolean gameOver;
+    private boolean cardpair;
     Sound clicksound;
-
+    int winnum;
     
     /**
      * @param playerName
@@ -29,6 +31,8 @@ public class GameController implements WindowListener, ActionListener {
      * @param frame window frame for setting window operation
      */
     public GameController(String playerName, int difficulty, JFrame frame) {
+        alert = new Alert();
+        alert.setVisible(false);
         this.frame = frame;
         frame.addWindowListener(this);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -114,17 +118,20 @@ public class GameController implements WindowListener, ActionListener {
                     currentAnim = CardController.ANIM_GOOD;
                     model.setScore(model.getScore()+model.getScoreIncrease());
                     System.out.println("Score + " + model.getScoreIncrease());
+                    cardpair = true;
 //                   
                 } else {
                     currentAnim = CardController.ANIM_BAD;
                     model.setScore(model.getScore() - model.getScoreDecrease());
                     playWrongSound();
                     System.out.println("Score - " + model.getScoreDecrease());
+                    cardpair = false;
                 }
                 model.getPredict1().runAnimation(currentAnim);
                 model.getPredict2().runAnimation(currentAnim);
                 model.setPredict1(null);
                 model.setPredict2(null);
+                winCheck();
                 System.out.println("Player Name: " + model.getPlayerName()+ "Score: "+ model.getScore());
                 
             }
@@ -160,5 +167,24 @@ public class GameController implements WindowListener, ActionListener {
                 }
             }.start();
     }
+    public void winCheck(){
+        if(cardpair){
+            winnum++;
+        }
+        if(winnum == model.getWinnum()){
+            System.out.println("You Win eiei");
+            model.getTimer().stopTime();
+            alert.setVisible(true);
+            alert.getScoreLabel().setText("You Win!! Score:" + model.getScore() + "Time: " +model.getTimer().getView().getText());
+         
+        }
+        
+      
+    }
+    public Alert getAlert(){
+        
+        return this.alert;
+        
+    }
+    }
     
-}

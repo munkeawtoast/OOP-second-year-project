@@ -5,6 +5,7 @@
 package memory_game.game.elements.card;
 
 import java.awt.Dimension;
+import java.io.Serializable;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -16,7 +17,7 @@ import memory_game.game.util.*;
  *
  * @author ACER
  */
-public class CardController {
+public class CardController implements Serializable {
     public static final String ANIM_GOOD = "animation-good";
     public static final String ANIM_BAD = "animation-bad";
     public static final String ANIM_PICK = "animation-pick";    

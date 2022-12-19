@@ -4,6 +4,8 @@
  */
 package memory_game.Panel;
 
+import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -19,9 +21,9 @@ public class Menu extends javax.swing.JPanel {
      */
     public Menu() {
         initComponents();
-          ImageIcon startIcon = new ImageIcon(getClass().getResource("/images/playbutton.png"));
+      
         
-        startbtn.setIcon(startIcon);
+    
         
         
     }
@@ -48,6 +50,7 @@ public class Menu extends javax.swing.JPanel {
         leaderbtn = new javax.swing.JButton();
         jPanel9 = new javax.swing.JPanel();
         exitbtn = new javax.swing.JButton();
+        mutebtn = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 102, 102));
@@ -102,7 +105,23 @@ public class Menu extends javax.swing.JPanel {
 
         startbtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/playbutton.png"))); // NOI18N
         startbtn.setActionCommand("Start");
+        startbtn.setBorderPainted(false);
+        startbtn.setFocusable(false);
         startbtn.setPreferredSize(new java.awt.Dimension(163, 60));
+        startbtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                startbtnMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                startbtnMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                startbtnMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                startbtnMousePressed(evt);
+            }
+        });
         jPanel7.add(startbtn);
 
         jPanel6.add(jPanel7);
@@ -113,16 +132,18 @@ public class Menu extends javax.swing.JPanel {
 
         leaderbtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/ldbbutton.png"))); // NOI18N
         leaderbtn.setActionCommand("Leaderboard");
-        leaderbtn.setPreferredSize(new java.awt.Dimension(150, 30));
+        leaderbtn.setPreferredSize(new java.awt.Dimension(163, 41));
         jPanel8.add(leaderbtn);
 
         jPanel6.add(jPanel8);
 
         jPanel9.setBackground(new java.awt.Color(255, 179, 107));
         jPanel9.setOpaque(false);
+        jPanel9.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 15));
 
-        exitbtn.setText("Exit");
-        exitbtn.setPreferredSize(new java.awt.Dimension(150, 30));
+        exitbtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/exitbutton.png"))); // NOI18N
+        exitbtn.setActionCommand("Exit");
+        exitbtn.setPreferredSize(new java.awt.Dimension(163, 41));
         jPanel9.add(exitbtn);
 
         jPanel6.add(jPanel9);
@@ -134,10 +155,44 @@ public class Menu extends javax.swing.JPanel {
         add(jPanel1);
         jPanel1.setBounds(140, 0, 500, 600);
 
+        mutebtn.setText("mute");
+        mutebtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mutebtnActionPerformed(evt);
+            }
+        });
+        add(mutebtn);
+        mutebtn.setBounds(50, 500, 78, 23);
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/back.jpg"))); // NOI18N
         add(jLabel1);
         jLabel1.setBounds(0, 0, 800, 600);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void startbtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_startbtnMouseEntered
+        // TODO add your handling code here:
+         startbtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/playbutton-hover.png")));
+         
+    }//GEN-LAST:event_startbtnMouseEntered
+
+    private void startbtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_startbtnMouseExited
+        // TODO add your handling code here:
+         startbtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/playbutton.png")));
+    }//GEN-LAST:event_startbtnMouseExited
+
+    private void startbtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_startbtnMouseClicked
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_startbtnMouseClicked
+
+    private void startbtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_startbtnMousePressed
+        // TODO add your handling code here:
+         startbtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/playbutton.png")));
+    }//GEN-LAST:event_startbtnMousePressed
+
+    private void mutebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mutebtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mutebtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -154,6 +209,7 @@ public class Menu extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JButton leaderbtn;
+    private javax.swing.JButton mutebtn;
     private javax.swing.JButton startbtn;
     // End of variables declaration//GEN-END:variables
 
@@ -165,6 +221,9 @@ public class Menu extends javax.swing.JPanel {
     }
     public JButton getExitBtn(){
         return this.exitbtn;
+    }
+    public JButton getMutebtn(){
+        return this.mutebtn;
     }
 }
 

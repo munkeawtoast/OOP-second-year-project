@@ -23,7 +23,8 @@ public class Alert extends javax.swing.JFrame implements ActionListener {
         initComponents();
         extiBtn.addActionListener(this);
         restartBtn.addActionListener(this);
-        
+        setVisible(true);
+        setSize(400,150);
     }
 
     /**
