@@ -58,7 +58,11 @@ public class CardController {
                 }
             } else {
                 Thread temp = new Thread(() -> {
-                    while (true) {}
+                    try {
+                        Thread.sleep(9999999);
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(CardController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                 });
                 temp.start();
                 try {
@@ -69,7 +73,13 @@ public class CardController {
             }
             
             Thread temp = new Thread(() -> {
-                while (true) {}
+                while (true) {
+                    try {
+                        Thread.sleep(9999999);
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(CardController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
             });
             temp.start();
             try {
@@ -84,7 +94,6 @@ public class CardController {
             } catch (InterruptedException ex) {
                 Logger.getLogger(CardController.class.getName()).log(Level.SEVERE, null, ex);
             }
-            view.changeToFront();
             view.setIsAnimating(false);
         }).start();
     }
@@ -105,7 +114,11 @@ public class CardController {
                 }
             } else {
                 Thread temp = new Thread(() -> {
-                    while (true) {}
+                    try {
+                        Thread.sleep(9999999);
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(CardController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                 });
                 temp.start();
                 try {
