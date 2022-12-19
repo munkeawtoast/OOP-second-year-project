@@ -192,7 +192,7 @@ public class GameController implements WindowListener, ActionListener {
               String time = model.getTimer().getView().getText();
             alert.setVisible(true);
             alert.setLocationRelativeTo(getGUIView());
-            alert.getScoreLabel().setText("You Win!! Score:" + model.getScore() + "Time: " +time);
+            alert.getScoreLabel().setText("You Win!! Score:" + model.getScore());
             
             
         }

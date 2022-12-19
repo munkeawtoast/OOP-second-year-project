@@ -57,6 +57,7 @@ public class Frame extends JFrame implements ActionListener, WindowListener {
     private int gamemode;
     Font pixelFont_30;
     Font pixelFont_24;
+    Font pixelFont_18;
     Clip clip;
 
     public Frame() throws FontFormatException {
@@ -222,7 +223,7 @@ public class Frame extends JFrame implements ActionListener, WindowListener {
         game.getGUIView().getJLabel().setFont(pixelFont_24);
         game.getGUIView().getJLabel2().setFont(pixelFont_24);
         game.getGUIView().getScore().setFont(pixelFont_24);
-        
+        game.getAlert().getScoreLabel().setFont(pixelFont_24);
         game.getModel().getTimer().getView().setFont(pixelFont_24);
 
     }
@@ -352,4 +353,5 @@ public class Frame extends JFrame implements ActionListener, WindowListener {
         float dB = (float) (Math.log(gain) / Math.log(10.0) * 20.0);
         gainControl.setValue(dB);
     }
+   
 }

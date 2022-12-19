@@ -174,13 +174,14 @@ public class Game implements Comparable<Game>, Serializable{
     }
     
     public void setScore(int score){
-        if(score<0){
-            this.Score = 0;
-        }
-        
-    else{
-        this.Score = score;
-}
+//        if(score<0){
+//            this.Score = 0;
+//        }
+//        
+//    else{
+//        this.Score = score;
+//}
+this.Score = score;
     }
     @Override
     public String toString(){

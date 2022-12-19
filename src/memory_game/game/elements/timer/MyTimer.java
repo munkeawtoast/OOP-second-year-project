@@ -16,11 +16,12 @@ public class MyTimer extends Timer{
         start();
     }
 
-    int getTimeElapsed() {
+    public int getTimeElapsed() {
         return timeElapsed;
     }
     public void stopTime(){
-        this.setDelay(999999999);
+        this.stop();
+        
     }
     
     public String getFormattedTime() {
