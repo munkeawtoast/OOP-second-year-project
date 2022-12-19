@@ -1,11 +1,13 @@
 
 package memory_game.game;
 
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.io.ByteArrayInputStream;
+import java.io.File;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,6 +16,7 @@ import memory_game.Panel.Alert;
 import memory_game.Sound.Sound;
 import memory_game.game.elements.card.CardController;
 import memory_game.game.elements.card.CardView;
+import memory_game.game.elements.timer.TimerController;
 
 
 public class GameController implements WindowListener, ActionListener {
@@ -22,6 +25,7 @@ public class GameController implements WindowListener, ActionListener {
     private Game model;
     private List<IGameView> views;
     private boolean cardpair;
+ 
     Sound clicksound;
     int winnum;
     
@@ -41,10 +45,16 @@ public class GameController implements WindowListener, ActionListener {
         views.add(new GameLoggerView(this));
         views.add(new GameGUIView(this));
         this.initialize();
+        
+       
+       
     }
     
     private synchronized void initialize() {
         model.initialize();
+        
+       
+       getGUIView().getTimepanel().add(model.getTimer().getView());
         
         // register clicks
         for (CardController cardController : model.getCardList()) {
@@ -118,6 +128,7 @@ public class GameController implements WindowListener, ActionListener {
                     currentAnim = CardController.ANIM_GOOD;
                     model.setScore(model.getScore()+model.getScoreIncrease());
                     System.out.println("Score + " + model.getScoreIncrease());
+                    getGUIView().getScore().setText(model.getScore()+"");
                     cardpair = true;
 //                   
                 } else {
@@ -172,11 +183,12 @@ public class GameController implements WindowListener, ActionListener {
             winnum++;
         }
         if(winnum == model.getWinnum()){
-            System.out.println("You Win eiei");
+    
             model.getTimer().stopTime();
             alert.setVisible(true);
             alert.getScoreLabel().setText("You Win!! Score:" + model.getScore() + "Time: " +model.getTimer().getView().getText());
-         
+            
+            
         }
         
       

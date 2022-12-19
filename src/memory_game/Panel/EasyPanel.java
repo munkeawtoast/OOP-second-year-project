@@ -63,7 +63,7 @@ public class EasyPanel extends javax.swing.JPanel implements ActionListener {
         time = new TimerController();
 
         time.getView().getTimeLabel().setFont(new java.awt.Font("Segoe UI", 0, 36));
-        jPanel4.add(time.getView().getTimeLabel());
+        Timepanel.add(time.getView().getTimeLabel());
          ImageIcon icon = new ImageIcon(this.getClass().getResource("/images/logo_new.png")); // load the image to a imageIcon
         Image image = icon.getImage(); // transform it 
         Image newimg = image.getScaledInstance(103, 80,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
@@ -243,12 +243,12 @@ public class EasyPanel extends javax.swing.JPanel implements ActionListener {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel3 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
+        Headpanel = new javax.swing.JPanel();
+        Scorepanel = new javax.swing.JPanel();
+        JLabel = new javax.swing.JLabel();
         score = new javax.swing.JLabel();
-        jPanel4 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        Timepanel = new javax.swing.JPanel();
+        JLabel2 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         gamePanel = new javax.swing.JPanel();
@@ -257,45 +257,45 @@ public class EasyPanel extends javax.swing.JPanel implements ActionListener {
         setPreferredSize(new java.awt.Dimension(800, 600));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel3.setBackground(new java.awt.Color(204, 255, 153));
-        jPanel3.setOpaque(false);
-        jPanel3.setPreferredSize(new java.awt.Dimension(800, 75));
-        jPanel3.setRequestFocusEnabled(false);
-        jPanel3.setLayout(new java.awt.BorderLayout());
+        Headpanel.setBackground(new java.awt.Color(204, 255, 153));
+        Headpanel.setOpaque(false);
+        Headpanel.setPreferredSize(new java.awt.Dimension(800, 75));
+        Headpanel.setRequestFocusEnabled(false);
+        Headpanel.setLayout(new java.awt.BorderLayout());
 
-        jPanel2.setBackground(new java.awt.Color(204, 255, 153));
-        jPanel2.setOpaque(false);
-        jPanel2.setPreferredSize(new java.awt.Dimension(300, 75));
-        jPanel2.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 0));
+        Scorepanel.setBackground(new java.awt.Color(204, 255, 153));
+        Scorepanel.setOpaque(false);
+        Scorepanel.setPreferredSize(new java.awt.Dimension(300, 75));
+        Scorepanel.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 0));
 
-        jLabel2.setFont(new java.awt.Font("MV Boli", 0, 36)); // NOI18N
-        jLabel2.setText("Score:");
-        jPanel2.add(jLabel2);
+        JLabel.setFont(new java.awt.Font("MV Boli", 0, 36)); // NOI18N
+        JLabel.setText("Score:");
+        Scorepanel.add(JLabel);
 
         score.setFont(new java.awt.Font("MV Boli", 0, 36)); // NOI18N
         score.setText("0");
-        jPanel2.add(score);
+        Scorepanel.add(score);
 
-        jPanel3.add(jPanel2, java.awt.BorderLayout.LINE_START);
+        Headpanel.add(Scorepanel, java.awt.BorderLayout.LINE_START);
 
-        jPanel4.setBackground(new java.awt.Color(204, 255, 153));
-        jPanel4.setOpaque(false);
-        jPanel4.setPreferredSize(new java.awt.Dimension(300, 75));
+        Timepanel.setBackground(new java.awt.Color(204, 255, 153));
+        Timepanel.setOpaque(false);
+        Timepanel.setPreferredSize(new java.awt.Dimension(300, 75));
 
-        jLabel1.setFont(new java.awt.Font("MV Boli", 0, 36)); // NOI18N
-        jLabel1.setText("Time: ");
-        jPanel4.add(jLabel1);
+        JLabel2.setFont(new java.awt.Font("MV Boli", 0, 36)); // NOI18N
+        JLabel2.setText("Time: ");
+        Timepanel.add(JLabel2);
 
-        jPanel3.add(jPanel4, java.awt.BorderLayout.LINE_END);
+        Headpanel.add(Timepanel, java.awt.BorderLayout.LINE_END);
 
         jPanel1.setOpaque(false);
 
         jLabel3.setBackground(new java.awt.Color(204, 255, 153));
         jPanel1.add(jLabel3);
 
-        jPanel3.add(jPanel1, java.awt.BorderLayout.CENTER);
+        Headpanel.add(jPanel1, java.awt.BorderLayout.CENTER);
 
-        add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        add(Headpanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         gamePanel.setOpaque(false);
         gamePanel.setLayout(new java.awt.GridLayout(3, 4, 50, 0));
@@ -307,15 +307,15 @@ public class EasyPanel extends javax.swing.JPanel implements ActionListener {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel Headpanel;
+    private javax.swing.JLabel JLabel;
+    private javax.swing.JLabel JLabel2;
+    private javax.swing.JPanel Scorepanel;
+    private javax.swing.JPanel Timepanel;
     private javax.swing.JPanel gamePanel;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JLabel score;
     // End of variables declaration//GEN-END:variables
 

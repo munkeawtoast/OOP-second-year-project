@@ -153,9 +153,9 @@ public class CardController implements Serializable {
         view.setIsAnimating(true);
         view.changeToFront(); ///////////////////////////////////////////////////////
         view.getUpTransition().start();
+        
+        
         view.setEnabled(true);
-        
-        
     }
      
      public void runAnimation(String type) {

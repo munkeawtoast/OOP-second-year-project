@@ -219,6 +219,11 @@ public class Frame extends JFrame implements ActionListener, WindowListener {
         pack();
         game.getAlert().getRestartBtn().addActionListener(this);
         game.getAlert().getExtiBtn().addActionListener(this);
+        game.getGUIView().getJLabel().setFont(pixelFont_24);
+        game.getGUIView().getJLabel2().setFont(pixelFont_24);
+        game.getGUIView().getScore().setFont(pixelFont_24);
+        
+        game.getModel().getTimer().getView().setFont(pixelFont_24);
 
     }
 
