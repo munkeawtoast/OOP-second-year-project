@@ -38,7 +38,6 @@ import memory_game.Sound.Sound;
 import memory_game.game.Game;
 import memory_game.game.GameController;
 
-
 // what is this? -Pine
 // i think project should only have one main function -Pine
 public class Frame extends JFrame implements ActionListener, WindowListener {
@@ -49,18 +48,20 @@ public class Frame extends JFrame implements ActionListener, WindowListener {
     GameController game;
     LeaderBoardController board = new LeaderBoardController();
     Sound clicksound;
-    Sound backclicksound;
-    Sound bgsound;
+    
+    Clip clip;
 
     public Frame() {
         playBackgroundMusic();
         setTitle("Pokemon Matching Card Game");
+
         setVisible(true);
         setResizable(false);
         addWindowListener(this);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setContentPane(menu);
         setSize(800, 600);
+        this.setLocationRelativeTo(null);
         insertname.getNextBtn().addActionListener(this);
         insertname.getReturnBtn().addActionListener(this);
         menu.getStartBtn().addActionListener(this);
@@ -71,7 +72,7 @@ public class Frame extends JFrame implements ActionListener, WindowListener {
         startmenu.getHardBtn().addActionListener(this);
         startmenu.getReturnBtn().addActionListener(this);
         board.getView().getReturnBtn().addActionListener(this);
-        
+
 //        TEST BOARD FUNCTION
 //        ArrayList<Game> players = new ArrayList<>();
 //        for (int i = 0; i < 5; i++) {
@@ -83,7 +84,6 @@ public class Frame extends JFrame implements ActionListener, WindowListener {
 //            test.setScore(300);
 //           board.getModel().addList(test);
 //           board.updateBoard(board.getModel().getList());
-
     }
 
     public Menu getMenu() {
@@ -119,7 +119,7 @@ public class Frame extends JFrame implements ActionListener, WindowListener {
 
         } else if (e.getActionCommand().equals("Start")) {
 //           start btn click
-           playClickSound();
+            playClickSound();
             setContentPane(insertname);
             pack();
 
@@ -128,26 +128,34 @@ public class Frame extends JFrame implements ActionListener, WindowListener {
             loadGame(insertname.getNameTF().getText(), Game.EASY);
 
         } else if (e.getActionCommand().equals("Leaderboard")) {
-           playClickSound();
+            stopMusic();
+            playClickSound();
             setContentPane(board.getView());
             pack();
 //           leaderboard btn click
 
         } else if (e.getActionCommand().equals("Normal")) {
             playClickSound();
+             loadGame(insertname.getNameTF().getText(), Game.MEDIUM);
 //           normal btn click
 
         } else if (e.getActionCommand().equals("Hard")) {
+            //           hard btn click
             playClickSound();
-//           hard btn click
-        } else if (e.getActionCommand().equals("Next")) {
-           playClickSound();
+             loadGame(insertname.getNameTF().getText(), Game.HARD);
+            
 
-            setContentPane(startmenu);
-            pack();
+        } else if (e.getActionCommand().equals("Next")) {
+            playClickSound();
+            if (!insertname.getNameTF().getText().equals("")) {
+                setContentPane(startmenu);
+                pack();
+            } else {
+                JOptionPane.showMessageDialog(insertname, "Insert Your Name!!");
+            }
 
         } else if (e.getActionCommand().equals("return1")) {
-           playBackClickSound();
+            playBackClickSound();
             setContentPane(menu);
             invalidate();
             validate();
@@ -172,42 +180,38 @@ public class Frame extends JFrame implements ActionListener, WindowListener {
     }
 
     @Override
-   public void windowOpened(WindowEvent e) {
-    File f = new File("LeaderBoard.dat");
-    if (f.exists()) {
-        System.out.println("Board data found");
-        try (FileInputStream fis = new FileInputStream(f);
-             ObjectInputStream ois = new ObjectInputStream(fis)) {
-            ArrayList<Game> savelist = (ArrayList<Game>) ois.readObject();
-           
-            board.updateBoard(savelist);
-             fis.close();
-                ois.close();
-        } catch (IOException ie) {
-            System.out.println("An error occurred while reading from the file: " + ie);
-        } catch (ClassNotFoundException ce) {
-            System.out.println("Class not found: " + ce);
-        } 
-    }
-}
+    public void windowOpened(WindowEvent e) {
+        File f = new File("LeaderBoard.dat");
+        if (f.exists()) {
+            System.out.println("Board data found");
+            try ( FileInputStream fis = new FileInputStream(f);  ObjectInputStream ois = new ObjectInputStream(fis)) {
+                ArrayList<Game> savelist = (ArrayList<Game>) ois.readObject();
 
+                board.updateBoard(savelist);
+                fis.close();
+                ois.close();
+            } catch (IOException ie) {
+                System.out.println("An error occurred while reading from the file: " + ie);
+            } catch (ClassNotFoundException ce) {
+                System.out.println("Class not found: " + ce);
+            }
+        }
+    }
 
     @Override
     public void windowClosing(WindowEvent e) {
         ArrayList<Game> games = board.getModel().getList();
-        try(FileOutputStream fos = new FileOutputStream("LeaderBoard.dat");
-                ObjectOutputStream oos = new ObjectOutputStream(fos)){
-                oos.writeObject(board.getModel().getList());
+        try ( FileOutputStream fos = new FileOutputStream("LeaderBoard.dat");  ObjectOutputStream oos = new ObjectOutputStream(fos)) {
+            oos.writeObject(board.getModel().getList());
             System.out.println("save successfull");
-        }
-        catch(IOException ie){
+        } catch (IOException ie) {
             ie.printStackTrace();
         }
     }
 
     @Override
     public void windowClosed(WindowEvent e) {
-      
+
     }
 
     @Override
@@ -217,54 +221,57 @@ public class Frame extends JFrame implements ActionListener, WindowListener {
 
     @Override
     public void windowDeiconified(WindowEvent e) {
-        
+
     }
 
     @Override
     public void windowActivated(WindowEvent e) {
-       
+
     }
 
     @Override
     public void windowDeactivated(WindowEvent e) {
-       
+
     }
-    public void playClickSound(){
+
+    public void playClickSound() {
         new Thread() {
-                @Override
-                public void run() {
-                    try {
-                        clicksound = new Sound(getClass().getResource("/sounds/click.wav"));
-                    } catch (Exception e) {
-                    }
-                    InputStream stream
-                            = new ByteArrayInputStream(clicksound.getSamples());
-                    clicksound.play(stream);
+            @Override
+            public void run() {
+                try {
+                    clicksound = new Sound(getClass().getResource("/sounds/click.wav"));
+                } catch (Exception e) {
                 }
-            }.start();//clicksound
+                InputStream stream
+                        = new ByteArrayInputStream(clicksound.getSamples());
+                clicksound.play(stream);
+            }
+        }.start();//clicksound
     }
-    public void playBackClickSound(){
+
+    public void playBackClickSound() {
         new Thread() {
-                @Override
-                public void run() {
-                    try {
-                        clicksound = new Sound(getClass().getResource("/sounds/backclick.wav"));
-                    } catch (Exception e) {
-                    }
-                    InputStream stream
-                            = new ByteArrayInputStream(clicksound.getSamples());
-                    clicksound.play(stream);
+            @Override
+            public void run() {
+                try {
+                    clicksound = new Sound(getClass().getResource("/sounds/backclick.wav"));
+                } catch (Exception e) {
                 }
-            }.start();//clicksound
+                InputStream stream
+                        = new ByteArrayInputStream(clicksound.getSamples());
+                clicksound.play(stream);
+            }
+        }.start();//clicksound
     }
-    public void playBackgroundMusic(){
+
+    public void playBackgroundMusic() {
         try {
             // Load the audio file
             AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(this.getClass().getResource("/sounds/music.wav"));
             // Get the audio format and create a new Clip object
             AudioFormat audioFormat = audioInputStream.getFormat();
             DataLine.Info info = new DataLine.Info(Clip.class, audioFormat);
-            Clip clip = (Clip) AudioSystem.getLine(info);
+            clip = (Clip) AudioSystem.getLine(info);
 
             // Open the audio file and start playing it
             clip.open(audioInputStream);
@@ -279,6 +286,12 @@ public class Frame extends JFrame implements ActionListener, WindowListener {
         } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
             e.printStackTrace();
         }
-        
+
     }
+      public void stopMusic(){
+          if(clip!=null){
+              clip.stop();
+              clip.close();
+          }
+        }
 }

@@ -112,14 +112,14 @@ public class GameController implements WindowListener, ActionListener {
                 
                 if (model.getPredict1().isPair(model.getPredict2())) {
                     currentAnim = CardController.ANIM_GOOD;
-                    model.setScore(model.getScore()+500);
-                    System.out.println("Score + 500");
+                    model.setScore(model.getScore()+model.getScoreIncrease());
+                    System.out.println("Score + " + model.getScoreIncrease());
 //                   
                 } else {
                     currentAnim = CardController.ANIM_BAD;
-                    model.setScore(model.getScore()-100);
+                    model.setScore(model.getScore() - model.getScoreDecrease());
                     playWrongSound();
-                    System.out.println("Score-100");
+                    System.out.println("Score - " + model.getScoreDecrease());
                 }
                 model.getPredict1().runAnimation(currentAnim);
                 model.getPredict2().runAnimation(currentAnim);

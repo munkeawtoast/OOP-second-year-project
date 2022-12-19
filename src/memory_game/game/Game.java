@@ -21,6 +21,11 @@ public class Game implements Comparable<Game>, Serializable{
     public static final int EASY = 0;
     public static final int MEDIUM = 1;
     public static final int HARD = 2;
+    public static final int EASY_SCORE_INCREASE = 300;
+    public static final int MEDIUM_SCORE_INCREASE = 400;
+    public static final int HARD_SCORE_INCREASE = 500;
+    public static final int SCORE_DECREASE = 100;
+    
     
     
     private String playerName;
@@ -30,6 +35,8 @@ public class Game implements Comparable<Game>, Serializable{
     private CardController predict1, predict2;
     private int Score;
     private boolean animationIsRunning;
+    private int scoreIncrease;
+    private int scoreDecrease;
 
     public Game(String playerName, int difficulty) {
         this.playerName = playerName;
@@ -47,18 +54,22 @@ public class Game implements Comparable<Game>, Serializable{
                 count = 1;
             }
             case EASY -> {
+                this.scoreIncrease = EASY_SCORE_INCREASE;
                 count = 3*4/2;
             }
             case MEDIUM -> {
+                this.scoreIncrease = MEDIUM_SCORE_INCREASE;
                 count = 4*5/2;
             }
             case HARD -> {
+                this.scoreIncrease = HARD_SCORE_INCREASE;
                 count = 5*6/2;
             }
             default -> {
                 throw new InvalidParameterException("Must be TEST, EASY, MEDIUM or HARD!");
             }
         }
+        this.scoreDecrease = SCORE_DECREASE;
         
         
         // create cardList
@@ -127,6 +138,17 @@ public class Game implements Comparable<Game>, Serializable{
     public TimerController getTimer() {
         return timer;
     }
+
+    public int getScoreIncrease() {
+        return scoreIncrease;
+    }
+
+    public int getScoreDecrease() {
+        return scoreDecrease;
+    }
+
+   
+    
 
     
     @Override

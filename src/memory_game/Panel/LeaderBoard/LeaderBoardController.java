@@ -62,7 +62,9 @@ public class LeaderBoardController {
          
         for(int i = 0; i<model.getList().size();i++){
           
-           view.getModel().addRow(new Object[]{i+1,model.getList().get(i).getPlayerName(),model.getList().get(i).getTimer().getView().getText(),model.getList().get(i).getScore()});
+           view.getModel().addRow(new Object[]{i+1,model.getList().get(i).getPlayerName(),
+               model.getList().get(i).getTimer().getView().getText(),
+               model.getList().get(i).getScore()});
            
          }
         

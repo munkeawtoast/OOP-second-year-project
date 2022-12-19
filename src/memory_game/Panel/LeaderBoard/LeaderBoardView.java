@@ -119,11 +119,11 @@ table.setForeground(new Color(255,192,95));
 
         jPanel5.setOpaque(false);
         jPanel5.setPreferredSize(new java.awt.Dimension(800, 70));
-        jPanel5.setLayout(new java.awt.BorderLayout());
+        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         returnBtn.setBackground(new java.awt.Color(0, 0, 0));
         returnBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/return.png"))); // NOI18N
-        returnBtn.setActionCommand("return2");
+        returnBtn.setActionCommand("return1");
         returnBtn.setBorder(javax.swing.BorderFactory.createCompoundBorder());
         returnBtn.setPreferredSize(new java.awt.Dimension(70, 40));
         returnBtn.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -145,7 +145,7 @@ table.setForeground(new Color(255,192,95));
                 returnBtnActionPerformed(evt);
             }
         });
-        jPanel5.add(returnBtn, java.awt.BorderLayout.LINE_START);
+        jPanel5.add(returnBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 0, -1, 70));
 
         jPanel2.add(jPanel5, java.awt.BorderLayout.PAGE_END);
 
