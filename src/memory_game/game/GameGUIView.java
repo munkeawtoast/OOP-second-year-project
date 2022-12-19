@@ -1,6 +1,7 @@
 
 package memory_game.game;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.GridLayout;
@@ -107,6 +108,7 @@ public class GameGUIView extends JPanel implements IGameView {
         newSize.height += 60;
         newSize.width += 90;
         cardGrid.setPreferredSize(newSize);
+        cardGrid.setBackground(new Color(0,0,0,0));
     }
     
     @Override

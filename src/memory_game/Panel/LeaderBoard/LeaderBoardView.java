@@ -65,17 +65,23 @@ public class LeaderBoardView extends javax.swing.JPanel {
 
 // Get the default renderer for the cells in the table
         DefaultTableCellRenderer renderer = (DefaultTableCellRenderer) table.getDefaultRenderer(Object.class);
-
+        
 // Set the horizontal alignment to be centered
         renderer.setHorizontalAlignment(JLabel.CENTER);
         DefaultTableCellRenderer renderer2 = (DefaultTableCellRenderer) table.getTableHeader().getDefaultRenderer();
 
 // Set the horizontal alignment to be centered
 renderer2.setHorizontalAlignment(JLabel.CENTER);
+renderer2.setBackground(new Color(0,0,0,0));
+renderer2.setBorder(new EmptyBorder(0,0,0,0));
+
 
 // Set the renderer to be used for all header cells
 table.getTableHeader().setDefaultRenderer(renderer2);
 table.setForeground(new Color(255,192,95));
+
+
+   returnBtn.setBackground(new Color(0,0,0,0));
 
     }
 

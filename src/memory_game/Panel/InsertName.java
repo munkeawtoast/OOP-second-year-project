@@ -5,6 +5,7 @@
 
 package memory_game.Panel;
 
+import java.awt.Color;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 
@@ -17,6 +18,7 @@ public class InsertName extends javax.swing.JPanel {
     /** Creates new form InsertName */
     public InsertName() {
         initComponents();
+        returnBtn.setBackground(new Color(0,0,0,0));
     }
 
     /** This method is called from within the constructor to
