@@ -18,8 +18,7 @@ public class StartMenu extends javax.swing.JPanel {
      */
     public StartMenu() {
         initComponents();
-        returnBtn.setBackground(new Color(0,0,0,0));
-        returnBtn.setBackground(new Color(0,0,0,0));
+     
     }
 
     /**
@@ -103,6 +102,7 @@ public class StartMenu extends javax.swing.JPanel {
         jPanel7.setPreferredSize(new java.awt.Dimension(500, 40));
 
         easybtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/easybtn.png"))); // NOI18N
+        easybtn.setActionCommand("Easy");
         easybtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         easybtn.setPreferredSize(new java.awt.Dimension(116, 41));
         easybtn.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/images/easybtn-hover.png"))); // NOI18N

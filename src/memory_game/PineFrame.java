@@ -17,7 +17,7 @@ public class PineFrame extends JFrame {
     public PineFrame() {
         super("MemoryGame");
 
-        loadGame("eiei", Game.TEST);
+        loadGame("eiei", Game.EASY);
 
         
 

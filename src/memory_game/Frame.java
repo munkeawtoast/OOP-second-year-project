@@ -83,6 +83,17 @@ public class Frame extends JFrame implements ActionListener, WindowListener {
         setContentPane(menu);
         setSize(800, 600);
         this.setLocationRelativeTo(null);
+       
+        insertname.getNameTF().setFont(pixelFont_30);
+        insertname.getJLabel().setFont(pixelFont_30);
+        board.getView().getTable().setFont(pixelFont_24);
+        board.getView().getTable().getTableHeader().setFont(pixelFont_30);
+        board.getView().getHeaderText().setFont(pixelFont_30);
+        
+         
+        menu.getMutebtn().addActionListener(this);
+        board.getView().getReturnBtn().addActionListener(this);
+        menu.getUnmutebtn().addActionListener(this);
         insertname.getNextBtn().addActionListener(this);
         insertname.getReturnBtn().addActionListener(this);
         menu.getStartBtn().addActionListener(this);
@@ -92,14 +103,6 @@ public class Frame extends JFrame implements ActionListener, WindowListener {
         startmenu.getNormalBtn().addActionListener(this);
         startmenu.getHardBtn().addActionListener(this);
         startmenu.getReturnBtn().addActionListener(this);
-        menu.getMutebtn().addActionListener(this);
-        board.getView().getReturnBtn().addActionListener(this);
-        menu.getUnmutebtn().addActionListener(this);
-        insertname.getNameTF().setFont(pixelFont_30);
-        insertname.getJLabel().setFont(pixelFont_30);
-        board.getView().getTable().setFont(pixelFont_24);
-        board.getView().getTable().getTableHeader().setFont(pixelFont_30);
-        board.getView().getHeaderText().setFont(pixelFont_30);
 
 //        TEST BOARD FUNCTION
 //        ArrayList<Game> players = new ArrayList<>();
@@ -114,30 +117,7 @@ public class Frame extends JFrame implements ActionListener, WindowListener {
 //           board.updateBoard(board.getModel().getList());
     }
 
-    public Menu getMenu() {
-        return menu;
-    }
-
-    public void setMenu(Menu menu) {
-        this.menu = menu;
-    }
-
-    public StartMenu getStartmenu() {
-        return startmenu;
-    }
-
-    public void setStartmenu(StartMenu startmenu) {
-        this.startmenu = startmenu;
-    }
-
-    public InsertName getInsertname() {
-        return insertname;
-    }
-
-    public void setInsertname(InsertName insertname) {
-        this.insertname = insertname;
-    }
-
+    
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equals("Exit")) {
@@ -166,6 +146,7 @@ public class Frame extends JFrame implements ActionListener, WindowListener {
 //           Easy btn click
             gamemode = Game.EASY;
             loadGame(insertname.getNameTF().getText(), gamemode);
+            System.out.println("eie");
 
         } else if (e.getActionCommand().equals("Leaderboard")) {
             playClickSound();
