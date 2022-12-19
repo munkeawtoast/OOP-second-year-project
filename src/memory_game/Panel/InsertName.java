@@ -69,7 +69,7 @@ public class InsertName extends javax.swing.JPanel {
         jPanel4.setOpaque(false);
 
         jLabel2.setFont(new java.awt.Font("Rockwell Nova Cond", 0, 48)); // NOI18N
-        jLabel2.setText("Insert Yout Name");
+        jLabel2.setText("Enter Your Name");
         jPanel4.add(jLabel2);
 
         jPanel3.add(jPanel4, java.awt.BorderLayout.PAGE_END);
@@ -121,6 +121,7 @@ public class InsertName extends javax.swing.JPanel {
 
         nextBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/nextbtn.png"))); // NOI18N
         nextBtn.setActionCommand("Next");
+        nextBtn.setBorder(null);
         nextBtn.setBorderPainted(false);
         nextBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         nextBtn.setFocusable(false);
@@ -150,14 +151,16 @@ public class InsertName extends javax.swing.JPanel {
         jPanel13.setBackground(new java.awt.Color(255, 179, 107));
         jPanel13.setOpaque(false);
         jPanel13.setPreferredSize(new java.awt.Dimension(500, 40));
-        jPanel13.setLayout(new java.awt.BorderLayout());
+        jPanel13.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         returnBtn.setBackground(new java.awt.Color(255, 179, 107));
         returnBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/return.png"))); // NOI18N
         returnBtn.setActionCommand("return1");
-        returnBtn.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        returnBtn.setBorder(null);
+        returnBtn.setBorderPainted(false);
         returnBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         returnBtn.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        returnBtn.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/images/return2.png"))); // NOI18N
         returnBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 returnBtnMouseClicked(evt);
@@ -177,7 +180,7 @@ public class InsertName extends javax.swing.JPanel {
                 returnBtnActionPerformed(evt);
             }
         });
-        jPanel13.add(returnBtn, java.awt.BorderLayout.LINE_START);
+        jPanel13.add(returnBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 30));
 
         jPanel7.add(jPanel13);
 

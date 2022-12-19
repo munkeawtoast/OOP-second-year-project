@@ -15,7 +15,7 @@ public class TimerView extends JLabel{
     public TimerView() {
         super();
         initialize();
-        this.setText("0:0");
+        this.setText("00:00");
     }
     
     private void initialize() {

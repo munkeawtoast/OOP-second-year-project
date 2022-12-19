@@ -45,16 +45,19 @@ public class GameController implements WindowListener, ActionListener {
         views.add(new GameLoggerView(this));
         views.add(new GameGUIView(this));
         this.initialize();
+        getGUIView().getTimepanel().add(model.getTimer().getView());
+        
         
        
        
     }
     
     private synchronized void initialize() {
+
         model.initialize();
         
        
-       getGUIView().getTimepanel().add(model.getTimer().getView());
+       
         
         // register clicks
         for (CardController cardController : model.getCardList()) {
@@ -183,10 +186,12 @@ public class GameController implements WindowListener, ActionListener {
             winnum++;
         }
         if(winnum == model.getWinnum()){
-    
+          
             model.getTimer().stopTime();
+              String time = model.getTimer().getView().getText();
             alert.setVisible(true);
-            alert.getScoreLabel().setText("You Win!! Score:" + model.getScore() + "Time: " +model.getTimer().getView().getText());
+            alert.setLocationRelativeTo(getGUIView());
+            alert.getScoreLabel().setText("You Win!! Score:" + model.getScore() + "Time: " +time);
             
             
         }

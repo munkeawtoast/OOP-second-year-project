@@ -59,7 +59,8 @@ public class GameGUIView extends JPanel implements IGameView {
                 this.backgroundImage = IMAGE_HARD;
             }
         }
-        
+        gamePanel = new JPanel();
+        gamePanel.setOpaque(false);
          Headpanel = new javax.swing.JPanel();
         Scorepanel = new javax.swing.JPanel();
         JLabel = new javax.swing.JLabel();
@@ -87,18 +88,19 @@ public class GameGUIView extends JPanel implements IGameView {
         
         Headpanel.add(Scorepanel, java.awt.BorderLayout.LINE_START);
 
-        Timepanel.setBackground(new java.awt.Color(204, 255, 153));
+     
         Timepanel.setOpaque(false);
         Timepanel.setPreferredSize(new java.awt.Dimension(300, 75));
 
-        JLabel2.setFont(new java.awt.Font("MV Boli", 0, 36)); // NOI18N
+        
         JLabel2.setText("Time: ");
         Timepanel.add(JLabel2);
 
-        Headpanel.add(Timepanel, java.awt.BorderLayout.LINE_END);
+        Headpanel.add(Timepanel, java.awt.BorderLayout.EAST);
          Headpanel.add(jPanel1, java.awt.BorderLayout.CENTER);
          jPanel1.setOpaque(false);
          add(Headpanel,BorderLayout.NORTH);
+         add(gamePanel,BorderLayout.CENTER);
        
 
     }
@@ -154,7 +156,7 @@ public class GameGUIView extends JPanel implements IGameView {
         }
         
         cardGrid.setOpaque(false);
-        this.add(cardGrid,BorderLayout.CENTER);
+        gamePanel.add(cardGrid,BorderLayout.CENTER);
         
         // padding
         Dimension newSize = cardGrid.getPreferredSize();

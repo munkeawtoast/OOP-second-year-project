@@ -126,8 +126,11 @@ public class LeaderBoardView extends javax.swing.JPanel {
         returnBtn.setBackground(new java.awt.Color(0, 0, 0));
         returnBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/return.png"))); // NOI18N
         returnBtn.setActionCommand("return1");
-        returnBtn.setBorder(javax.swing.BorderFactory.createCompoundBorder());
-        returnBtn.setPreferredSize(new java.awt.Dimension(70, 40));
+        returnBtn.setBorder(null);
+        returnBtn.setBorderPainted(false);
+        returnBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        returnBtn.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        returnBtn.setSize(new java.awt.Dimension(30, 30));
         returnBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 returnBtnMouseClicked(evt);
@@ -147,7 +150,7 @@ public class LeaderBoardView extends javax.swing.JPanel {
                 returnBtnActionPerformed(evt);
             }
         });
-        jPanel5.add(returnBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 0, -1, 70));
+        jPanel5.add(returnBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 0, -1, 30));
 
         jPanel2.add(jPanel5, java.awt.BorderLayout.PAGE_END);
 
