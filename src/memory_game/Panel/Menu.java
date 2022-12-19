@@ -164,7 +164,7 @@ public class Menu extends javax.swing.JPanel {
         add(mutebtn);
         mutebtn.setBounds(50, 500, 78, 23);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/back.jpg"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/bg_gif.gif"))); // NOI18N
         add(jLabel1);
         jLabel1.setBounds(0, 0, 800, 600);
     }// </editor-fold>//GEN-END:initComponents
