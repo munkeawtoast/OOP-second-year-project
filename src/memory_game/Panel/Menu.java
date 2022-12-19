@@ -4,6 +4,8 @@
  */
 package memory_game.Panel;
 
+import java.awt.Image;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
 /**
@@ -17,6 +19,9 @@ public class Menu extends javax.swing.JPanel {
      */
     public Menu() {
         initComponents();
+          ImageIcon startIcon = new ImageIcon(getClass().getResource("/images/playbutton.png"));
+        
+        startbtn.setIcon(startIcon);
         
         
     }
@@ -90,21 +95,24 @@ public class Menu extends javax.swing.JPanel {
 
         jPanel6.setBackground(new java.awt.Color(255, 179, 107));
         jPanel6.setOpaque(false);
-        jPanel6.setLayout(new java.awt.GridLayout(7, 1));
+        jPanel6.setLayout(new java.awt.GridLayout(5, 1));
 
         jPanel7.setBackground(new java.awt.Color(255, 179, 107));
         jPanel7.setOpaque(false);
 
-        startbtn.setText("Start");
-        startbtn.setPreferredSize(new java.awt.Dimension(150, 30));
+        startbtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/playbutton.png"))); // NOI18N
+        startbtn.setActionCommand("Start");
+        startbtn.setPreferredSize(new java.awt.Dimension(163, 60));
         jPanel7.add(startbtn);
 
         jPanel6.add(jPanel7);
 
         jPanel8.setBackground(new java.awt.Color(255, 179, 107));
         jPanel8.setOpaque(false);
+        jPanel8.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 15));
 
-        leaderbtn.setText("Leaderboard");
+        leaderbtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/ldbbutton.png"))); // NOI18N
+        leaderbtn.setActionCommand("Leaderboard");
         leaderbtn.setPreferredSize(new java.awt.Dimension(150, 30));
         jPanel8.add(leaderbtn);
 
