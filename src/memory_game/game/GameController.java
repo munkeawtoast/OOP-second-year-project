@@ -137,6 +137,7 @@ public class GameController implements WindowListener, ActionListener {
                 } else {
                     currentAnim = CardController.ANIM_BAD;
                     model.setScore(model.getScore() - model.getScoreDecrease());
+                    getGUIView().getScore().setText(model.getScore()+"");
                     playWrongSound();
                     System.out.println("Score - " + model.getScoreDecrease());
                     cardpair = false;

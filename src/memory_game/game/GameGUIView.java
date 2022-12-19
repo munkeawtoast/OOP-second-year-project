@@ -4,6 +4,7 @@ package memory_game.game;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.awt.Image;
@@ -69,13 +70,13 @@ public class GameGUIView extends JPanel implements IGameView {
         Timepanel = new javax.swing.JPanel();
         jPanel1 = new JPanel();
         Headpanel.setOpaque(false);
-        Headpanel.setPreferredSize(new java.awt.Dimension(800, 75));
+        Headpanel.setPreferredSize(new java.awt.Dimension(800, 35));
         Headpanel.setRequestFocusEnabled(false);
         Headpanel.setLayout(new java.awt.BorderLayout());
 
         Scorepanel.setBackground(new java.awt.Color(204, 255, 153));
         Scorepanel.setOpaque(false);
-        Scorepanel.setPreferredSize(new java.awt.Dimension(300, 75));
+        Scorepanel.setPreferredSize(new java.awt.Dimension(300, 35));
         Scorepanel.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 0));
         
         JLabel.setFont(new java.awt.Font("MV Boli", 0, 36)); // NOI18N
@@ -90,7 +91,7 @@ public class GameGUIView extends JPanel implements IGameView {
 
      
         Timepanel.setOpaque(false);
-        Timepanel.setPreferredSize(new java.awt.Dimension(300, 75));
+        Timepanel.setPreferredSize(new java.awt.Dimension(300, 35));
 
         
         JLabel2.setText("Time: ");
@@ -99,8 +100,9 @@ public class GameGUIView extends JPanel implements IGameView {
         Headpanel.add(Timepanel, java.awt.BorderLayout.EAST);
          Headpanel.add(jPanel1, java.awt.BorderLayout.CENTER);
          jPanel1.setOpaque(false);
+         
          add(Headpanel,BorderLayout.NORTH);
-         add(gamePanel,BorderLayout.CENTER);
+//         add(gamePanel,BorderLayout.CENTER);
        
 
     }
@@ -145,7 +147,7 @@ public class GameGUIView extends JPanel implements IGameView {
                 grid = new Dimension(5, 4);
             }
             case Game.HARD -> {
-                grid = new Dimension(6, 5);
+                grid = new Dimension(6, 4);
             }
         }
         
@@ -156,7 +158,8 @@ public class GameGUIView extends JPanel implements IGameView {
         }
         
         cardGrid.setOpaque(false);
-        gamePanel.add(cardGrid,BorderLayout.CENTER);
+//        gamePanel.add(cardGrid,BorderLayout.CENTER);
+add(cardGrid,BorderLayout.CENTER);
         
         // padding
         Dimension newSize = cardGrid.getPreferredSize();
