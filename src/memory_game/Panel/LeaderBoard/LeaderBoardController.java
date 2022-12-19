@@ -27,9 +27,7 @@ public class LeaderBoardController {
         view = new LeaderBoardView();
     
       
-           
-       
-        
+ 
       view.getTable().setModel(view.getModel());
    
      
