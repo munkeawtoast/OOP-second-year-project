@@ -10,6 +10,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import java.awt.event.*;
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 import memory_game.game.GameGUIView;
 
 
@@ -18,19 +19,20 @@ import memory_game.game.GameGUIView;
  *
  * @author Gungai
  */
-public class Alert extends javax.swing.JFrame implements ActionListener {
+public class Alert extends JFrame {
 
     /**
      * Creates new form alert
      */
     public Alert() {
+        setUndecorated(true); 
         initComponents();
-        extiBtn.addActionListener(this);
-        restartBtn.addActionListener(this);
-        setVisible(true);
-        setSize(400,175);
+      ;
+       
+     
         
-    
+setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Already there
+// <-- the title bar is removed here
     }
 
    
@@ -148,12 +150,5 @@ public class Alert extends javax.swing.JFrame implements ActionListener {
         this.restartBtn = restartBtn;
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        if(e.getSource().equals(restartBtn) || e.getSource().equals(extiBtn)){
-            this.dispose();
-            
-        }
-    }
     
 }

@@ -62,6 +62,7 @@ public class GameFrame extends JFrame implements ActionListener, WindowListener 
     Alert alert;
 
     public GameFrame() throws FontFormatException {
+        alert = new Alert();
         //add new font 
         try {
             // load a custom font in your project folder
@@ -176,14 +177,20 @@ public class GameFrame extends JFrame implements ActionListener, WindowListener 
             validate();
 
         } else if (e.getActionCommand().equals("Restart")) {
-            System.out.println("restart");
+            
             playClickSound();
+            stopMusic();
+            playBackgroundMusic();
+            alert.setVisible(false);
 
             remove(game.getGUIView());
             loadGame(insertname.getNameTF().getText(), gamemode);
 
         } else if (e.getActionCommand().equals("Tomenu")) {
             playClickSound();
+            stopMusic();
+            playBackgroundMusic();
+             alert.setVisible(false);
             setContentPane(menu);
             remove(game.getGUIView());
 
@@ -356,7 +363,7 @@ public class GameFrame extends JFrame implements ActionListener, WindowListener 
     }
 
     public void alert(String text) {
-        Alert alert = new Alert();
+        alert.setVisible(true);
         alert.getScoreLabel().setText(text);
         alert.setVisible(true);
         alert.setLocationRelativeTo(this);
