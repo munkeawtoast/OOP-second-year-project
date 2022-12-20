@@ -69,6 +69,7 @@ public class InsertName extends javax.swing.JPanel {
         jPanel4.setOpaque(false);
 
         jLabel2.setFont(new java.awt.Font("Rockwell Nova Cond", 0, 48)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(233, 233, 227));
         jLabel2.setText("Enter Your Name");
         jPanel4.add(jLabel2);
 
@@ -193,7 +194,7 @@ public class InsertName extends javax.swing.JPanel {
         jPanel1.add(jPanel2);
         jPanel2.setBounds(140, 0, 500, 600);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/back.jpg"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/bg2.gif"))); // NOI18N
         jLabel1.setText("jLabel1");
         jLabel1.setPreferredSize(new java.awt.Dimension(800, 600));
         jPanel1.add(jLabel1);

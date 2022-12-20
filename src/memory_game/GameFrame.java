@@ -128,6 +128,8 @@ public class GameFrame extends JFrame implements ActionListener, WindowListener 
 //           start btn click
             playClickSound();
             setContentPane(insertname);
+            invalidate();
+            validate();
             pack();
 
         } else if (e.getActionCommand().equals("Easy")) {
@@ -141,6 +143,8 @@ public class GameFrame extends JFrame implements ActionListener, WindowListener 
         } else if (e.getActionCommand().equals("Leaderboard")) {
             playClickSound();
             setContentPane(board.getView());
+            invalidate();
+            validate();
             pack();
 //           leaderboard btn click
 
@@ -215,6 +219,8 @@ public class GameFrame extends JFrame implements ActionListener, WindowListener 
 
         game.getModel().getTimer().getView().setFont(pixelFont_24);
         setContentPane(game.getGUIView());
+        invalidate();
+            validate();
         pack();
 
     }

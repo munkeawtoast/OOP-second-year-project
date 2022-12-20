@@ -31,7 +31,7 @@ import memory_game.Panel.customElement.ScrollBarCustom;
 public class LeaderBoardView extends javax.swing.JPanel {
 
     private DefaultTableModel model;
-    private static final Image backgroundImage = new ImageIcon(LeaderBoardView.class.getResource("/images/boardbg.png")).getImage();
+    private static final Image backgroundImage = new ImageIcon(LeaderBoardView.class.getResource("/images/bg2.gif")).getImage();
 
     /**
      * Creates new form LeaderBoard
