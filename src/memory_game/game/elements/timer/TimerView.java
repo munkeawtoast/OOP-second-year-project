@@ -4,28 +4,41 @@
  */
 package memory_game.game.elements.timer;
 
-import javax.swing.JLabel;
+import java.awt.GridLayout;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JPanel;
 
 /**
  *
  * @author ACER
  */
-public class TimerView extends JLabel{
-    
+public class TimerView extends JPanel{
+    List<TimerDigit> timerDigits; 
     public TimerView() {
-        super();
-        initialize();
-        this.setText("00:00");
+    super(new GridLayout(1, 5));
+        timerDigits = new ArrayList<>();
+        for (int i = 0; i < 5; i++) {
+            if (i == 2) {
+                timerDigits.add(new TimerDigit(TimerDigit.TIME_SEPARATOR));
+            } else { 
+                timerDigits.add(new TimerDigit(TimerDigit.NUM));
+            }
+        }
     }
     
-    private void initialize() {
-        // styles
+    
+    // must intialize after adding to frame
+    public void initialize() {
+        for (TimerDigit timerDigit : timerDigits) {
+            timerDigit.initialize();
+        }
     }
     
     public void setTime(String formattedTime) {
-        setText(formattedTime);
-    }
-    public JLabel getTimeLabel(){
-        return this;
+        for (int i = 0; i < 5; i++) {
+            char c = formattedTime.charAt(i);
+            timerDigits.get(i).setTo(c);
+        }
     }
 }

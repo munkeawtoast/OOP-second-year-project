@@ -219,6 +219,7 @@ public class GameFrame extends JFrame implements ActionListener, WindowListener 
 
         game.getModel().getTimer().getView().setFont(pixelFont_24);
         setContentPane(game.getGUIView());
+        game.initialize();
         invalidate();
             validate();
         pack();

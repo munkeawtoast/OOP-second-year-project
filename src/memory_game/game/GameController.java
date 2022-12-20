@@ -44,7 +44,6 @@ public class GameController implements WindowListener, ActionListener {
         views.add(new GameLoggerView(this));
         views.add(new GameGUIView(this));
         
-        this.initialize();
      
         
         
@@ -53,17 +52,18 @@ public class GameController implements WindowListener, ActionListener {
        
     }
     
-    private synchronized void initialize() {
-        try{new Thread(){
-            @Override
-            public void run(){
-                  getGUIView().getTimepanel().add(model.getTimer().getView());
-            }
-            
-        }.start();}
-        catch(Exception e){
-            e.printStackTrace();
-        }
+    public synchronized void initialize() {
+//        try{new Thread(){
+//            @Override
+//            public void run(){
+//                  getGUIView().getTimepanel().add(model.getTimer().getView());
+//                  
+//            }
+//            
+//        }.start();}
+//        catch(Exception e){
+//            e.printStackTrace();
+//        }
         
       
         model.initialize();

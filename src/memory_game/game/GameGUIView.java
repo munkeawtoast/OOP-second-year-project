@@ -98,6 +98,7 @@ public class GameGUIView extends JPanel implements IGameView {
         
         JLabel2.setText("Time: ");
         Timepanel.add(JLabel2);
+        Timepanel.add(timer);
 
         Headpanel.add(Timepanel, java.awt.BorderLayout.EAST);
          Headpanel.add(jPanel1, java.awt.BorderLayout.CENTER);
@@ -137,6 +138,7 @@ public class GameGUIView extends JPanel implements IGameView {
         
         Dimension grid = new Dimension();
         
+        timer.initialize();
         cardGrid = new JPanel();
         switch (game.getDifficulty()) {
             case Game.TEST -> {

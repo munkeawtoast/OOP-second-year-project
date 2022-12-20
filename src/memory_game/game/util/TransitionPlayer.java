@@ -9,10 +9,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JComponent;
 
-/**
- *
- * @author munkeawtoast
- */
+
 public class TransitionPlayer extends Thread {
     private JComponent target;
     private int transition;
