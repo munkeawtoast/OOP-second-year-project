@@ -7,7 +7,7 @@ public class Main {
     public static void main(String[] args) {
         try{
 //            new Frame();
-            new Frame();
+            new GameFrame();
         }
         catch(Exception e){
             e.printStackTrace();

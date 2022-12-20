@@ -155,9 +155,5 @@ public class Alert extends javax.swing.JFrame implements ActionListener {
             
         }
     }
-    public static void main(String[] args) {
-        new Alert();
-        
-    }
-
+    
 }

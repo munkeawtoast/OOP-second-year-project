@@ -46,7 +46,7 @@ import memory_game.game.GameController;
 
 // what is this? -Pine
 // i think project should only have one main function -Pine
-public class Frame extends JFrame implements ActionListener, WindowListener {
+public class GameFrame extends JFrame implements ActionListener, WindowListener {
 
     Menu menu = new Menu();
     StartMenu startmenu = new StartMenu();
@@ -60,8 +60,9 @@ public class Frame extends JFrame implements ActionListener, WindowListener {
     Font pixelFont_18;
     Font pixelFont_44;
     Clip clip;
+    Alert alert;
 
-    public Frame() throws FontFormatException {
+    public GameFrame() throws FontFormatException {
         //add new font 
         	try{
             // load a custom font in your project folder
@@ -121,6 +122,7 @@ public class Frame extends JFrame implements ActionListener, WindowListener {
             ArrayList<Game> games = board.getModel().getList();
             try ( FileOutputStream fos = new FileOutputStream("LeaderBoard.dat");  ObjectOutputStream oos = new ObjectOutputStream(fos)) {
                 oos.writeObject(board.getModel().getList());
+                
                 System.out.println("save successfull");
             } catch (IOException ie) {
                 ie.printStackTrace();
@@ -180,14 +182,13 @@ public class Frame extends JFrame implements ActionListener, WindowListener {
 
         } else if (e.getActionCommand().equals("Restart")) {
             System.out.println("restart");
-            board.getModel().addToList(game.getModel());
-            board.updateBoard(board.getModel().getList());
+            playClickSound();
+           
             remove(game.getGUIView());
             loadGame(insertname.getNameTF().getText(), gamemode);
 
         } else if (e.getActionCommand().equals("Tomenu")) {
-            board.getModel().addToList(game.getModel());
-            board.updateBoard(board.getModel().getList());
+           playClickSound();
             setContentPane(menu);
             remove(game.getGUIView());
 
@@ -209,12 +210,11 @@ public class Frame extends JFrame implements ActionListener, WindowListener {
 
         setContentPane(game.getGUIView());
         pack();
-        game.getAlert().getRestartBtn().addActionListener(this);
-        game.getAlert().getExtiBtn().addActionListener(this);
+       
         game.getGUIView().getJLabel().setFont(pixelFont_24);
         game.getGUIView().getJLabel2().setFont(pixelFont_24);
         game.getGUIView().getScore().setFont(pixelFont_24);
-        game.getAlert().getScoreLabel().setFont(pixelFont_24);
+
         game.getModel().getTimer().getView().setFont(pixelFont_24);
 
     }
@@ -345,5 +345,57 @@ public class Frame extends JFrame implements ActionListener, WindowListener {
         float dB = (float) (Math.log(gain) / Math.log(10.0) * 20.0);
         gainControl.setValue(dB);
     }
+
+    public InsertName getInsertname() {
+        return insertname;
+    }
+
+    public LeaderBoardController getBoard() {
+        return board;
+    }
+
+    public int getGamemode() {
+        return gamemode;
+    }
+    public void alert(String text){
+        Alert alert = new Alert();
+        alert.getScoreLabel().setText(text);
+        alert.setVisible(true);
+        alert.setLocationRelativeTo(this);
+        alert.getRestartBtn().addActionListener(this);
+        alert.getExtiBtn().addActionListener(this);
+        alert.getScoreLabel().setFont(pixelFont_24);
+    }
+     public void playCardSound(){
+         new Thread() {
+                @Override
+                public void run() {
+                    try {
+                        clicksound = new Sound(getClass().getResource("/sounds/card.wav"));
+                    } catch (Exception e) {
+                    }
+                    InputStream stream
+                            = new ByteArrayInputStream(clicksound.getSamples());
+                    clicksound.play(stream);
+                }
+            }.start();
+    }
+    public void playWrongSound(){
+         new Thread() {
+                @Override
+                public void run() {
+                   
+                    try {
+                       Thread.sleep(300);
+                        clicksound = new Sound(getClass().getResource("/sounds/wrong.wav"));
+                    } catch (Exception e) {
+                    }
+                    InputStream stream
+                            = new ByteArrayInputStream(clicksound.getSamples());
+                    clicksound.play(stream);
+                }
+            }.start();
+    }
+    
    
 }

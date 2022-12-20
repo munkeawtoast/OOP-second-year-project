@@ -12,6 +12,7 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JFrame;
+import memory_game.GameFrame;
 import memory_game.Panel.Alert;
 import memory_game.Sound.Sound;
 import memory_game.game.elements.card.CardController;
@@ -20,13 +21,13 @@ import memory_game.game.elements.timer.TimerController;
 
 
 public class GameController implements WindowListener, ActionListener {
-    private Alert alert;
-    private JFrame frame;
+    
+    private GameFrame frame;
     private Game model;
     private List<IGameView> views;
     private boolean cardpair;
  
-    Sound clicksound;
+    
     int winnum;
     
     /**
@@ -34,9 +35,7 @@ public class GameController implements WindowListener, ActionListener {
      * @param difficulty difficulty: Game.EASY, game.MEDIUM, game.HARD 
      * @param frame window frame for setting window operation
      */
-    public GameController(String playerName, int difficulty, JFrame frame) {
-        alert = new Alert();
-        alert.setVisible(false);
+    public GameController(String playerName, int difficulty, GameFrame frame) {
         this.frame = frame;
         frame.addWindowListener(this);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -46,6 +45,7 @@ public class GameController implements WindowListener, ActionListener {
         views.add(new GameGUIView(this));
         this.initialize();
         getGUIView().getTimepanel().add(model.getTimer().getView());
+        
         
         
        
@@ -114,7 +114,7 @@ public class GameController implements WindowListener, ActionListener {
         if (e.getSource() instanceof CardView cardView) {
             
                  
-            playClickSound();
+            frame.playCardSound();
             CardController cardController = cardView.getController();
             
             if (cardController == model.getPredict1()) { return; }
@@ -138,7 +138,7 @@ public class GameController implements WindowListener, ActionListener {
                     currentAnim = CardController.ANIM_BAD;
                     model.setScore(model.getScore() - model.getScoreDecrease());
                     getGUIView().getScore().setText(model.getScore()+"");
-                    playWrongSound();
+                    frame.playWrongSound();
                     System.out.println("Score - " + model.getScoreDecrease());
                     cardpair = false;
                 }
@@ -152,36 +152,7 @@ public class GameController implements WindowListener, ActionListener {
             }
         }
     }
-    public void playClickSound(){
-         new Thread() {
-                @Override
-                public void run() {
-                    try {
-                        clicksound = new Sound(getClass().getResource("/sounds/card.wav"));
-                    } catch (Exception e) {
-                    }
-                    InputStream stream
-                            = new ByteArrayInputStream(clicksound.getSamples());
-                    clicksound.play(stream);
-                }
-            }.start();
-    }
-    public void playWrongSound(){
-         new Thread() {
-                @Override
-                public void run() {
-                   
-                    try {
-                       Thread.sleep(300);
-                        clicksound = new Sound(getClass().getResource("/sounds/wrong.wav"));
-                    } catch (Exception e) {
-                    }
-                    InputStream stream
-                            = new ByteArrayInputStream(clicksound.getSamples());
-                    clicksound.play(stream);
-                }
-            }.start();
-    }
+   
     public void winCheck(){
         if(cardpair){
             winnum++;
@@ -190,19 +161,20 @@ public class GameController implements WindowListener, ActionListener {
           
             model.getTimer().stopTime();
               String time = model.getTimer().getView().getText();
-            alert.setVisible(true);
-            alert.setLocationRelativeTo(getGUIView());
-            alert.getScoreLabel().setText("You Win!! Score:" + model.getScore());
+              if(model.getScore() > 0 ){
+              frame.getBoard().getModel().addToList(model);
             
+              frame.getBoard().updateBoard(frame.getBoard().getModel().getList());
+              frame.alert("You Win!!   Score: " + model.getScore() );
+              }
+              else{
+                  frame.alert("You Lose T^T    Try Again?");
+              }
             
         }
         
       
     }
-    public Alert getAlert(){
-        
-        return this.alert;
-        
-    }
+   
     }
     
