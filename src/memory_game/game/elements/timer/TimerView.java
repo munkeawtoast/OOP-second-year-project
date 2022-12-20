@@ -15,6 +15,7 @@ import javax.swing.JPanel;
  */
 public class TimerView extends JPanel{
     List<TimerDigit> timerDigits; 
+    String currentTime = "00:00";
     public TimerView() {
     super(new GridLayout(1, 5));
         timerDigits = new ArrayList<>();
@@ -35,7 +36,12 @@ public class TimerView extends JPanel{
         }
     }
     
+    public String getText() {
+        return currentTime;
+    }
+    
     public void setTime(String formattedTime) {
+        currentTime = formattedTIme;
         for (int i = 0; i < 5; i++) {
             char c = formattedTime.charAt(i);
             timerDigits.get(i).setTo(c);
