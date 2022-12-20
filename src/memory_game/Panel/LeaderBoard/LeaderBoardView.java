@@ -21,6 +21,10 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.table.TableCellRenderer;
+import javax.swing.table.TableColumn;
+import javax.swing.table.TableColumnModel;
+import memory_game.Panel.customElement.JComponentTableCellRenderer;
 
 import memory_game.Panel.customElement.ScrollBarCustom;
 
@@ -63,19 +67,29 @@ public class LeaderBoardView extends javax.swing.JPanel {
 // Get the default renderer for the cells in the table
         DefaultTableCellRenderer renderer = (DefaultTableCellRenderer) table.getDefaultRenderer(Object.class);
 
-// Set the horizontal alignment to be centered
+
         renderer.setHorizontalAlignment(JLabel.CENTER);
         DefaultTableCellRenderer renderer2 = (DefaultTableCellRenderer) table.getTableHeader().getDefaultRenderer();
 
-// Set the horizontal alignment to be centered
+
         renderer2.setHorizontalAlignment(JLabel.CENTER);
         renderer2.setBackground(new Color(0, 0, 0, 0));
         renderer2.setBorder(new EmptyBorder(0, 0, 0, 0));
 
-// Set the renderer to be used for all header cells
         table.getTableHeader().setDefaultRenderer(renderer2);
         table.setForeground(new Color(190, 190, 190));
 
+        TableCellRenderer renderer3 = new JComponentTableCellRenderer();
+        TableColumnModel columnModel = table.getColumnModel();
+        TableColumn column0 = columnModel.getColumn(0);
+        TableColumn column1 = columnModel.getColumn(1);
+        TableColumn column2 = columnModel.getColumn(2);
+        TableColumn column3 = columnModel.getColumn(3);
+        column0.setHeaderRenderer(renderer3);
+        column2.setHeaderRenderer(renderer3);
+        column1.setHeaderRenderer(renderer3);
+        column3.setHeaderRenderer(renderer3);
+      
         returnBtn.setBackground(new Color(0, 0, 0, 0));
 
     }
