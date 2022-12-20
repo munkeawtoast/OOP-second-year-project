@@ -17,31 +17,28 @@ public class TimerView extends JPanel{
     List<TimerDigit> timerDigits; 
     String currentTime = "00:00";
     public TimerView() {
-    super(new GridLayout(1, 5));
+        super(new GridLayout(1, 5));
         timerDigits = new ArrayList<>();
         for (int i = 0; i < 5; i++) {
+            TimerDigit timerDigit;
             if (i == 2) {
-                timerDigits.add(new TimerDigit(TimerDigit.TIME_SEPARATOR));
+                timerDigit = new TimerDigit(TimerDigit.TIME_SEPARATOR);
             } else { 
-                timerDigits.add(new TimerDigit(TimerDigit.NUM));
+                timerDigit = new TimerDigit(TimerDigit.NUM);
             }
+            timerDigits.add(timerDigit);
+            this.add(timerDigit);
         }
+        
     }
     
-    
-    // must intialize after adding to frame
-    public void initialize() {
-        for (TimerDigit timerDigit : timerDigits) {
-            timerDigit.initialize();
-        }
-    }
     
     public String getText() {
         return currentTime;
     }
     
     public void setTime(String formattedTime) {
-        currentTime = formattedTIme;
+        currentTime = formattedTime;
         for (int i = 0; i < 5; i++) {
             char c = formattedTime.charAt(i);
             timerDigits.get(i).setTo(c);

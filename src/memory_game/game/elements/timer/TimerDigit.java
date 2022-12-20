@@ -4,9 +4,15 @@
  */
 package memory_game.game.elements.timer;
 
+import java.awt.Color;
 import java.awt.GridLayout;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
+import javax.swing.border.BevelBorder;
 
 /**
  *
@@ -15,7 +21,6 @@ import javax.swing.JPanel;
 public class TimerDigit extends JPanel {
     public static final int NUM = 0;
     public static final int TIME_SEPARATOR = 1;
-    private static final int PIXEL_SIZE = 30;
     private char currentChar;
     private int[] currentNumPixels;
     private List<TimerPixel> timerPixels;
@@ -25,6 +30,7 @@ public class TimerDigit extends JPanel {
      */
     public TimerDigit(int type) {
         super(new GridLayout(4, 5));
+        timerPixels = new ArrayList<>();
         for (int i = 0; i < 20; i++) {
             TimerPixel newPixel;
             switch (type) {
@@ -41,13 +47,22 @@ public class TimerDigit extends JPanel {
             }
             timerPixels.add(newPixel);
             this.add(newPixel);
+            new Thread(() -> {
+            while (true) {
+                System.out.println(this.getLocation());
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(TimerPixel.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }).start();
+            this.setBackground(Color.red);
         }
-    }
-    
-    
-    public void initialize() {
         
     }
+    
+    
     
     /**
      * 0-9 = 0-9

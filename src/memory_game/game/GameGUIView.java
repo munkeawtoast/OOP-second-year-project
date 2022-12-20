@@ -11,6 +11,7 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 import memory_game.game.elements.card.CardController;
 import memory_game.game.elements.card.CardView;
 import memory_game.game.elements.timer.TimerView;
@@ -106,7 +107,6 @@ public class GameGUIView extends JPanel implements IGameView {
          
          add(Headpanel,BorderLayout.NORTH);
 //         add(gamePanel,BorderLayout.CENTER);
-       
 
     }
 
@@ -138,7 +138,6 @@ public class GameGUIView extends JPanel implements IGameView {
         
         Dimension grid = new Dimension();
         
-        timer.initialize();
         cardGrid = new JPanel();
         switch (game.getDifficulty()) {
             case Game.TEST -> {
