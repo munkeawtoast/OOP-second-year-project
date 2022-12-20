@@ -7,23 +7,21 @@ import java.awt.Graphics;
 import java.awt.Point;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JPanel;
-import javax.swing.SwingUtilities;
+import javax.swing.JComponent;
 
 
 // normal text doesn't work ;-;
-public class TimerPixel extends JPanel{
+public class TimerPixel extends JComponent{
     private boolean isOn;
-    private Point intialPosition;
+    private Point intialPosition = new Point(-1, -1);
 
     public TimerPixel(boolean isOn) {
-//        toggle(isOn);
-        this.isOn = isOn;
-        setSize(new Dimension(4, 4));
-        
-        SwingUtilities.invokeLater(() -> {
-            setInitialPosition(this.getLocation());
-        });
+        toggle(isOn);
+        setPreferredSize(new Dimension(4, 4));
+    }
+    
+    public void initialize() {
+        setInitialPosition(this.getLocation());
     }
     
     @Override
@@ -40,7 +38,9 @@ public class TimerPixel extends JPanel{
     public void toggle(boolean value) {
         isOn = value;
         if (isOn) {
-            this.setLocation(intialPosition);
+            if (!this.intialPosition.equals(new Point(-1, -1))) {
+                this.setLocation(intialPosition);
+            }
         } else {
             this.setLocation(999999999, 999999999);
         }

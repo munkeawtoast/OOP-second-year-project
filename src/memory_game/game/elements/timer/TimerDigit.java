@@ -22,47 +22,40 @@ public class TimerDigit extends JPanel {
     public static final int NUM = 0;
     public static final int TIME_SEPARATOR = 1;
     private char currentChar;
-    private int[] currentNumPixels;
     private List<TimerPixel> timerPixels;
     
     /**
      * @param type 0 = NUM, 1 = TIME_SEPARATOR
      */
     public TimerDigit(int type) {
-        super(new GridLayout(4, 5));
+        super(new GridLayout(5, 4));
         timerPixels = new ArrayList<>();
         for (int i = 0; i < 20; i++) {
             TimerPixel newPixel;
             switch (type) {
                 case NUM -> {
                     currentChar = '0';
-                    newPixel = new TimerPixel(getCurrentNumDigits('0')[i]);
                 }
                 case TIME_SEPARATOR -> {
                     currentChar = ':';
-                    newPixel = new TimerPixel(false);
                 }
                 default -> throw new AssertionError();
 
             }
+            newPixel = new TimerPixel(getCurrentNumDigits(currentChar)[i]);
             timerPixels.add(newPixel);
             this.add(newPixel);
-            new Thread(() -> {
-            while (true) {
-                System.out.println(this.getLocation());
-                try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException ex) {
-                    Logger.getLogger(TimerPixel.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        }).start();
-            this.setBackground(Color.red);
         }
+        setOpaque(false);
+        setBackground(new Color(0, 0, 0, 0));
         
     }
     
-    
+    public void initialize() {
+        for (TimerPixel timerPixel : timerPixels) {
+            timerPixel.initialize();
+        }
+    }
     
     /**
      * 0-9 = 0-9
@@ -86,7 +79,7 @@ public class TimerDigit extends JPanel {
         },
         {
             true, true, true, false,// 2
-            true, false, true, false,
+            false, false, true, false,
             true, true, true, false,
             true, false, false, false,
             true, true, true, false

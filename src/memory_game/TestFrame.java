@@ -20,7 +20,9 @@ public class TestFrame extends JFrame {
         setContentPane(new GameController("A", 0, a).getGUIView());
         a.stopMusic();
         a.dispose();
+        pack();
         setVisible(true);
+        
         
     }
     

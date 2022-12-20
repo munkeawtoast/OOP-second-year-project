@@ -14,6 +14,7 @@ public class TimerController implements Serializable{
             view.setTime(model.getFormattedTime());
         });
     }
+    
     public TimerView getView(){
         return this.view;
     }

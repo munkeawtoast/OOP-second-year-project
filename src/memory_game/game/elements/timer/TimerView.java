@@ -4,6 +4,7 @@
  */
 package memory_game.game.elements.timer;
 
+import java.awt.Color;
 import java.awt.GridLayout;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,9 +30,16 @@ public class TimerView extends JPanel{
             timerDigits.add(timerDigit);
             this.add(timerDigit);
         }
+        setOpaque(false);
+        setBackground(new Color(0, 0, 0, 0));
         
     }
     
+    public void initialize() {
+        for (TimerDigit timerDigit : timerDigits) {
+            timerDigit.initialize();
+        }
+    }
     
     public String getText() {
         return currentTime;

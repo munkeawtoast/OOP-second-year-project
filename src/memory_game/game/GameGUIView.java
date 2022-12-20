@@ -169,6 +169,8 @@ cardGrid.setIgnoreRepaint(true);
         Dimension newSize = cardGrid.getPreferredSize();
         newSize.height += 60;
         newSize.width += 90;
+        
+        timer.initialize();
 //        cardGrid.setPreferredSize(newSize);
 //        cardGrid.setBackground(new Color(0,0,0,0));
     }
