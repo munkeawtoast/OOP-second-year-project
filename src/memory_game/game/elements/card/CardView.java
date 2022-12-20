@@ -5,6 +5,7 @@
 package memory_game.game.elements.card;
 
 
+import java.awt.Cursor;
 import java.awt.Dimension;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -14,7 +15,7 @@ import javax.swing.border.Border;
 import memory_game.game.util.*;
 
 public class CardView extends JButton {
-    public static final Dimension SMALL = new Dimension(70, 93);
+    public static final Dimension SMALL = new Dimension(80, 106);
     public static final Dimension MEDIUM = new Dimension(80, 106);
     public static final Dimension LARGE = new Dimension(90, 120);
     
@@ -30,6 +31,8 @@ public class CardView extends JButton {
         Border emptyBorder = BorderFactory.createEmptyBorder();
         setBorder(emptyBorder);
         setContentAreaFilled(false);
+        setCursor(new Cursor(Cursor.HAND_CURSOR));
+                
 //        setPreferredSize(new Dimension(200, 300));
         this.controller = cardController;
         this.model = cardController.getModel();

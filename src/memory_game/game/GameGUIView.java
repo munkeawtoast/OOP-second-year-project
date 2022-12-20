@@ -14,6 +14,7 @@ import javax.swing.JPanel;
 import memory_game.game.elements.card.CardController;
 import memory_game.game.elements.card.CardView;
 import memory_game.game.elements.timer.TimerView;
+import org.netbeans.lib.awtextra.AbsoluteLayout;
 
 
 public class GameGUIView extends JPanel implements IGameView {
@@ -38,6 +39,7 @@ public class GameGUIView extends JPanel implements IGameView {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel score;
+  
     
     public GameGUIView(GameController gameController) {
         
@@ -74,16 +76,16 @@ public class GameGUIView extends JPanel implements IGameView {
         Headpanel.setRequestFocusEnabled(false);
         Headpanel.setLayout(new java.awt.BorderLayout());
 
-        Scorepanel.setBackground(new java.awt.Color(204, 255, 153));
+
         Scorepanel.setOpaque(false);
-        Scorepanel.setPreferredSize(new java.awt.Dimension(300, 35));
+        Scorepanel.setPreferredSize(new java.awt.Dimension(300, 30));
         Scorepanel.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 0));
         
-        JLabel.setFont(new java.awt.Font("MV Boli", 0, 36)); // NOI18N
+        JLabel.setFont(new java.awt.Font("MV Boli", 0, 30)); // NOI18N
         JLabel.setText("Score:");
         Scorepanel.add(JLabel);
 
-        score.setFont(new java.awt.Font("MV Boli", 0, 36)); // NOI18N
+        score.setFont(new java.awt.Font("MV Boli", 0, 30)); // NOI18N
         score.setText("0");
         Scorepanel.add(score);
         
@@ -160,13 +162,14 @@ public class GameGUIView extends JPanel implements IGameView {
         cardGrid.setOpaque(false);
 //        gamePanel.add(cardGrid,BorderLayout.CENTER);
 add(cardGrid,BorderLayout.CENTER);
+cardGrid.setIgnoreRepaint(true);
         
         // padding
         Dimension newSize = cardGrid.getPreferredSize();
         newSize.height += 60;
         newSize.width += 90;
-        cardGrid.setPreferredSize(newSize);
-        cardGrid.setBackground(new Color(0,0,0,0));
+//        cardGrid.setPreferredSize(newSize);
+//        cardGrid.setBackground(new Color(0,0,0,0));
     }
     
     @Override

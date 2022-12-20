@@ -208,14 +208,15 @@ public class GameFrame extends JFrame implements ActionListener, WindowListener 
     public void loadGame(String name, int difficulty) {
         game = new GameController(name, difficulty, this);
 
-        setContentPane(game.getGUIView());
-        pack();
-       
-        game.getGUIView().getJLabel().setFont(pixelFont_24);
+             game.getGUIView().getJLabel().setFont(pixelFont_24);
         game.getGUIView().getJLabel2().setFont(pixelFont_24);
         game.getGUIView().getScore().setFont(pixelFont_24);
 
         game.getModel().getTimer().getView().setFont(pixelFont_24);
+        setContentPane(game.getGUIView());
+        pack();
+       
+  
 
     }
 

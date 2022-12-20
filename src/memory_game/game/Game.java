@@ -40,7 +40,7 @@ public class Game implements Comparable<Game>, Serializable{
     private boolean animationIsRunning;
     private int scoreIncrease;
     private int scoreDecrease;
-    
+    private Dimension cardsize;
  
     private int winnum;
 
@@ -62,17 +62,20 @@ public class Game implements Comparable<Game>, Serializable{
             case EASY -> {
                 this.scoreIncrease = EASY_SCORE_INCREASE;
                 this.winnum = EASY_WIN_NUM;
+                cardsize = CardView.LARGE;
                 count = 3*4/2;
                 
             }
             case MEDIUM -> {
                 this.scoreIncrease = MEDIUM_SCORE_INCREASE;
                 this.winnum = MEDIUM_WIN_NUM;
+                cardsize = CardView.MEDIUM;
                 count = 4*4/2;
             }
             case HARD -> {
                 this.scoreIncrease = HARD_SCORE_INCREASE;
                 this.winnum = HARD_WIN_NUM;
+                cardsize = CardView.SMALL;
                 count = 6*4/2;
             }
             default -> {
@@ -97,8 +100,8 @@ public class Game implements Comparable<Game>, Serializable{
             System.out.println(i);
             frontImage = new ImageIcon(getClass().getResource("/images/card"+i+".jpg"));
             backImage = new ImageIcon(getClass().getResource("/images/backcard.png"));
-            CardController cardController1 = new CardController("test" + i + "0", CardView.MEDIUM, frontImage, backImage);
-            CardController cardController2 = new CardController("test" + i + "0", CardView.MEDIUM, frontImage, backImage);
+            CardController cardController1 = new CardController("card" + i + "0", cardsize, frontImage, backImage);
+            CardController cardController2 = new CardController("card" + i + "0", cardsize, frontImage, backImage);
             cardController1.setPair(cardController2.getModel());
             cardController2.setPair(cardController1.getModel());
             cardList.add(cardController1);

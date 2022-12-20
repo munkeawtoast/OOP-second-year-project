@@ -43,8 +43,9 @@ public class GameController implements WindowListener, ActionListener {
         views = new ArrayList<>();
         views.add(new GameLoggerView(this));
         views.add(new GameGUIView(this));
+        
         this.initialize();
-        getGUIView().getTimepanel().add(model.getTimer().getView());
+     
         
         
         
@@ -53,7 +54,18 @@ public class GameController implements WindowListener, ActionListener {
     }
     
     private synchronized void initialize() {
-
+        try{new Thread(){
+            @Override
+            public void run(){
+                  getGUIView().getTimepanel().add(model.getTimer().getView());
+            }
+            
+        }.start();}
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        
+      
         model.initialize();
         
        
@@ -112,7 +124,7 @@ public class GameController implements WindowListener, ActionListener {
     public void actionPerformed(ActionEvent e) {
         
         if (e.getSource() instanceof CardView cardView) {
-            
+                
                  
             frame.playCardSound();
             CardController cardController = cardView.getController();
@@ -147,6 +159,7 @@ public class GameController implements WindowListener, ActionListener {
                 model.getPredict2().runAnimation(currentAnim);
                 model.setPredict1(null);
                 model.setPredict2(null);
+               
                 winCheck();
                 System.out.println("Player Name: " + model.getPlayerName()+ "Score: "+ model.getScore());
                 
@@ -161,7 +174,7 @@ public class GameController implements WindowListener, ActionListener {
         if(winnum == model.getWinnum()){
           
             model.getTimer().stopTime();
-              String time = model.getTimer().getView().getText();
+              
               if(model.getScore() > 0 ){
               frame.getBoard().getModel().addToList(model);
             
