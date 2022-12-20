@@ -396,6 +396,21 @@ public class GameFrame extends JFrame implements ActionListener, WindowListener 
                 }
             }.start();
     }
-    
+     public void playCorrectSound(){
+         new Thread() {
+                @Override
+                public void run() {
+                   
+                    try {
+                       Thread.sleep(300);
+                        clicksound = new Sound(getClass().getResource("/sounds/correct.wav"));
+                    } catch (Exception e) {
+                    }
+                    InputStream stream
+                            = new ByteArrayInputStream(clicksound.getSamples());
+                    clicksound.play(stream);
+                }
+            }.start();
+    }
    
 }

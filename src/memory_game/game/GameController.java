@@ -132,6 +132,7 @@ public class GameController implements WindowListener, ActionListener {
                     model.setScore(model.getScore()+model.getScoreIncrease());
                     System.out.println("Score + " + model.getScoreIncrease());
                     getGUIView().getScore().setText(model.getScore()+"");
+                    frame.playCorrectSound();
                     cardpair = true;
 //                   
                 } else {

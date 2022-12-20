@@ -22,8 +22,8 @@ public class Game implements Comparable<Game>, Serializable{
     public static final int MEDIUM = 1;
     public static final int HARD = 2;
     public static final int EASY_SCORE_INCREASE = 300;
-    public static final int MEDIUM_SCORE_INCREASE = 400;
-    public static final int HARD_SCORE_INCREASE = 500;
+    public static final int MEDIUM_SCORE_INCREASE = 300;
+    public static final int HARD_SCORE_INCREASE = 300;
     public static final int SCORE_DECREASE = 100;
     private static final int  EASY_WIN_NUM = 6;
     private static final int  MEDIUM_WIN_NUM = 8;
