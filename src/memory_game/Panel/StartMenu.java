@@ -104,6 +104,8 @@ public class StartMenu extends javax.swing.JPanel {
 
         easybtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/easybtn.png"))); // NOI18N
         easybtn.setActionCommand("Easy");
+        easybtn.setBorder(null);
+        easybtn.setBorderPainted(false);
         easybtn.setContentAreaFilled(false);
         easybtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         easybtn.setPreferredSize(new java.awt.Dimension(116, 41));
@@ -118,6 +120,8 @@ public class StartMenu extends javax.swing.JPanel {
 
         normalbtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/normalbtn.png"))); // NOI18N
         normalbtn.setActionCommand("Normal");
+        normalbtn.setBorder(null);
+        normalbtn.setBorderPainted(false);
         normalbtn.setContentAreaFilled(false);
         normalbtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         normalbtn.setPreferredSize(new java.awt.Dimension(116, 41));
@@ -132,6 +136,8 @@ public class StartMenu extends javax.swing.JPanel {
 
         hardbtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/hardbtn.png"))); // NOI18N
         hardbtn.setActionCommand("Hard");
+        hardbtn.setBorder(null);
+        hardbtn.setBorderPainted(false);
         hardbtn.setContentAreaFilled(false);
         hardbtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         hardbtn.setPreferredSize(new java.awt.Dimension(116, 41));

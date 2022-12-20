@@ -14,7 +14,6 @@ import java.awt.GraphicsEnvironment;
 import memory_game.Panel.StartMenu;
 import memory_game.Panel.Menu;
 
-
 import java.awt.event.*;
 import java.io.ByteArrayInputStream;
 import java.io.File;
@@ -53,7 +52,7 @@ public class GameFrame extends JFrame implements ActionListener, WindowListener 
     InsertName insertname = new InsertName();
     GameController game;
     LeaderBoardController board = new LeaderBoardController();
-    Sound clicksound;
+    Sound sound;
     private int gamemode;
     Font pixelFont_30;
     Font pixelFont_24;
@@ -64,19 +63,17 @@ public class GameFrame extends JFrame implements ActionListener, WindowListener 
 
     public GameFrame() throws FontFormatException {
         //add new font 
-        	try{
+        try {
             // load a custom font in your project folder
-			pixelFont_30 = Font.createFont(Font.TRUETYPE_FONT, new File("PixelFont.ttf")).deriveFont(30f);
-                        pixelFont_24 = Font.createFont(Font.TRUETYPE_FONT, new File("PixelFont.ttf")).deriveFont(24f);	
-                            pixelFont_44 = Font.createFont(Font.TRUETYPE_FONT, new File("PixelFont.ttf")).deriveFont(44f);	
-			GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-			ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File("PixelFont.ttf")));			
-		}
-		catch(IOException | FontFormatException e){
-			
-		}
-        
-        
+            pixelFont_30 = Font.createFont(Font.TRUETYPE_FONT, new File("PixelFont.ttf")).deriveFont(30f);
+            pixelFont_24 = Font.createFont(Font.TRUETYPE_FONT, new File("PixelFont.ttf")).deriveFont(24f);
+            pixelFont_44 = Font.createFont(Font.TRUETYPE_FONT, new File("PixelFont.ttf")).deriveFont(44f);
+            GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+            ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File("PixelFont.ttf")));
+        } catch (IOException | FontFormatException e) {
+
+        }
+
         playBackgroundMusic();
         setTitle("Pokemon Matching Card Game");
 
@@ -87,14 +84,14 @@ public class GameFrame extends JFrame implements ActionListener, WindowListener 
         setContentPane(menu);
         setSize(800, 600);
         this.setLocationRelativeTo(null);
-       
+
         insertname.getNameTF().setFont(pixelFont_24);
         insertname.getJLabel().setFont(pixelFont_44);
         board.getView().getTable().setFont(pixelFont_24);
         board.getView().getTable().getTableHeader().setFont(pixelFont_30);
         board.getView().getHeaderText().setFont(pixelFont_44);
         startmenu.getHeaderLabel().setFont(pixelFont_44);
-         
+
         menu.getMutebtn().addActionListener(this);
         board.getView().getReturnBtn().addActionListener(this);
         menu.getUnmutebtn().addActionListener(this);
@@ -110,19 +107,16 @@ public class GameFrame extends JFrame implements ActionListener, WindowListener 
 
     }
 
-    
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equals("Exit")) {
 
 //           exit byn click
-
-            
             playClickSound();
             ArrayList<Game> games = board.getModel().getList();
             try ( FileOutputStream fos = new FileOutputStream("LeaderBoard.dat");  ObjectOutputStream oos = new ObjectOutputStream(fos)) {
                 oos.writeObject(board.getModel().getList());
-                
+
                 System.out.println("save successfull");
             } catch (IOException ie) {
                 ie.printStackTrace();
@@ -138,6 +132,7 @@ public class GameFrame extends JFrame implements ActionListener, WindowListener 
         } else if (e.getActionCommand().equals("Easy")) {
 
 //           Easy btn click
+            playStartSound();
             gamemode = Game.EASY;
             loadGame(insertname.getNameTF().getText(), gamemode);
             System.out.println("eie");
@@ -150,14 +145,14 @@ public class GameFrame extends JFrame implements ActionListener, WindowListener 
 
         } else if (e.getActionCommand().equals("Normal")) {
             gamemode = Game.MEDIUM;
-            playClickSound();
+            playStartSound();
             loadGame(insertname.getNameTF().getText(), gamemode);
 //           normal btn click
 
         } else if (e.getActionCommand().equals("Hard")) {
             gamemode = Game.HARD;
             //           hard btn click
-            playClickSound();
+            playStartSound();
             loadGame(insertname.getNameTF().getText(), gamemode);
 
         } else if (e.getActionCommand().equals("Next")) {
@@ -183,12 +178,12 @@ public class GameFrame extends JFrame implements ActionListener, WindowListener 
         } else if (e.getActionCommand().equals("Restart")) {
             System.out.println("restart");
             playClickSound();
-           
+
             remove(game.getGUIView());
             loadGame(insertname.getNameTF().getText(), gamemode);
 
         } else if (e.getActionCommand().equals("Tomenu")) {
-           playClickSound();
+            playClickSound();
             setContentPane(menu);
             remove(game.getGUIView());
 
@@ -197,8 +192,7 @@ public class GameFrame extends JFrame implements ActionListener, WindowListener 
         } else if (e.getActionCommand().equals("mute")) {
             System.out.println("Mute");
             muteMusic();
-        }
-         else if (e.getActionCommand().equals("unmute")) {
+        } else if (e.getActionCommand().equals("unmute")) {
             unMuteMusic();
             System.out.println("Unmute");
         }
@@ -208,21 +202,19 @@ public class GameFrame extends JFrame implements ActionListener, WindowListener 
     public void loadGame(String name, int difficulty) {
         game = new GameController(name, difficulty, this);
 
-             game.getGUIView().getJLabel().setFont(pixelFont_24);
+        game.getGUIView().getJLabel().setFont(pixelFont_24);
         game.getGUIView().getJLabel2().setFont(pixelFont_24);
         game.getGUIView().getScore().setFont(pixelFont_24);
 
         game.getModel().getTimer().getView().setFont(pixelFont_24);
         setContentPane(game.getGUIView());
         pack();
-       
-  
 
     }
 
     @Override
     public void windowOpened(WindowEvent e) {
-       
+
         File f = new File("LeaderBoard.dat");
         if (f.exists()) {
             System.out.println("Board data found");
@@ -281,12 +273,12 @@ public class GameFrame extends JFrame implements ActionListener, WindowListener 
             @Override
             public void run() {
                 try {
-                    clicksound = new Sound(getClass().getResource("/sounds/click.wav"));
+                    sound = new Sound(getClass().getResource("/sounds/click.wav"));
                 } catch (Exception e) {
                 }
                 InputStream stream
-                        = new ByteArrayInputStream(clicksound.getSamples());
-                clicksound.play(stream);
+                        = new ByteArrayInputStream(sound.getSamples());
+                sound.play(stream);
             }
         }.start();//clicksound
     }
@@ -296,12 +288,12 @@ public class GameFrame extends JFrame implements ActionListener, WindowListener 
             @Override
             public void run() {
                 try {
-                    clicksound = new Sound(getClass().getResource("/sounds/backclick.wav"));
+                    sound = new Sound(getClass().getResource("/sounds/backclick.wav"));
                 } catch (Exception e) {
                 }
                 InputStream stream
-                        = new ByteArrayInputStream(clicksound.getSamples());
-                clicksound.play(stream);
+                        = new ByteArrayInputStream(sound.getSamples());
+                sound.play(stream);
             }
         }.start();//clicksound
     }
@@ -317,9 +309,12 @@ public class GameFrame extends JFrame implements ActionListener, WindowListener 
 
             // Open the audio file and start playing it
             clip.open(audioInputStream);
-            clip.loop(Clip.LOOP_CONTINUOUSLY);
 
-         
+            FloatControl gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+            float gain = 0.2f;
+            float dB = (float) (Math.log(gain) / Math.log(10.0) * 20.0);
+            gainControl.setValue(dB);
+            clip.loop(Clip.LOOP_CONTINUOUSLY);
 
         } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
             e.printStackTrace();
@@ -340,9 +335,10 @@ public class GameFrame extends JFrame implements ActionListener, WindowListener 
         float dB = (float) (Math.log(gain) / Math.log(10.0) * 20.0);
         gainControl.setValue(dB);
     }
+
     public void unMuteMusic() {
         FloatControl gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
-        float gain = 1f;
+        float gain = 0.2f;
         float dB = (float) (Math.log(gain) / Math.log(10.0) * 20.0);
         gainControl.setValue(dB);
     }
@@ -358,7 +354,8 @@ public class GameFrame extends JFrame implements ActionListener, WindowListener 
     public int getGamemode() {
         return gamemode;
     }
-    public void alert(String text){
+
+    public void alert(String text) {
         Alert alert = new Alert();
         alert.getScoreLabel().setText(text);
         alert.setVisible(true);
@@ -367,51 +364,94 @@ public class GameFrame extends JFrame implements ActionListener, WindowListener 
         alert.getExtiBtn().addActionListener(this);
         alert.getScoreLabel().setFont(pixelFont_24);
     }
-     public void playCardSound(){
-         new Thread() {
-                @Override
-                public void run() {
-                    try {
-                        clicksound = new Sound(getClass().getResource("/sounds/card.wav"));
-                    } catch (Exception e) {
-                    }
-                    InputStream stream
-                            = new ByteArrayInputStream(clicksound.getSamples());
-                    clicksound.play(stream);
+
+    public void playCardSound() {
+        new Thread() {
+            @Override
+            public void run() {
+                try {
+                    sound = new Sound(getClass().getResource("/sounds/card.wav"));
+                } catch (Exception e) {
                 }
-            }.start();
+                InputStream stream
+                        = new ByteArrayInputStream(sound.getSamples());
+                sound.play(stream);
+            }
+        }.start();
     }
-    public void playWrongSound(){
-         new Thread() {
-                @Override
-                public void run() {
-                   
-                    try {
-                       Thread.sleep(300);
-                        clicksound = new Sound(getClass().getResource("/sounds/wrong.wav"));
-                    } catch (Exception e) {
-                    }
-                    InputStream stream
-                            = new ByteArrayInputStream(clicksound.getSamples());
-                    clicksound.play(stream);
+
+    public void playWrongSound() {
+        new Thread() {
+            @Override
+            public void run() {
+
+                try {
+                    Thread.sleep(300);
+                    sound = new Sound(getClass().getResource("/sounds/wrong.wav"));
+                } catch (Exception e) {
                 }
-            }.start();
+                InputStream stream
+                        = new ByteArrayInputStream(sound.getSamples());
+                sound.play(stream);
+            }
+        }.start();
     }
-     public void playCorrectSound(){
-         new Thread() {
-                @Override
-                public void run() {
-                   
-                    try {
-                       Thread.sleep(300);
-                        clicksound = new Sound(getClass().getResource("/sounds/correct.wav"));
-                    } catch (Exception e) {
-                    }
-                    InputStream stream
-                            = new ByteArrayInputStream(clicksound.getSamples());
-                    clicksound.play(stream);
+
+    public void playCorrectSound() {
+        new Thread() {
+            @Override
+            public void run() {
+
+                try {
+                    Thread.sleep(300);
+                    sound = new Sound(getClass().getResource("/sounds/correct.wav"));
+                } catch (Exception e) {
                 }
-            }.start();
+                InputStream stream
+                        = new ByteArrayInputStream(sound.getSamples());
+                sound.play(stream);
+            }
+        }.start();
     }
-   
+
+    public void playStartSound() {
+        new Thread() {
+            @Override
+            public void run() {
+
+                try {
+
+                    sound = new Sound(getClass().getResource("/sounds/game-start.wav"));
+                } catch (Exception e) {
+                }
+                InputStream stream
+                        = new ByteArrayInputStream(sound.getSamples());
+                sound.play(stream);
+            }
+        }.start();
+    }
+     public void playWinMusic() {
+        try {
+            // Load the audio file
+            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(this.getClass().getResource("/sounds/winsong.wav"));
+            // Get the audio format and create a new Clip object
+            AudioFormat audioFormat = audioInputStream.getFormat();
+            DataLine.Info info = new DataLine.Info(Clip.class, audioFormat);
+            clip = (Clip) AudioSystem.getLine(info);
+
+            // Open the audio file and start playing it
+            clip.open(audioInputStream);
+
+            FloatControl gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+            float gain = 1f;
+            float dB = (float) (Math.log(gain) / Math.log(10.0) * 20.0);
+            gainControl.setValue(dB);
+            clip.loop(0);
+
+        } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
+            e.printStackTrace();
+        }
+
+    }
+
 }

@@ -177,8 +177,9 @@ public class GameController implements WindowListener, ActionListener {
               
               if(model.getScore() > 0 ){
               frame.getBoard().getModel().addToList(model);
-            
               frame.getBoard().updateBoard(frame.getBoard().getModel().getList());
+              frame.stopMusic();
+              frame.playWinMusic();
               frame.alert("You Win!!   Score: " + model.getScore() );
               }
               else{

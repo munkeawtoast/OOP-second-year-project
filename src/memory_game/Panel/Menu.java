@@ -151,6 +151,8 @@ public class Menu extends javax.swing.JPanel {
 
         exitbtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/exitbutton.png"))); // NOI18N
         exitbtn.setActionCommand("Exit");
+        exitbtn.setBorder(null);
+        exitbtn.setBorderPainted(false);
         exitbtn.setContentAreaFilled(false);
         exitbtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         exitbtn.setPreferredSize(new java.awt.Dimension(163, 41));

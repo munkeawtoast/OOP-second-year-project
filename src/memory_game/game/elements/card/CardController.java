@@ -23,7 +23,7 @@ public class CardController implements Serializable {
     public static final String ANIM_PICK = "animation-pick";    
     private Card model;
     private CardView view;
-    Sound clicksound;
+    
 
     public CardController(String cardName, Dimension size, ImageIcon frontImage, ImageIcon backImage) {
         model = new Card(cardName, size, frontImage, backImage);
@@ -43,7 +43,7 @@ public class CardController implements Serializable {
         model.setPair(card);
     }
     
-    private void triggerGood() {
+    private  void triggerGood() {
         view.setEnabled(false);
         new Thread(() -> {
             view.changeToFront();
@@ -99,7 +99,7 @@ public class CardController implements Serializable {
         }).start();
     }
     
-    private void triggerBad() {
+    private  void triggerBad() {
         view.setEnabled(false);
         new Thread(() -> {
             view.changeToFront();
@@ -147,7 +147,7 @@ public class CardController implements Serializable {
         }).start();
     }
     
-    private void triggerPick() {
+    private  void triggerPick() {
         view.setEnabled(false);
         if (view.getIsAnimating()) { return; }
         view.setIsAnimating(true);
