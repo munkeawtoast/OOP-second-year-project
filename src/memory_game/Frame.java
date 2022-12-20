@@ -58,6 +58,7 @@ public class Frame extends JFrame implements ActionListener, WindowListener {
     Font pixelFont_30;
     Font pixelFont_24;
     Font pixelFont_18;
+    Font pixelFont_44;
     Clip clip;
 
     public Frame() throws FontFormatException {
@@ -66,6 +67,7 @@ public class Frame extends JFrame implements ActionListener, WindowListener {
             // load a custom font in your project folder
 			pixelFont_30 = Font.createFont(Font.TRUETYPE_FONT, new File("PixelFont.ttf")).deriveFont(30f);
                         pixelFont_24 = Font.createFont(Font.TRUETYPE_FONT, new File("PixelFont.ttf")).deriveFont(24f);	
+                            pixelFont_44 = Font.createFont(Font.TRUETYPE_FONT, new File("PixelFont.ttf")).deriveFont(44f);	
 			GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
 			ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File("PixelFont.ttf")));			
 		}
@@ -85,12 +87,12 @@ public class Frame extends JFrame implements ActionListener, WindowListener {
         setSize(800, 600);
         this.setLocationRelativeTo(null);
        
-        insertname.getNameTF().setFont(pixelFont_30);
-        insertname.getJLabel().setFont(pixelFont_30);
+        insertname.getNameTF().setFont(pixelFont_24);
+        insertname.getJLabel().setFont(pixelFont_44);
         board.getView().getTable().setFont(pixelFont_24);
         board.getView().getTable().getTableHeader().setFont(pixelFont_30);
-        board.getView().getHeaderText().setFont(pixelFont_30);
-        
+        board.getView().getHeaderText().setFont(pixelFont_44);
+        startmenu.getHeaderLabel().setFont(pixelFont_44);
          
         menu.getMutebtn().addActionListener(this);
         board.getView().getReturnBtn().addActionListener(this);
@@ -105,17 +107,6 @@ public class Frame extends JFrame implements ActionListener, WindowListener {
         startmenu.getHardBtn().addActionListener(this);
         startmenu.getReturnBtn().addActionListener(this);
 
-//        TEST BOARD FUNCTION
-//        ArrayList<Game> players = new ArrayList<>();
-//        for (int i = 0; i < 5; i++) {
-//            players.add(new Game("game", 2));
-//            players.get(i).setScore(i + 10);
-//        }
-//        board.updateBoard(players);
-//            Game test = new Game("EIEIE", 1);
-//            test.setScore(300);
-//           board.getModel().addList(test);
-//           board.updateBoard(board.getModel().getList());
     }
 
     
@@ -230,6 +221,7 @@ public class Frame extends JFrame implements ActionListener, WindowListener {
 
     @Override
     public void windowOpened(WindowEvent e) {
+       
         File f = new File("LeaderBoard.dat");
         if (f.exists()) {
             System.out.println("Board data found");

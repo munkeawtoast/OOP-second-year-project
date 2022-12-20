@@ -6,6 +6,7 @@ package memory_game.Panel;
 
 import java.awt.Color;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 
 /**
  *
@@ -33,7 +34,7 @@ public class StartMenu extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
+        HeaderLabel = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
@@ -65,9 +66,9 @@ public class StartMenu extends javax.swing.JPanel {
         jPanel3.setBackground(new java.awt.Color(255, 179, 107));
         jPanel3.setOpaque(false);
 
-        jLabel2.setFont(new java.awt.Font("Helvetica Neue", 0, 48)); // NOI18N
-        jLabel2.setText("Choose Difficulty");
-        jPanel3.add(jLabel2);
+        HeaderLabel.setFont(new java.awt.Font("Helvetica Neue", 0, 48)); // NOI18N
+        HeaderLabel.setText("Choose Difficulty");
+        jPanel3.add(HeaderLabel);
 
         jPanel2.add(jPanel3, java.awt.BorderLayout.PAGE_END);
 
@@ -241,10 +242,10 @@ public class StartMenu extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel HeaderLabel;
     private javax.swing.JButton easybtn;
     private javax.swing.JButton hardbtn;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
@@ -272,6 +273,11 @@ public class StartMenu extends javax.swing.JPanel {
     public JButton getReturnBtn(){
         return this.returnBtn;
     }
+
+    public JLabel getHeaderLabel() {
+        return HeaderLabel;
+    }
+    
 }
 
 
