@@ -101,7 +101,7 @@ public class GameController implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         
         if (e.getSource() instanceof CardView cardView) {
-                
+          
                  
             frame.playCardSound();
             CardController cardController = cardView.getController();
@@ -123,7 +123,9 @@ public class GameController implements ActionListener {
                     model.setScore(model.getScore()+model.getScoreIncrease());
                     System.out.println("Score + " + model.getScoreIncrease());
                    
-                    getGUIView().setScore(model.getScore());
+//                    getGUIView().setScore(model.getScore());
+getGUIView().getScoreView().setnumber(model.getScore());
+getGUIView().getScoreView().repaint();
                     frame.playCorrectSound();
                     cardpair = true;
 //                   
@@ -131,7 +133,9 @@ public class GameController implements ActionListener {
                     currentAnim = CardController.ANIM_BAD;
                     model.setScore(model.getScore() - model.getScoreDecrease());
                    
-                    getGUIView().setScore(model.getScore());
+//                    getGUIView().setScore(model.getScore());
+                        getGUIView().getScoreView().setnumber(model.getScore());
+                        getGUIView().getScoreView().repaint();
                      
                     frame.playWrongSound();
                     System.out.println("Score - " + model.getScoreDecrease());

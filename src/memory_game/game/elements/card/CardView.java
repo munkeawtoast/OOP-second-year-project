@@ -7,8 +7,7 @@ package memory_game.game.elements.card;
 
 import java.awt.Cursor;
 import java.awt.Dimension;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.border.Border;

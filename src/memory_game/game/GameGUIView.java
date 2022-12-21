@@ -11,12 +11,12 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.RepaintManager;
-import javax.swing.SwingUtilities;
+
+import memory_game.Panel.ScoreView;
 import memory_game.game.elements.card.CardController;
 import memory_game.game.elements.card.CardView;
 import memory_game.game.elements.timer.TimerView;
-import org.netbeans.lib.awtextra.AbsoluteLayout;
+
 
 
 public class GameGUIView extends JPanel implements IGameView {
@@ -29,7 +29,7 @@ public class GameGUIView extends JPanel implements IGameView {
     private Game game;
     private JPanel cardGrid;
     private TimerView timer;
-  
+    private ScoreView scoreview;
     private Image backgroundImage;
      private javax.swing.JPanel Headpanel;
     private javax.swing.JLabel JLabel;
@@ -64,6 +64,7 @@ public class GameGUIView extends JPanel implements IGameView {
                 this.backgroundImage = IMAGE_HARD;
             }
         }
+        scoreview = new ScoreView();
         gamePanel = new JPanel();
         gamePanel.setOpaque(false);
          Headpanel = new javax.swing.JPanel();
@@ -89,7 +90,8 @@ public class GameGUIView extends JPanel implements IGameView {
 
         score.setFont(new java.awt.Font("MV Boli", 0, 30)); // NOI18N
         score.setText("0");
-        Scorepanel.add(score);
+        scoreview.setnumber(0);
+        Scorepanel.add(scoreview);
         
         Headpanel.add(Scorepanel, java.awt.BorderLayout.LINE_START);
 
@@ -163,7 +165,7 @@ public class GameGUIView extends JPanel implements IGameView {
         }
         
         cardGrid.setOpaque(false);
-//        gamePanel.add(cardGrid,BorderLayout.CENTER);
+//        gamePanel.add(cardGrid);
 add(cardGrid,BorderLayout.CENTER);
 
         
@@ -226,6 +228,10 @@ add(cardGrid,BorderLayout.CENTER);
     public JPanel getCardGrid(){
         return this.cardGrid;
     }
+    public ScoreView getScoreView(){
+        return this.scoreview;
+    }
+    
     
     
 }
