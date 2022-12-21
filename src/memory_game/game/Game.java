@@ -26,7 +26,7 @@ public class Game implements Comparable<Game>, Serializable{
     public static final int HARD_SCORE_INCREASE = 300;
     public static final int SCORE_DECREASE = 100;
     private static final int  EASY_WIN_NUM = 6;
-    private static final int  MEDIUM_WIN_NUM = 8;
+    private static final int  MEDIUM_WIN_NUM =9;
     private static final int  HARD_WIN_NUM = 12;
     
     
@@ -70,7 +70,7 @@ public class Game implements Comparable<Game>, Serializable{
                 this.scoreIncrease = MEDIUM_SCORE_INCREASE;
                 this.winnum = MEDIUM_WIN_NUM;
                 cardsize = CardView.MEDIUM;
-                count = 4*4/2;
+                count = 6*3/2;
             }
             case HARD -> {
                 this.scoreIncrease = HARD_SCORE_INCREASE;

@@ -14,8 +14,8 @@ import javax.swing.border.Border;
 import memory_game.game.util.*;
 
 public class CardView extends JButton {
-    public static final Dimension SMALL = new Dimension(80, 106);
-    public static final Dimension MEDIUM = new Dimension(80, 106);
+    public static final Dimension SMALL = new Dimension(60,80 );
+    public static final Dimension MEDIUM = new Dimension(90, 120);
     public static final Dimension LARGE = new Dimension(90, 120);
     
     private CardController controller;
@@ -46,10 +46,10 @@ public class CardView extends JButton {
     }
     
     public TransitionPlayer getUpTransition() {
-        return new TransitionPlayer(this, Transition.EASE_IN_SINE, Transition.NORTH, 250, 30);
+        return new TransitionPlayer(this, Transition.EASE_IN_SINE, Transition.NORTH, 250, 20);
     }
     public TransitionPlayer getDownTransition() {
-        return new TransitionPlayer(this, Transition.EASE_IN_SINE, Transition.SOUTH, 250, 30);
+        return new TransitionPlayer(this, Transition.EASE_IN_SINE, Transition.SOUTH, 250, 20);
     }
     
     public void setIsAnimating(boolean isAnimating) {

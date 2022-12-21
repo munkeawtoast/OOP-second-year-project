@@ -151,7 +151,7 @@ public class GameGUIView extends JPanel implements IGameView {
                 grid = new Dimension(4, 3);
             }
             case Game.MEDIUM -> {
-                grid = new Dimension(5, 4);
+                grid = new Dimension(6, 3);
             }
             case Game.HARD -> {
                 grid = new Dimension(6, 4);
@@ -159,14 +159,16 @@ public class GameGUIView extends JPanel implements IGameView {
         }
         
         cardGrid.setLayout(new GridLayout(grid.height, grid.width, CARD_GAP, CARD_GAP));
-        
+   
         for (CardController cardController : game.getCardList()) {
             cardGrid.add(cardController.getView());
+          
         }
         
         cardGrid.setOpaque(false);
 //        gamePanel.add(cardGrid);
 add(cardGrid,BorderLayout.CENTER);
+       
 
         
         // padding
