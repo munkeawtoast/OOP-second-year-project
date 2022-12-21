@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.JFrame;
+
 
 import memory_game.GameFrame;
 
@@ -34,7 +34,7 @@ public class GameController implements ActionListener {
     public GameController(String playerName, int difficulty, GameFrame frame) {
         this.frame = frame;
       
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+   
         model = new Game(playerName, difficulty);
         views = new ArrayList<>();
         views.add(new GameLoggerView(this));

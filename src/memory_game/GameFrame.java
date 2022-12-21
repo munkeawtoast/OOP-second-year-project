@@ -61,7 +61,7 @@ public class GameFrame extends JFrame implements ActionListener, WindowListener 
     private int gamemode;
     Font pixelFont_30;
     Font pixelFont_24;
-    Font pixelFont_18;
+  
     Font pixelFont_44;
     Clip clip;
     Alert alert;
@@ -132,6 +132,7 @@ public class GameFrame extends JFrame implements ActionListener, WindowListener 
         } else if (e.getActionCommand().equals("Start")) {
 //           start btn click
             playClickSound();
+            insertname.getNameTF().setText("");
             setContentPane(insertname);
             invalidate();
             validate();
@@ -219,12 +220,11 @@ public class GameFrame extends JFrame implements ActionListener, WindowListener 
 
         playGameMusic();
         game = new GameController(name, difficulty, this);
-
-        game.getGUIView().getJLabel().setFont(pixelFont_24);
+         game.getGUIView().getJLabel().setFont(pixelFont_24);
         game.getGUIView().getJLabel2().setFont(pixelFont_24);
         game.getGUIView().getScore().setFont(pixelFont_24);
-
         game.getModel().getTimer().getView().setFont(pixelFont_24);
+       
         setContentPane(game.getGUIView());
         game.initialize();
         invalidate();

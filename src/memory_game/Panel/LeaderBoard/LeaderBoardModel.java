@@ -14,7 +14,7 @@ import memory_game.game.Game;
 public class LeaderBoardModel {
     ArrayList<Game> list;
     public LeaderBoardModel(){
-        list = new ArrayList<Game>();
+        list = new ArrayList<>();
     }
 
     public ArrayList<Game> getList() {

@@ -37,7 +37,7 @@ public class Game implements Comparable<Game>, Serializable{
     private TimerController timer;
     private CardController predict1, predict2;
     private int Score;
-    private boolean animationIsRunning;
+
     private int scoreIncrease;
     private int scoreDecrease;
     private Dimension cardsize;

@@ -129,7 +129,7 @@ private static final Image backgroundImage = new ImageIcon(InsertName.class.getR
         jPanel8.setPreferredSize(new java.awt.Dimension(500, 40));
 
         NameTF.setName(""); // NOI18N
-        NameTF.setPreferredSize(new java.awt.Dimension(150, 50));
+        NameTF.setPreferredSize(new java.awt.Dimension(150, 35));
         jPanel8.add(NameTF);
 
         jPanel7.add(jPanel8);

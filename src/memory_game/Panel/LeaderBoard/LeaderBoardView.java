@@ -4,17 +4,11 @@
  */
 package memory_game.Panel.LeaderBoard;
 
-import java.awt.BorderLayout;
+
 import java.awt.Color;
-import java.awt.Cursor;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.awt.Font;
 
 import java.awt.Graphics;
 import java.awt.Image;
-import java.awt.Insets;
-import java.awt.event.MouseAdapter;
 
 import javax.swing.ImageIcon;
 
@@ -28,13 +22,12 @@ import javax.swing.table.DefaultTableModel;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.JScrollPane;
-import javax.swing.SwingConstants;
+
 
 
 
 import memory_game.Panel.customElement.ScrollBarCustom;
-import org.netbeans.lib.awtextra.AbsoluteLayout;
+
 
 /**
  *
@@ -53,8 +46,9 @@ public class LeaderBoardView extends JPanel {
      
   
         initComponents();
-
+        
         model = new DefaultTableModel();
+        table.setModel(model);
         model.addColumn("#");
         model.addColumn("Name");
         model.addColumn("Time");
