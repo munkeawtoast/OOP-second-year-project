@@ -13,7 +13,7 @@ import javax.swing.ImageIcon;
  *
  * @author ACER
  */
-public class Card implements Serializable {
+public class Card  {
     private static int cardCount = 1;
    
     private Card pair;

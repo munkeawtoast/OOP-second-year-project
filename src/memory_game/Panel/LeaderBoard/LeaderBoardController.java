@@ -8,7 +8,6 @@ import java.util.ArrayList;
 
 import java.util.Collections;
 
-
 import memory_game.game.Player;
 
 /**
@@ -19,15 +18,12 @@ public class LeaderBoardController {
 
     LeaderBoardView view;
     LeaderBoardModel model;
-
     public LeaderBoardController() {
-
         model = new LeaderBoardModel();
         view = new LeaderBoardView();
-
-
     }
-        public void updateBoard(ArrayList<Player> list) {
+
+    public void updateBoard(ArrayList<Player> list) {
         view.getModel().setRowCount(0);
         Collections.sort(list);
         this.model.setList(list);
@@ -37,11 +33,8 @@ public class LeaderBoardController {
             view.getModel().addRow(new Object[]{i + 1, model.getList().get(i).getName(),
                 model.getList().get(i).getTime(),
                 model.getList().get(i).getScore()});
-
         }
-
     }
-
 
     public LeaderBoardView getView() {
         return view;
@@ -58,6 +51,5 @@ public class LeaderBoardController {
     public void setModel(LeaderBoardModel model) {
         this.model = model;
     }
-
 
 }

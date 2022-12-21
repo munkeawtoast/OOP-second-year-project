@@ -16,7 +16,7 @@ import memory_game.game.elements.timer.TimerController;
 
 
 
-public class Game implements Serializable{
+public class Game {
     public static final int TEST = -1;
     public static final int EASY = 0;
     public static final int MEDIUM = 1;

@@ -17,7 +17,7 @@ import memory_game.game.util.*;
  *
  * @author ACER
  */
-public class CardController implements Serializable {
+public class CardController {
 
     private Thread good;
     private Thread bad;

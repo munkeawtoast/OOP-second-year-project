@@ -219,7 +219,10 @@ public class GameFrame extends JFrame implements ActionListener, WindowListener,
     }
 
     public void loadGame(String name, int difficulty) {
+        stopMusic();
+        playGameMusic();
     // 
+    
     if (gameThread != null) {
         gameThread.interrupt();
     }
@@ -440,12 +443,15 @@ public class GameFrame extends JFrame implements ActionListener, WindowListener,
     WrongSound = new Thread(new Runnable() {
         @Override
         public void run() {
+            
             try {
-                 
+                
+                    WrongSound.sleep(200);
                     sound = new Sound(getClass().getResource("/sounds/wrong.wav"));
                
                 InputStream stream
                         = new ByteArrayInputStream(sound.getSamples());
+               
                 sound.play(stream);
             } catch (Exception e) {
                 e.printStackTrace();

@@ -14,8 +14,6 @@ public class Player implements Comparable<Player> , Serializable {
     private String name;
     private int score;
     private String time;
-    // Remove the Thread field
-    // private Thread gameThread;
 
     public Player(String name, int score, String time) {
         this.name = name;
