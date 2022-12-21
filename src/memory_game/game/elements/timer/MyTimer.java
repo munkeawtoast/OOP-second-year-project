@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 import javax.swing.Timer;
 
 public class MyTimer extends Timer{
-    private int timeElapsed;
+    private int timeElapsed ;
     
     public MyTimer(ActionListener taskPerformer) {
         super(1000, taskPerformer);
@@ -16,12 +16,18 @@ public class MyTimer extends Timer{
         start();
     }
 
-    int getTimeElapsed() {
+    public int getTimeElapsed() {
         return timeElapsed;
     }
     public void stopTime(){
-        this.setDelay(9999999);
+        this.stop();
+        
     }
     
-    
+    public String getFormattedTime() {
+        
+        int minutes = timeElapsed / 60;
+        int seconds = timeElapsed % 60;
+        return String.format("%02d", minutes) + ":" + String.format("%02d", seconds);
+    }
 }

@@ -1,19 +1,22 @@
 
 package memory_game.game.elements.timer;
 
-import javax.swing.JLabel;
+import java.io.Serializable;
 
-public class TimerController {
+
+public class TimerController implements Serializable{
     MyTimer model;
     TimerView view;
 
     public TimerController() {
         view = new TimerView();
+
         model = new MyTimer((ignored) -> {
-            view.setTime(model.getTimeElapsed());
+            view.setTime(model.getFormattedTime());
         });
     }
-    public JLabel getTimeLabel(){
+    
+    public TimerView getView(){
         return this.view;
     }
     public MyTimer getTimeModel(){

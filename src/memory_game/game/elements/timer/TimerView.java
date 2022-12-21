@@ -4,30 +4,56 @@
  */
 package memory_game.game.elements.timer;
 
-import javax.swing.JLabel;
+import java.awt.Color;
+import java.awt.GridLayout;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JPanel;
 
 /**
  *
  * @author ACER
  */
-public class TimerView extends JLabel{
-    
+public class TimerView extends JPanel{
+    List<TimerDigit> timerDigits; 
+    String currentTime = "00:00";
     public TimerView() {
-        super();
-        initialize();
-        this.setText("0:0");
+        super(new GridLayout(1, 5));
+        
+        timerDigits = new ArrayList<>();
+      
+        for (int i = 0; i < 5; i++) {
+            TimerDigit timerDigit;
+            if (i == 2) {
+                timerDigit = new TimerDigit(TimerDigit.TIME_SEPARATOR);
+            } else { 
+                timerDigit = new TimerDigit(TimerDigit.NUM);
+            }
+            timerDigits.add(timerDigit);
+            this.add(timerDigit);
+        }
+       
+        setOpaque(false);
+        setBackground(new Color(0, 0, 0, 0));
+        
     }
     
-    private void initialize() {
-        // styles
+    public void initialize() {
+        for (TimerDigit timerDigit : timerDigits) {
+            timerDigit.initialize();
+        }
+      
     }
     
-    public void setTime(int time) {
-        int minutes = time / 60;
-        int seconds = time % 60;
-        this.setText(String.format("%02d", minutes) + ":" + String.format("%02d", seconds));
+    public String getText() {
+        return currentTime;
     }
-    public JLabel getTimeLabel(){
-        return this;
+    
+    public void setTime(String formattedTime) {
+        currentTime = formattedTime;
+        for (int i = 0; i < 5; i++) {
+            char c = formattedTime.charAt(i);
+            timerDigits.get(i).setTo(c);
+        }
     }
 }

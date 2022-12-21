@@ -5,18 +5,44 @@
 
 package memory_game.Panel;
 
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Image;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JTextField;
+
 
 /**
  *
- * @author Gungai
+ * @author Game
  */
 public class InsertName extends javax.swing.JPanel {
-
+private static final Image backgroundImage = new ImageIcon(InsertName.class.getResource("/images/bg2.gif")).getImage();
     /** Creates new form InsertName */
     public InsertName() {
         initComponents();
+        returnBtn.setBackground(new Color(0,0,0,0));
+    }
+     @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
+
+        double panelAspectRatio = (double) getWidth() / (double) getHeight();
+        double imageAspectRatio = (double) backgroundImage.getWidth(null) / (double) backgroundImage.getHeight(null);
+
+        int imageWidth;
+        int imageHeight;
+        if (panelAspectRatio > imageAspectRatio) {
+            imageWidth = getWidth();
+            imageHeight = (int) (imageWidth / imageAspectRatio);
+        } else {
+            imageHeight = getHeight();
+            imageWidth = (int) (imageHeight * imageAspectRatio);
+        }
+
+        g.drawImage(backgroundImage, (getWidth() - imageWidth) / 2, (getHeight() - imageHeight) / 2, imageWidth, imageHeight, this);
     }
 
     /** This method is called from within the constructor to
@@ -44,13 +70,13 @@ public class InsertName extends javax.swing.JPanel {
         jPanel11 = new javax.swing.JPanel();
         jPanel13 = new javax.swing.JPanel();
         returnBtn = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(800, 600));
 
         jPanel1.setMaximumSize(new java.awt.Dimension(800, 600));
+        jPanel1.setOpaque(false);
         jPanel1.setPreferredSize(new java.awt.Dimension(800, 600));
-        jPanel1.setLayout(null);
+        jPanel1.setLayout(new java.awt.BorderLayout());
 
         jPanel2.setBackground(new java.awt.Color(255, 61, 61));
         jPanel2.setOpaque(false);
@@ -66,7 +92,8 @@ public class InsertName extends javax.swing.JPanel {
         jPanel4.setOpaque(false);
 
         jLabel2.setFont(new java.awt.Font("Rockwell Nova Cond", 0, 48)); // NOI18N
-        jLabel2.setText("Insert Yout Name");
+        jLabel2.setForeground(new java.awt.Color(233, 233, 227));
+        jLabel2.setText("Enter Your Name");
         jPanel4.add(jLabel2);
 
         jPanel3.add(jPanel4, java.awt.BorderLayout.PAGE_END);
@@ -83,7 +110,7 @@ public class InsertName extends javax.swing.JPanel {
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 500, Short.MAX_VALUE)
+            .addGap(0, 800, Short.MAX_VALUE)
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -102,7 +129,7 @@ public class InsertName extends javax.swing.JPanel {
         jPanel8.setPreferredSize(new java.awt.Dimension(500, 40));
 
         NameTF.setName(""); // NOI18N
-        NameTF.setPreferredSize(new java.awt.Dimension(150, 30));
+        NameTF.setPreferredSize(new java.awt.Dimension(150, 50));
         jPanel8.add(NameTF);
 
         jPanel7.add(jPanel8);
@@ -116,7 +143,15 @@ public class InsertName extends javax.swing.JPanel {
         jPanel10.setOpaque(false);
         jPanel10.setPreferredSize(new java.awt.Dimension(500, 40));
 
-        nextBtn.setText("Next");
+        nextBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/nextbtn.png"))); // NOI18N
+        nextBtn.setActionCommand("Next");
+        nextBtn.setBorder(null);
+        nextBtn.setBorderPainted(false);
+        nextBtn.setContentAreaFilled(false);
+        nextBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        nextBtn.setFocusable(false);
+        nextBtn.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        nextBtn.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/images/nextbtn-hover.png"))); // NOI18N
         jPanel10.add(nextBtn);
 
         jPanel7.add(jPanel10);
@@ -129,7 +164,7 @@ public class InsertName extends javax.swing.JPanel {
         jPanel11.setLayout(jPanel11Layout);
         jPanel11Layout.setHorizontalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 500, Short.MAX_VALUE)
+            .addGap(0, 800, Short.MAX_VALUE)
         );
         jPanel11Layout.setVerticalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -141,13 +176,17 @@ public class InsertName extends javax.swing.JPanel {
         jPanel13.setBackground(new java.awt.Color(255, 179, 107));
         jPanel13.setOpaque(false);
         jPanel13.setPreferredSize(new java.awt.Dimension(500, 40));
-        jPanel13.setLayout(new java.awt.BorderLayout());
+        jPanel13.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         returnBtn.setBackground(new java.awt.Color(255, 179, 107));
         returnBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/return.png"))); // NOI18N
         returnBtn.setActionCommand("return1");
-        returnBtn.setBorder(javax.swing.BorderFactory.createCompoundBorder());
-        returnBtn.setPreferredSize(new java.awt.Dimension(70, 40));
+        returnBtn.setBorder(null);
+        returnBtn.setBorderPainted(false);
+        returnBtn.setContentAreaFilled(false);
+        returnBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        returnBtn.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        returnBtn.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/images/return2.png"))); // NOI18N
         returnBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 returnBtnMouseClicked(evt);
@@ -167,7 +206,7 @@ public class InsertName extends javax.swing.JPanel {
                 returnBtnActionPerformed(evt);
             }
         });
-        jPanel13.add(returnBtn, java.awt.BorderLayout.LINE_START);
+        jPanel13.add(returnBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 0, -1, 30));
 
         jPanel7.add(jPanel13);
 
@@ -175,14 +214,7 @@ public class InsertName extends javax.swing.JPanel {
 
         jPanel2.add(jPanel5, java.awt.BorderLayout.CENTER);
 
-        jPanel1.add(jPanel2);
-        jPanel2.setBounds(140, 0, 500, 600);
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/back.jpg"))); // NOI18N
-        jLabel1.setText("jLabel1");
-        jLabel1.setPreferredSize(new java.awt.Dimension(800, 600));
-        jPanel1.add(jLabel1);
-        jLabel1.setBounds(0, 0, 800, 600);
+        jPanel1.add(jPanel2, java.awt.BorderLayout.CENTER);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -233,7 +265,6 @@ public class InsertName extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField NameTF;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
@@ -259,5 +290,11 @@ public class InsertName extends javax.swing.JPanel {
     }
     public JButton getReturnBtn(){
         return this.returnBtn;
+    }
+
+   
+
+    public JLabel getJLabel() {
+        return jLabel2;
     }
 }

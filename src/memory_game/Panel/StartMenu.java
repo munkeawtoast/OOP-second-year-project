@@ -4,19 +4,45 @@
  */
 package memory_game.Panel;
 
+
+import java.awt.Graphics;
+import java.awt.Image;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 
 /**
  *
  * @author Gungai
  */
 public class StartMenu extends javax.swing.JPanel {
-
+    private static final Image backgroundImage = new ImageIcon(StartMenu.class.getResource("/images/bg2.gif")).getImage();
     /**
      * Creates new form Menu
      */
     public StartMenu() {
         initComponents();
+     
+    }
+     @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
+
+        // thank you ChatGPT
+        double panelAspectRatio = (double) getWidth() / (double) getHeight();
+        double imageAspectRatio = (double) backgroundImage.getWidth(null) / (double) backgroundImage.getHeight(null);
+
+        int imageWidth;
+        int imageHeight;
+        if (panelAspectRatio > imageAspectRatio) {
+            imageWidth = getWidth();
+            imageHeight = (int) (imageWidth / imageAspectRatio);
+        } else {
+            imageHeight = getHeight();
+            imageWidth = (int) (imageHeight * imageAspectRatio);
+        }
+
+        g.drawImage(backgroundImage, (getWidth() - imageWidth) / 2, (getHeight() - imageHeight) / 2, imageWidth, imageHeight, this);
     }
 
     /**
@@ -31,7 +57,7 @@ public class StartMenu extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
+        HeaderLabel = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
@@ -44,39 +70,44 @@ public class StartMenu extends javax.swing.JPanel {
         jPanel10 = new javax.swing.JPanel();
         jPanel11 = new javax.swing.JPanel();
         returnBtn = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
 
         setMaximumSize(new java.awt.Dimension(800, 600));
         setPreferredSize(new java.awt.Dimension(800, 600));
-        setLayout(null);
+        setLayout(new java.awt.BorderLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 61, 61));
+        jPanel1.setOpaque(false);
         jPanel1.setPreferredSize(new java.awt.Dimension(500, 600));
         jPanel1.setLayout(new java.awt.BorderLayout());
 
         jPanel2.setBackground(new java.awt.Color(255, 179, 107));
+        jPanel2.setOpaque(false);
         jPanel2.setPreferredSize(new java.awt.Dimension(500, 200));
         jPanel2.setLayout(new java.awt.BorderLayout());
 
         jPanel3.setBackground(new java.awt.Color(255, 179, 107));
+        jPanel3.setOpaque(false);
 
-        jLabel2.setFont(new java.awt.Font("Rockwell Nova Cond", 0, 48)); // NOI18N
-        jLabel2.setText("Choose Difficulty");
-        jPanel3.add(jLabel2);
+        HeaderLabel.setFont(new java.awt.Font("Helvetica Neue", 0, 48)); // NOI18N
+        HeaderLabel.setForeground(java.awt.Color.white);
+        HeaderLabel.setText("Choose Difficulty");
+        jPanel3.add(HeaderLabel);
 
         jPanel2.add(jPanel3, java.awt.BorderLayout.PAGE_END);
 
         jPanel1.add(jPanel2, java.awt.BorderLayout.PAGE_START);
 
+        jPanel4.setOpaque(false);
         jPanel4.setLayout(new java.awt.BorderLayout());
 
         jPanel5.setBackground(new java.awt.Color(255, 179, 107));
+        jPanel5.setOpaque(false);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 500, Short.MAX_VALUE)
+            .addGap(0, 800, Short.MAX_VALUE)
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -86,32 +117,51 @@ public class StartMenu extends javax.swing.JPanel {
         jPanel4.add(jPanel5, java.awt.BorderLayout.PAGE_START);
 
         jPanel6.setBackground(new java.awt.Color(255, 179, 107));
+        jPanel6.setOpaque(false);
         jPanel6.setPreferredSize(new java.awt.Dimension(500, 40));
         jPanel6.setLayout(new java.awt.GridLayout(6, 1));
 
         jPanel7.setBackground(new java.awt.Color(255, 179, 107));
+        jPanel7.setOpaque(false);
         jPanel7.setPreferredSize(new java.awt.Dimension(500, 40));
 
-        easybtn.setText("Easy");
-        easybtn.setPreferredSize(new java.awt.Dimension(150, 30));
+        easybtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/easybtn.png"))); // NOI18N
+        easybtn.setActionCommand("Easy");
+        easybtn.setBorder(null);
+        easybtn.setBorderPainted(false);
+        easybtn.setContentAreaFilled(false);
+        easybtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        easybtn.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/images/easybtn-hover.png"))); // NOI18N
         jPanel7.add(easybtn);
 
         jPanel6.add(jPanel7);
 
         jPanel8.setBackground(new java.awt.Color(255, 179, 107));
+        jPanel8.setOpaque(false);
         jPanel8.setPreferredSize(new java.awt.Dimension(500, 40));
 
-        normalbtn.setText("Normal");
-        normalbtn.setPreferredSize(new java.awt.Dimension(150, 30));
+        normalbtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/normalbtn.png"))); // NOI18N
+        normalbtn.setActionCommand("Normal");
+        normalbtn.setBorder(null);
+        normalbtn.setBorderPainted(false);
+        normalbtn.setContentAreaFilled(false);
+        normalbtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        normalbtn.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/images/normalbtn-hover.png"))); // NOI18N
         jPanel8.add(normalbtn);
 
         jPanel6.add(jPanel8);
 
         jPanel9.setBackground(new java.awt.Color(255, 179, 107));
+        jPanel9.setOpaque(false);
         jPanel9.setPreferredSize(new java.awt.Dimension(500, 40));
 
-        hardbtn.setText("Hard");
-        hardbtn.setPreferredSize(new java.awt.Dimension(150, 30));
+        hardbtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/hardbtn.png"))); // NOI18N
+        hardbtn.setActionCommand("Hard");
+        hardbtn.setBorder(null);
+        hardbtn.setBorderPainted(false);
+        hardbtn.setContentAreaFilled(false);
+        hardbtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        hardbtn.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/images/hardbtn-hover.png"))); // NOI18N
         hardbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 hardbtnActionPerformed(evt);
@@ -122,13 +172,14 @@ public class StartMenu extends javax.swing.JPanel {
         jPanel6.add(jPanel9);
 
         jPanel10.setBackground(new java.awt.Color(255, 179, 107));
+        jPanel10.setOpaque(false);
         jPanel10.setPreferredSize(new java.awt.Dimension(500, 40));
 
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
         jPanel10Layout.setHorizontalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 500, Short.MAX_VALUE)
+            .addGap(0, 800, Short.MAX_VALUE)
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -138,14 +189,17 @@ public class StartMenu extends javax.swing.JPanel {
         jPanel6.add(jPanel10);
 
         jPanel11.setBackground(new java.awt.Color(255, 179, 107));
+        jPanel11.setOpaque(false);
         jPanel11.setPreferredSize(new java.awt.Dimension(500, 40));
-        jPanel11.setLayout(new java.awt.BorderLayout());
+        jPanel11.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        returnBtn.setBackground(new java.awt.Color(255, 179, 107));
+        returnBtn.setBackground(new java.awt.Color(0, 0, 0));
         returnBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/return.png"))); // NOI18N
         returnBtn.setActionCommand("return2");
         returnBtn.setBorder(javax.swing.BorderFactory.createCompoundBorder());
-        returnBtn.setPreferredSize(new java.awt.Dimension(70, 40));
+        returnBtn.setContentAreaFilled(false);
+        returnBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        returnBtn.setMargin(new java.awt.Insets(0, 0, 0, 0));
         returnBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 returnBtnMouseClicked(evt);
@@ -165,7 +219,7 @@ public class StartMenu extends javax.swing.JPanel {
                 returnBtnActionPerformed(evt);
             }
         });
-        jPanel11.add(returnBtn, java.awt.BorderLayout.LINE_START);
+        jPanel11.add(returnBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 0, -1, 30));
 
         jPanel6.add(jPanel11);
 
@@ -173,14 +227,7 @@ public class StartMenu extends javax.swing.JPanel {
 
         jPanel1.add(jPanel4, java.awt.BorderLayout.CENTER);
 
-        add(jPanel1);
-        jPanel1.setBounds(140, 0, 500, 600);
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/back.jpg"))); // NOI18N
-        jLabel1.setText("jLabel1");
-        jLabel1.setPreferredSize(new java.awt.Dimension(800, 600));
-        add(jLabel1);
-        jLabel1.setBounds(0, 0, 800, 600);
+        add(jPanel1, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
     private void hardbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hardbtnActionPerformed
@@ -213,10 +260,9 @@ public class StartMenu extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel HeaderLabel;
     private javax.swing.JButton easybtn;
     private javax.swing.JButton hardbtn;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
@@ -244,6 +290,11 @@ public class StartMenu extends javax.swing.JPanel {
     public JButton getReturnBtn(){
         return this.returnBtn;
     }
+
+    public JLabel getHeaderLabel() {
+        return HeaderLabel;
+    }
+    
 }
 
 
