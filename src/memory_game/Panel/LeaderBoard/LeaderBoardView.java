@@ -34,19 +34,10 @@ import memory_game.Panel.customElement.ScrollBarCustom;
  * @author thanakorn
  */
 public class LeaderBoardView extends JPanel {
-    
- 
     private DefaultTableModel model;
     private static final Image backgroundImage = new ImageIcon(LeaderBoardView.class.getResource("/images/bg2.gif")).getImage();
-
-    /**
-     * Creates new form LeaderBoard
-     */
     public LeaderBoardView() {
-     
-  
         initComponents();
-        
         model = new DefaultTableModel();
         table.setModel(model);
         model.addColumn("#");
@@ -54,7 +45,7 @@ public class LeaderBoardView extends JPanel {
         model.addColumn("Time");
         model.addColumn("Score");
         scrollpane.getViewport().setOpaque(false);
-
+        scrollpane.setVerticalScrollBar(new ScrollBarCustom());
         table.setShowGrid(false);
         table.setBackground(new Color(0, 0, 0, 0));
         table.setEnabled(false);
@@ -66,7 +57,7 @@ public class LeaderBoardView extends JPanel {
         table.getTableHeader().setEnabled(false);
         table.getTableHeader().setForeground(new Color(222, 222, 222));
         
-        scrollpane.setVerticalScrollBar(new ScrollBarCustom());
+       
         table.setEnabled(false);
 
 // Get the default renderer for the cells in the table

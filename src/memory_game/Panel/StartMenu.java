@@ -17,18 +17,15 @@ import javax.swing.JLabel;
  */
 public class StartMenu extends javax.swing.JPanel {
     private static final Image backgroundImage = new ImageIcon(StartMenu.class.getResource("/images/bg2.gif")).getImage();
-    /**
-     * Creates new form Menu
-     */
+  
     public StartMenu() {
         initComponents();
      
     }
      @Override
     protected void paintComponent(Graphics g) {
-        super.paintComponent(g); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
+        super.paintComponent(g); 
 
-        // thank you ChatGPT
         double panelAspectRatio = (double) getWidth() / (double) getHeight();
         double imageAspectRatio = (double) backgroundImage.getWidth(null) / (double) backgroundImage.getHeight(null);
 

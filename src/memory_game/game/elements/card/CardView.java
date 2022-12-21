@@ -21,7 +21,7 @@ public class CardView extends JButton {
     private CardController controller;
     private Card model;
     private boolean isAnimating = false;
-    private boolean isHover = false;
+  
 
     public CardView(CardController cardController) {
         super(cardController.getModel().getImageBack());

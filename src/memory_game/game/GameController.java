@@ -39,27 +39,10 @@ public class GameController implements ActionListener {
         views = new ArrayList<>();
         views.add(new GameLoggerView(this));
         views.add(new GameGUIView(this));
-        
-     
-        
-        
-        
-       
-       
     }
     
     public synchronized void initialize() {
-//        try{new Thread(){
-//            @Override
-//            public void run(){
-//                  getGUIView().getTimepanel().add(model.getTimer().getView());
-//                  
-//            }
-//            
-//        }.start();}
-//        catch(Exception e){
-//            e.printStackTrace();
-//        }
+
         
       
         model.initialize();
@@ -169,7 +152,6 @@ getGUIView().getScoreView().repaint();
               frame.alert("You Win!!   Score: " + model.getScore() );
               }
               else{
-                   frame.stopMusic();
                    frame.playLoseMusic();
                   frame.alert("You Lose T^T    Try Again?");
               }

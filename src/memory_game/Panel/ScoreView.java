@@ -41,8 +41,6 @@ public class ScoreView extends JPanel {
            Logger.getLogger(ScoreView.class.getName()).log(Level.SEVERE, null, ex);
        }
            
-           
-    
     }
 
     @Override

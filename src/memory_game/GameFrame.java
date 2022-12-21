@@ -66,7 +66,7 @@ public class GameFrame extends JFrame implements ActionListener, WindowListener 
     Clip clip;
     Alert alert;
 
-    public GameFrame() throws FontFormatException {
+    public GameFrame() {
         alert = new Alert();
         //add new font 
         try {
@@ -239,7 +239,8 @@ public class GameFrame extends JFrame implements ActionListener, WindowListener 
         File f = new File("LeaderBoard.dat");
         if (f.exists()) {
             System.out.println("Board data found");
-            try ( FileInputStream fis = new FileInputStream(f);  ObjectInputStream ois = new ObjectInputStream(fis)) {
+            try ( FileInputStream fis = new FileInputStream(f);  
+                  ObjectInputStream ois = new ObjectInputStream(fis)) {
                 ArrayList<Game> savelist = (ArrayList<Game>) ois.readObject();
 
                 board.updateBoard(savelist);

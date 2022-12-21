@@ -15,10 +15,9 @@ import javax.swing.ImageIcon;
  */
 public class Card implements Serializable {
     private static int cardCount = 1;
-    private int id;
+   
     private Card pair;
-    private boolean isHidden;
-    private boolean isFinished;
+   
     private String name;
     private ImageIcon imageFront;
     private ImageIcon imageBack;
@@ -31,17 +30,13 @@ public class Card implements Serializable {
         this.imageFront = new ImageIcon(iFront);
         this.imageBack = new ImageIcon(iBack);
         
-        id = Card.cardCount;
+       
         Card.cardCount++;
-        this.isFinished = false;
+ 
     }
 
     public void setPair(Card pair) {
         this.pair = pair;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public Card getPair() {
@@ -55,10 +50,7 @@ public class Card implements Serializable {
     public ImageIcon getImageFront() {
         return imageFront;
     }
-    public void setIsFinish(){
-        this.isFinished = true;
-    }
-    
+   
     
         
 }
