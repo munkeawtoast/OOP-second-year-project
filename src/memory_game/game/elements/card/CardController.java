@@ -131,13 +131,13 @@ public class CardController implements Serializable {
             
             shake.start();
             try {
-                shake.join(100);
+                shake.join(250);
             } catch (InterruptedException ex) {
                 Logger.getLogger(CardController.class.getName()).log(Level.SEVERE, null, ex);
             }
             down.start();
             try {
-                down.join();
+                down.join(250);
             } catch (InterruptedException ex) {
                 Logger.getLogger(CardController.class.getName()).log(Level.SEVERE, null, ex);
             }
