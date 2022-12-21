@@ -17,7 +17,7 @@ import memory_game.game.elements.card.CardView;
 
 
 public class GameController implements ActionListener {
-    
+    private Player player;
     private GameFrame frame;
     private Game model;
     private List<IGameView> views;
@@ -145,7 +145,8 @@ getGUIView().getScoreView().repaint();
             frame.remove(getGUIView());
               
               if(model.getScore() > 0 ){
-              frame.getBoard().getModel().addToList(model);
+              player = new Player(model.getPlayerName(), model.getScore(), model.getTimer().getView().getText());
+              frame.getBoard().getModel().addToList(player);
               frame.getBoard().updateBoard(frame.getBoard().getModel().getList());
               frame.stopMusic();
               frame.playWinMusic();

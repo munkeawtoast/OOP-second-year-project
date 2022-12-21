@@ -16,7 +16,7 @@ import memory_game.game.elements.timer.TimerController;
 
 
 
-public class Game implements Comparable<Game>, Serializable{
+public class Game implements Serializable{
     public static final int TEST = -1;
     public static final int EASY = 0;
     public static final int MEDIUM = 1;
@@ -171,10 +171,7 @@ public class Game implements Comparable<Game>, Serializable{
     
 
     
-    @Override
-    public int compareTo(Game other) {
-        return other.Score - this.Score;
-    }
+ 
     
     public void setScore(int score){
 //        if(score<0){

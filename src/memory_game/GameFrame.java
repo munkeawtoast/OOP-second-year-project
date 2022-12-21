@@ -26,6 +26,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.Serializable;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -47,10 +48,11 @@ import memory_game.Panel.LeaderBoard.LeaderBoardController;
 import memory_game.Sound.Sound;
 import memory_game.game.Game;
 import memory_game.game.GameController;
+import memory_game.game.Player;
 
 // what is this? -Pine
 // i think project should only have one main function -Pine
-public class GameFrame extends JFrame implements ActionListener, WindowListener {
+public class GameFrame extends JFrame implements ActionListener, WindowListener,Serializable {
     private Thread gameThread;
     private Thread Clicksound;
     private Thread BackClickSound;
@@ -125,14 +127,7 @@ public class GameFrame extends JFrame implements ActionListener, WindowListener 
 
 //           exit byn click
             playClickSound();
-            ArrayList<Game> games = board.getModel().getList();
-            try ( FileOutputStream fos = new FileOutputStream("LeaderBoard.dat");  ObjectOutputStream oos = new ObjectOutputStream(fos)) {
-                oos.writeObject(board.getModel().getList());
-
-                System.out.println("save successfull");
-            } catch (IOException ie) {
-                ie.printStackTrace();
-            }
+            saveLeaderBoard();
             System.exit(0);
 
         } else if (e.getActionCommand().equals("Start")) {
@@ -258,34 +253,12 @@ public class GameFrame extends JFrame implements ActionListener, WindowListener 
 
     @Override
     public void windowOpened(WindowEvent e) {
-
-        File f = new File("LeaderBoard.dat");
-        if (f.exists()) {
-            System.out.println("Board data found");
-            try ( FileInputStream fis = new FileInputStream(f);  
-                  ObjectInputStream ois = new ObjectInputStream(fis)) {
-                ArrayList<Game> savelist = (ArrayList<Game>) ois.readObject();
-
-                board.updateBoard(savelist);
-                fis.close();
-                ois.close();
-            } catch (IOException ie) {
-                System.out.println("An error occurred while reading from the file: " + ie);
-            } catch (ClassNotFoundException ce) {
-                System.out.println("Class not found: " + ce);
-            }
-        }
-    }
+        loadLeaderBoard();
+   }
 
     @Override
     public void windowClosing(WindowEvent e) {
-        ArrayList<Game> games = board.getModel().getList();
-        try ( FileOutputStream fos = new FileOutputStream("LeaderBoard.dat");  ObjectOutputStream oos = new ObjectOutputStream(fos)) {
-            oos.writeObject(board.getModel().getList());
-            System.out.println("save successfull");
-        } catch (IOException ie) {
-            ie.printStackTrace();
-        }
+       saveLeaderBoard();
     }
 
     @Override
@@ -610,4 +583,34 @@ public class GameFrame extends JFrame implements ActionListener, WindowListener 
         }
 
     }
+     public void loadLeaderBoard(){
+         
+        File f = new File("LeaderBoard.dat");
+        if (f.exists()) {
+            System.out.println("Board data found");
+            try ( FileInputStream fis = new FileInputStream(f);  
+                  ObjectInputStream ois = new ObjectInputStream(fis)) {
+                ArrayList<Player> savelist = (ArrayList<Player>) ois.readObject();
+
+                board.updateBoard(savelist);
+                fis.close();
+                ois.close();
+            } catch (IOException ie) {
+                System.out.println("An error occurred while reading from the file: " + ie);
+            } catch (ClassNotFoundException ce) {
+                System.out.println("Class not found: " + ce);
+            }
+        } 
+         
+     }
+     public void saveLeaderBoard(){
+           ArrayList<Player> games = board.getModel().getList();
+        try ( FileOutputStream fos = new FileOutputStream("LeaderBoard.dat");  ObjectOutputStream oos = new ObjectOutputStream(fos)) {
+            oos.writeObject(board.getModel().getList());
+            System.out.println("save successfull");
+        } catch (IOException ie) {
+            ie.printStackTrace();
+            System.out.println("save unsuccesfull");
+        }
+     }
 }

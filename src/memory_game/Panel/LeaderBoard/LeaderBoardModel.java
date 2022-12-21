@@ -5,26 +5,27 @@
 package memory_game.Panel.LeaderBoard;
 
 import java.util.ArrayList;
-import memory_game.game.Game;
+
+import memory_game.game.Player;
 
 /**
  *
  * @author thanakorn
  */
 public class LeaderBoardModel {
-    ArrayList<Game> list;
+    ArrayList<Player> list;
     public LeaderBoardModel(){
         list = new ArrayList<>();
     }
 
-    public ArrayList<Game> getList() {
+    public ArrayList<Player> getList() {
         return list;
     }
 
-    public void setList(ArrayList<Game> list) {
+    public void setList(ArrayList<Player> list) {
         this.list = list;
     }
-    public void addToList(Game game){
-        this.list.add(game);
+    public void addToList(Player player){
+        this.list.add(player);
     }
 }
