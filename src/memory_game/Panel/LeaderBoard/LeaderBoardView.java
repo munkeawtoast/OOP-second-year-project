@@ -4,10 +4,17 @@
  */
 package memory_game.Panel.LeaderBoard;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Cursor;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Font;
 
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.Insets;
+import java.awt.event.MouseAdapter;
 
 import javax.swing.ImageIcon;
 
@@ -21,17 +28,21 @@ import javax.swing.table.DefaultTableModel;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JScrollPane;
+import javax.swing.SwingConstants;
 
 
 
 import memory_game.Panel.customElement.ScrollBarCustom;
+import org.netbeans.lib.awtextra.AbsoluteLayout;
 
 /**
  *
  * @author thanakorn
  */
-public class LeaderBoardView extends javax.swing.JPanel {
-
+public class LeaderBoardView extends JPanel {
+    
+ 
     private DefaultTableModel model;
     private static final Image backgroundImage = new ImageIcon(LeaderBoardView.class.getResource("/images/bg2.gif")).getImage();
 
@@ -39,6 +50,8 @@ public class LeaderBoardView extends javax.swing.JPanel {
      * Creates new form LeaderBoard
      */
     public LeaderBoardView() {
+     
+  
         initComponents();
 
         model = new DefaultTableModel();
@@ -188,29 +201,28 @@ public class LeaderBoardView extends javax.swing.JPanel {
         add(jPanel2, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void returnBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_returnBtnMouseClicked
+    private void returnBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_returnBtnActionPerformed
         // TODO add your handling code here:
-
-    }//GEN-LAST:event_returnBtnMouseClicked
-
-    private void returnBtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_returnBtnMouseEntered
-        // TODO add your handling code here:
-        returnBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/return2.png")));
-    }//GEN-LAST:event_returnBtnMouseEntered
-
-    private void returnBtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_returnBtnMouseExited
-        // TODO add your handling code here:
-        returnBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/return.png")));
-    }//GEN-LAST:event_returnBtnMouseExited
+    }//GEN-LAST:event_returnBtnActionPerformed
 
     private void returnBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_returnBtnMousePressed
         // TODO add your handling code here:
         returnBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/return.png")));
     }//GEN-LAST:event_returnBtnMousePressed
 
-    private void returnBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_returnBtnActionPerformed
+    private void returnBtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_returnBtnMouseExited
         // TODO add your handling code here:
-    }//GEN-LAST:event_returnBtnActionPerformed
+        returnBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/return.png")));
+    }//GEN-LAST:event_returnBtnMouseExited
+
+    private void returnBtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_returnBtnMouseEntered
+        // TODO add your handling code here:
+        returnBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/return2.png")));
+    }//GEN-LAST:event_returnBtnMouseEntered
+
+    private void returnBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_returnBtnMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_returnBtnMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
