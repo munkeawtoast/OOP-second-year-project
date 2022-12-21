@@ -503,6 +503,30 @@ public class GameFrame extends JFrame implements ActionListener, WindowListener 
         } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
             e.printStackTrace();
         }
+        
+
+    }
+     public void playLoseMusic() {
+        try {
+            // Load the audio file
+            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(this.getClass().getResource("/sounds/lose-sound.wav"));
+            // Get the audio format and create a new Clip object
+            AudioFormat audioFormat = audioInputStream.getFormat();
+            DataLine.Info info = new DataLine.Info(Clip.class, audioFormat);
+            clip = (Clip) AudioSystem.getLine(info);
+
+            // Open the audio file and start playing it
+            clip.open(audioInputStream);
+
+            FloatControl gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+            float gain = 1f;
+            float dB = (float) (Math.log(gain) / Math.log(10.0) * 20.0);
+            gainControl.setValue(dB);
+            clip.loop(0);
+
+        } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
+            e.printStackTrace();
+        }
 
     }
 }

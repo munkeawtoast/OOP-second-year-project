@@ -14,7 +14,7 @@ import javax.swing.border.Border;
 import memory_game.game.util.*;
 
 public class CardView extends JButton {
-    public static final Dimension SMALL = new Dimension(60,80 );
+    public static final Dimension SMALL = new Dimension(70,93 );
     public static final Dimension MEDIUM = new Dimension(90, 120);
     public static final Dimension LARGE = new Dimension(90, 120);
     

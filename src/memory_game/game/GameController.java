@@ -169,6 +169,8 @@ getGUIView().getScoreView().repaint();
               frame.alert("You Win!!   Score: " + model.getScore() );
               }
               else{
+                   frame.stopMusic();
+                   frame.playLoseMusic();
                   frame.alert("You Lose T^T    Try Again?");
               }
             
