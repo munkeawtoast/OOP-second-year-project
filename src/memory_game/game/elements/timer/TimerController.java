@@ -10,6 +10,7 @@ public class TimerController implements Serializable{
 
     public TimerController() {
         view = new TimerView();
+
         model = new MyTimer((ignored) -> {
             view.setTime(model.getFormattedTime());
         });

@@ -97,7 +97,7 @@ public class Game implements Comparable<Game>, Serializable{
         intList = intList.subList(0, count);
         
         for (int i : intList) {
-            System.out.println(i);
+       
             frontImage = new ImageIcon(getClass().getResource("/images/card"+i+".jpg"));
             backImage = new ImageIcon(getClass().getResource("/images/backcard.png"));
             CardController cardController1 = new CardController("card" + i + "0", cardsize, frontImage, backImage);

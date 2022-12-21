@@ -4,7 +4,10 @@
  */
 package memory_game.Panel;
 
-import java.awt.Color;
+
+import java.awt.Graphics;
+import java.awt.Image;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 
@@ -13,13 +16,33 @@ import javax.swing.JLabel;
  * @author Gungai
  */
 public class StartMenu extends javax.swing.JPanel {
-
+    private static final Image backgroundImage = new ImageIcon(StartMenu.class.getResource("/images/bg2.gif")).getImage();
     /**
      * Creates new form Menu
      */
     public StartMenu() {
         initComponents();
      
+    }
+     @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
+
+        // thank you ChatGPT
+        double panelAspectRatio = (double) getWidth() / (double) getHeight();
+        double imageAspectRatio = (double) backgroundImage.getWidth(null) / (double) backgroundImage.getHeight(null);
+
+        int imageWidth;
+        int imageHeight;
+        if (panelAspectRatio > imageAspectRatio) {
+            imageWidth = getWidth();
+            imageHeight = (int) (imageWidth / imageAspectRatio);
+        } else {
+            imageHeight = getHeight();
+            imageWidth = (int) (imageHeight * imageAspectRatio);
+        }
+
+        g.drawImage(backgroundImage, (getWidth() - imageWidth) / 2, (getHeight() - imageHeight) / 2, imageWidth, imageHeight, this);
     }
 
     /**
@@ -47,11 +70,10 @@ public class StartMenu extends javax.swing.JPanel {
         jPanel10 = new javax.swing.JPanel();
         jPanel11 = new javax.swing.JPanel();
         returnBtn = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
 
         setMaximumSize(new java.awt.Dimension(800, 600));
         setPreferredSize(new java.awt.Dimension(800, 600));
-        setLayout(null);
+        setLayout(new java.awt.BorderLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 61, 61));
         jPanel1.setOpaque(false);
@@ -67,6 +89,7 @@ public class StartMenu extends javax.swing.JPanel {
         jPanel3.setOpaque(false);
 
         HeaderLabel.setFont(new java.awt.Font("Helvetica Neue", 0, 48)); // NOI18N
+        HeaderLabel.setForeground(java.awt.Color.white);
         HeaderLabel.setText("Choose Difficulty");
         jPanel3.add(HeaderLabel);
 
@@ -84,7 +107,7 @@ public class StartMenu extends javax.swing.JPanel {
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 500, Short.MAX_VALUE)
+            .addGap(0, 800, Short.MAX_VALUE)
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -108,7 +131,6 @@ public class StartMenu extends javax.swing.JPanel {
         easybtn.setBorderPainted(false);
         easybtn.setContentAreaFilled(false);
         easybtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        easybtn.setPreferredSize(new java.awt.Dimension(116, 41));
         easybtn.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/images/easybtn-hover.png"))); // NOI18N
         jPanel7.add(easybtn);
 
@@ -124,7 +146,6 @@ public class StartMenu extends javax.swing.JPanel {
         normalbtn.setBorderPainted(false);
         normalbtn.setContentAreaFilled(false);
         normalbtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        normalbtn.setPreferredSize(new java.awt.Dimension(116, 41));
         normalbtn.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/images/normalbtn-hover.png"))); // NOI18N
         jPanel8.add(normalbtn);
 
@@ -140,7 +161,6 @@ public class StartMenu extends javax.swing.JPanel {
         hardbtn.setBorderPainted(false);
         hardbtn.setContentAreaFilled(false);
         hardbtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        hardbtn.setPreferredSize(new java.awt.Dimension(116, 41));
         hardbtn.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/images/hardbtn-hover.png"))); // NOI18N
         hardbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -159,7 +179,7 @@ public class StartMenu extends javax.swing.JPanel {
         jPanel10.setLayout(jPanel10Layout);
         jPanel10Layout.setHorizontalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 500, Short.MAX_VALUE)
+            .addGap(0, 800, Short.MAX_VALUE)
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -180,7 +200,6 @@ public class StartMenu extends javax.swing.JPanel {
         returnBtn.setContentAreaFilled(false);
         returnBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         returnBtn.setMargin(new java.awt.Insets(0, 0, 0, 0));
-        returnBtn.setSize(new java.awt.Dimension(30, 30));
         returnBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 returnBtnMouseClicked(evt);
@@ -200,7 +219,7 @@ public class StartMenu extends javax.swing.JPanel {
                 returnBtnActionPerformed(evt);
             }
         });
-        jPanel11.add(returnBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 30));
+        jPanel11.add(returnBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 0, -1, 30));
 
         jPanel6.add(jPanel11);
 
@@ -208,14 +227,7 @@ public class StartMenu extends javax.swing.JPanel {
 
         jPanel1.add(jPanel4, java.awt.BorderLayout.CENTER);
 
-        add(jPanel1);
-        jPanel1.setBounds(140, 0, 500, 600);
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/back.jpg"))); // NOI18N
-        jLabel1.setText("jLabel1");
-        jLabel1.setPreferredSize(new java.awt.Dimension(800, 600));
-        add(jLabel1);
-        jLabel1.setBounds(0, 0, 800, 600);
+        add(jPanel1, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
     private void hardbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hardbtnActionPerformed
@@ -251,7 +263,6 @@ public class StartMenu extends javax.swing.JPanel {
     private javax.swing.JLabel HeaderLabel;
     private javax.swing.JButton easybtn;
     private javax.swing.JButton hardbtn;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;

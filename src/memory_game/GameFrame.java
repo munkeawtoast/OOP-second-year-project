@@ -11,10 +11,13 @@ package memory_game;
 import java.awt.Font;
 import java.awt.FontFormatException;
 import java.awt.GraphicsEnvironment;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import memory_game.Panel.StartMenu;
 import memory_game.Panel.Menu;
 
-import java.awt.event.*;
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -23,7 +26,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+
 import java.util.ArrayList;
+import java.util.Random;
 import javax.sound.sampled.AudioFormat;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
@@ -181,9 +186,9 @@ public class GameFrame extends JFrame implements ActionListener, WindowListener 
             validate();
 
         } else if (e.getActionCommand().equals("Restart")) {
-            
+
             playClickSound();
-            stopMusic();
+
             playBackgroundMusic();
             alert.setVisible(false);
 
@@ -192,9 +197,9 @@ public class GameFrame extends JFrame implements ActionListener, WindowListener 
 
         } else if (e.getActionCommand().equals("Tomenu")) {
             playClickSound();
-            stopMusic();
+
             playBackgroundMusic();
-             alert.setVisible(false);
+            alert.setVisible(false);
             setContentPane(menu);
             remove(game.getGUIView());
 
@@ -211,6 +216,8 @@ public class GameFrame extends JFrame implements ActionListener, WindowListener 
     }
 
     public void loadGame(String name, int difficulty) {
+
+        playGameMusic();
         game = new GameController(name, difficulty, this);
 
         game.getGUIView().getJLabel().setFont(pixelFont_24);
@@ -221,7 +228,7 @@ public class GameFrame extends JFrame implements ActionListener, WindowListener 
         setContentPane(game.getGUIView());
         game.initialize();
         invalidate();
-            validate();
+        validate();
         pack();
 
     }
@@ -314,6 +321,8 @@ public class GameFrame extends JFrame implements ActionListener, WindowListener 
 
     public void playBackgroundMusic() {
         try {
+            stopMusic();
+
             // Load the audio file
             AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(this.getClass().getResource("/sounds/music.wav"));
             // Get the audio format and create a new Clip object
@@ -321,9 +330,8 @@ public class GameFrame extends JFrame implements ActionListener, WindowListener 
             DataLine.Info info = new DataLine.Info(Clip.class, audioFormat);
             clip = (Clip) AudioSystem.getLine(info);
 
-            // Open the audio file and start playing it
             clip.open(audioInputStream);
-
+            //ปรับเสียง
             FloatControl gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
             float gain = 0.2f;
             float dB = (float) (Math.log(gain) / Math.log(10.0) * 20.0);
@@ -444,7 +452,8 @@ public class GameFrame extends JFrame implements ActionListener, WindowListener 
             }
         }.start();
     }
-     public void playWinMusic() {
+
+    public void playWinMusic() {
         try {
             // Load the audio file
             AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(this.getClass().getResource("/sounds/winsong.wav"));
@@ -468,4 +477,32 @@ public class GameFrame extends JFrame implements ActionListener, WindowListener 
 
     }
 
+    public void playGameMusic() {
+        try {
+
+            stopMusic();
+            Random rand = new Random();
+            int randomNum = rand.nextInt(2) + 1;
+            System.out.println(randomNum);
+            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(this.getClass().getResource("/sounds/GameSong" + randomNum + ".wav"));
+            // Load the audio file
+
+            // Get the audio format and create a new Clip object
+            AudioFormat audioFormat = audioInputStream.getFormat();
+            DataLine.Info info = new DataLine.Info(Clip.class, audioFormat);
+            clip = (Clip) AudioSystem.getLine(info);
+
+            clip.open(audioInputStream);
+            //ปรับเสียง
+            FloatControl gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+            float gain = 0.2f;
+            float dB = (float) (Math.log(gain) / Math.log(10.0) * 20.0);
+            gainControl.setValue(dB);
+            clip.loop(Clip.LOOP_CONTINUOUSLY);
+
+        } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
+            e.printStackTrace();
+        }
+
+    }
 }

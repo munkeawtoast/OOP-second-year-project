@@ -9,10 +9,7 @@ import java.io.*;
 import java.net.URL;
 import javax.sound.sampled.*;
 
-/**
- * The Sound encapsulates a sound that can be opened from the file system and
- * later played.
- */
+
 public class Sound {
 
     private AudioFormat format;
@@ -72,8 +69,7 @@ public class Sound {
      */
     public void play(InputStream source) {
 
-        // use a short, 100ms (1/10th sec) buffer for real-time
-        // change to the sound stream
+        
         int bufferSize = format.getFrameSize()
                 * Math.round(format.getSampleRate() / 10);
         byte[] buffer = new byte[bufferSize];
@@ -90,10 +86,9 @@ public class Sound {
             return;
         }
 
-        // start the line
+
         line.start();
 
-        //copy data to the line
         try {
             int numBytesRead = 0;
             while (numBytesRead != -1) {
@@ -110,7 +105,7 @@ public class Sound {
         // wait until all data is played
         line.drain();
 
-        // close the line
+        
         line.close();
 
     }

@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 import javax.swing.Timer;
 
 public class MyTimer extends Timer{
-    private int timeElapsed;
+    private int timeElapsed ;
     
     public MyTimer(ActionListener taskPerformer) {
         super(1000, taskPerformer);

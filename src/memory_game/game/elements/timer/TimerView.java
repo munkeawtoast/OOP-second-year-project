@@ -19,7 +19,9 @@ public class TimerView extends JPanel{
     String currentTime = "00:00";
     public TimerView() {
         super(new GridLayout(1, 5));
+        
         timerDigits = new ArrayList<>();
+      
         for (int i = 0; i < 5; i++) {
             TimerDigit timerDigit;
             if (i == 2) {
@@ -30,6 +32,7 @@ public class TimerView extends JPanel{
             timerDigits.add(timerDigit);
             this.add(timerDigit);
         }
+       
         setOpaque(false);
         setBackground(new Color(0, 0, 0, 0));
         
@@ -39,6 +42,7 @@ public class TimerView extends JPanel{
         for (TimerDigit timerDigit : timerDigits) {
             timerDigit.initialize();
         }
+      
     }
     
     public String getText() {

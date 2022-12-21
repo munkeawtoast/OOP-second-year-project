@@ -11,6 +11,7 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.RepaintManager;
 import javax.swing.SwingUtilities;
 import memory_game.game.elements.card.CardController;
 import memory_game.game.elements.card.CardView;
@@ -28,7 +29,7 @@ public class GameGUIView extends JPanel implements IGameView {
     private Game game;
     private JPanel cardGrid;
     private TimerView timer;
-    private JLabel scoreLabel;
+  
     private Image backgroundImage;
      private javax.swing.JPanel Headpanel;
     private javax.swing.JLabel JLabel;
@@ -108,6 +109,7 @@ public class GameGUIView extends JPanel implements IGameView {
          add(Headpanel,BorderLayout.NORTH);
 //         add(gamePanel,BorderLayout.CENTER);
 
+
     }
 
     @Override
@@ -163,15 +165,15 @@ public class GameGUIView extends JPanel implements IGameView {
         cardGrid.setOpaque(false);
 //        gamePanel.add(cardGrid,BorderLayout.CENTER);
 add(cardGrid,BorderLayout.CENTER);
-cardGrid.setIgnoreRepaint(true);
+
         
         // padding
         Dimension newSize = cardGrid.getPreferredSize();
-        newSize.height += 60;
-        newSize.width += 90;
-        
-        timer.initialize();
-//        cardGrid.setPreferredSize(newSize);
+        newSize.height += 30;
+        newSize.width += 60;
+         timer.initialize();
+       
+        cardGrid.setPreferredSize(newSize);
 //        cardGrid.setBackground(new Color(0,0,0,0));
     }
     
@@ -198,9 +200,7 @@ cardGrid.setIgnoreRepaint(true);
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-    public JLabel getScoreLabel() {
-        return scoreLabel;
-    }
+ 
 
     public JLabel getJLabel() {
         return JLabel;
@@ -217,7 +217,15 @@ cardGrid.setIgnoreRepaint(true);
     public JPanel getTimepanel() {
         return Timepanel;
     }
+    public void setScore(int score){
+      
     
+        this.score.setText(score+"");
+        
+    }
+    public JPanel getCardGrid(){
+        return this.cardGrid;
+    }
     
     
 }

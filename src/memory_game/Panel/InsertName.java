@@ -6,20 +6,43 @@
 package memory_game.Panel;
 
 import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Image;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
+
 /**
  *
- * @author Gungai
+ * @author Game
  */
 public class InsertName extends javax.swing.JPanel {
-
+private static final Image backgroundImage = new ImageIcon(InsertName.class.getResource("/images/bg2.gif")).getImage();
     /** Creates new form InsertName */
     public InsertName() {
         initComponents();
         returnBtn.setBackground(new Color(0,0,0,0));
+    }
+     @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
+
+        double panelAspectRatio = (double) getWidth() / (double) getHeight();
+        double imageAspectRatio = (double) backgroundImage.getWidth(null) / (double) backgroundImage.getHeight(null);
+
+        int imageWidth;
+        int imageHeight;
+        if (panelAspectRatio > imageAspectRatio) {
+            imageWidth = getWidth();
+            imageHeight = (int) (imageWidth / imageAspectRatio);
+        } else {
+            imageHeight = getHeight();
+            imageWidth = (int) (imageHeight * imageAspectRatio);
+        }
+
+        g.drawImage(backgroundImage, (getWidth() - imageWidth) / 2, (getHeight() - imageHeight) / 2, imageWidth, imageHeight, this);
     }
 
     /** This method is called from within the constructor to
@@ -47,13 +70,13 @@ public class InsertName extends javax.swing.JPanel {
         jPanel11 = new javax.swing.JPanel();
         jPanel13 = new javax.swing.JPanel();
         returnBtn = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(800, 600));
 
         jPanel1.setMaximumSize(new java.awt.Dimension(800, 600));
+        jPanel1.setOpaque(false);
         jPanel1.setPreferredSize(new java.awt.Dimension(800, 600));
-        jPanel1.setLayout(null);
+        jPanel1.setLayout(new java.awt.BorderLayout());
 
         jPanel2.setBackground(new java.awt.Color(255, 61, 61));
         jPanel2.setOpaque(false);
@@ -87,7 +110,7 @@ public class InsertName extends javax.swing.JPanel {
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 500, Short.MAX_VALUE)
+            .addGap(0, 800, Short.MAX_VALUE)
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -141,7 +164,7 @@ public class InsertName extends javax.swing.JPanel {
         jPanel11.setLayout(jPanel11Layout);
         jPanel11Layout.setHorizontalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 500, Short.MAX_VALUE)
+            .addGap(0, 800, Short.MAX_VALUE)
         );
         jPanel11Layout.setVerticalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -183,7 +206,7 @@ public class InsertName extends javax.swing.JPanel {
                 returnBtnActionPerformed(evt);
             }
         });
-        jPanel13.add(returnBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 30));
+        jPanel13.add(returnBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 0, -1, 30));
 
         jPanel7.add(jPanel13);
 
@@ -191,14 +214,7 @@ public class InsertName extends javax.swing.JPanel {
 
         jPanel2.add(jPanel5, java.awt.BorderLayout.CENTER);
 
-        jPanel1.add(jPanel2);
-        jPanel2.setBounds(140, 0, 500, 600);
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/bg2.gif"))); // NOI18N
-        jLabel1.setText("jLabel1");
-        jLabel1.setPreferredSize(new java.awt.Dimension(800, 600));
-        jPanel1.add(jLabel1);
-        jLabel1.setBounds(0, 0, 800, 600);
+        jPanel1.add(jPanel2, java.awt.BorderLayout.CENTER);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -249,7 +265,6 @@ public class InsertName extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField NameTF;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;

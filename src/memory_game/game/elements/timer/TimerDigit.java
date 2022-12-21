@@ -8,11 +8,9 @@ import java.awt.Color;
 import java.awt.GridLayout;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 import javax.swing.JPanel;
-import javax.swing.SwingUtilities;
-import javax.swing.border.BevelBorder;
+
 
 /**
  *
@@ -28,7 +26,11 @@ public class TimerDigit extends JPanel {
      * @param type 0 = NUM, 1 = TIME_SEPARATOR
      */
     public TimerDigit(int type) {
+        
         super(new GridLayout(5, 4));
+         setOpaque(false);
+        setBackground(new Color(0, 0, 0, 0));
+        
         timerPixels = new ArrayList<>();
         for (int i = 0; i < 20; i++) {
             TimerPixel newPixel;
@@ -46,9 +48,7 @@ public class TimerDigit extends JPanel {
             timerPixels.add(newPixel);
             this.add(newPixel);
         }
-        setOpaque(false);
-        setBackground(new Color(0, 0, 0, 0));
-        
+       
     }
     
     public void initialize() {

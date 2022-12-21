@@ -1,26 +1,22 @@
 
 package memory_game.game;
 
-import java.awt.Font;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
-import java.io.ByteArrayInputStream;
-import java.io.File;
-import java.io.InputStream;
+
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JFrame;
+
 import memory_game.GameFrame;
-import memory_game.Panel.Alert;
-import memory_game.Sound.Sound;
+
 import memory_game.game.elements.card.CardController;
 import memory_game.game.elements.card.CardView;
-import memory_game.game.elements.timer.TimerController;
 
 
-public class GameController implements WindowListener, ActionListener {
+
+public class GameController implements ActionListener {
     
     private GameFrame frame;
     private Game model;
@@ -37,7 +33,7 @@ public class GameController implements WindowListener, ActionListener {
      */
     public GameController(String playerName, int difficulty, GameFrame frame) {
         this.frame = frame;
-        frame.addWindowListener(this);
+      
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         model = new Game(playerName, difficulty);
         views = new ArrayList<>();
@@ -99,26 +95,7 @@ public class GameController implements WindowListener, ActionListener {
         return model;
     }
     
-    @Override
-    public void windowOpened(WindowEvent e) {}
-
-    @Override
-    public void windowClosing(WindowEvent e) {}
-
-    @Override
-    public void windowClosed(WindowEvent e) {}
-
-    @Override
-    public void windowIconified(WindowEvent e) {}
-
-    @Override
-    public void windowDeiconified(WindowEvent e) {}
-
-    @Override
-    public void windowActivated(WindowEvent e) {}
-
-    @Override
-    public void windowDeactivated(WindowEvent e) {}
+   
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -133,24 +110,29 @@ public class GameController implements WindowListener, ActionListener {
             
             if (model.getPredict1() == null) {
                 model.setPredict1(cardController);
+                model.getPredict1().getView().setIgnoreRepaint(true);
                 model.getPredict1().runAnimation(CardController.ANIM_PICK);
                
             } else if (model.getPredict2() == null) {
                 model.setPredict2(cardController);
+                model.getPredict2().getView().setIgnoreRepaint(true);
                 String currentAnim;
                 
                 if (model.getPredict1().isPair(model.getPredict2())) {
                     currentAnim = CardController.ANIM_GOOD;
                     model.setScore(model.getScore()+model.getScoreIncrease());
                     System.out.println("Score + " + model.getScoreIncrease());
-                    getGUIView().getScore().setText(model.getScore()+"");
+                   
+                    getGUIView().setScore(model.getScore());
                     frame.playCorrectSound();
                     cardpair = true;
 //                   
                 } else {
                     currentAnim = CardController.ANIM_BAD;
                     model.setScore(model.getScore() - model.getScoreDecrease());
-                    getGUIView().getScore().setText(model.getScore()+"");
+                   
+                    getGUIView().setScore(model.getScore());
+                     
                     frame.playWrongSound();
                     System.out.println("Score - " + model.getScoreDecrease());
                     cardpair = false;
@@ -161,7 +143,7 @@ public class GameController implements WindowListener, ActionListener {
                 model.setPredict2(null);
                
                 winCheck();
-                System.out.println("Player Name: " + model.getPlayerName()+ "Score: "+ model.getScore());
+                
                 
             }
         }

@@ -14,20 +14,40 @@ import javax.swing.JComponent;
 public class TimerPixel extends JComponent{
     private boolean isOn;
     private Point intialPosition = new Point(-1, -1);
+    private Color color;
 
     public TimerPixel(boolean isOn) {
         toggle(isOn);
         setPreferredSize(new Dimension(4, 4));
+        
     }
     
     public void initialize() {
+        
         setInitialPosition(this.getLocation());
+        new Thread(){
+            @Override
+            public void run(){
+                try {
+                    color = new Color(0,0,0,0);
+                    Thread.sleep(850);
+                  
+                     color = new Color(0,0,0);
+                     repaint();
+                       
+                } catch (Exception ex) {
+                    Logger.getLogger(TimerPixel.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }.start();
+       
+       
     }
     
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        g.setColor(Color.BLACK);
+        g.setColor(color);
         g.fillRect(0, 0, getWidth(), getHeight());
     }
     
@@ -44,6 +64,9 @@ public class TimerPixel extends JComponent{
         } else {
             this.setLocation(999999999, 999999999);
         }
+    }
+    public TimerPixel getTimerPixel(){
+        return this;
     }
     
     

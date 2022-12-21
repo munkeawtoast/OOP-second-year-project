@@ -6,26 +6,50 @@ package memory_game.Panel;
 
 import java.awt.Color;
 import java.awt.Cursor;
+import java.awt.Graphics;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+
 
 /**
  *
  * @author Gungai
  */
 public class Menu extends javax.swing.JPanel {
+private static final Image backgroundImage = new ImageIcon(Menu.class.getResource("/images/bg_gif.gif")).getImage();
 
     /**
      * Creates new form Menu
      */
     public Menu() {
         initComponents();
+        
       
         
     
         
         
+    }
+     @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
+
+        // thank you ChatGPT
+        double panelAspectRatio = (double) getWidth() / (double) getHeight();
+        double imageAspectRatio = (double) backgroundImage.getWidth(null) / (double) backgroundImage.getHeight(null);
+
+        int imageWidth;
+        int imageHeight;
+        if (panelAspectRatio > imageAspectRatio) {
+            imageWidth = getWidth();
+            imageHeight = (int) (imageWidth / imageAspectRatio);
+        } else {
+            imageHeight = getHeight();
+            imageWidth = (int) (imageHeight * imageAspectRatio);
+        }
+
+        g.drawImage(backgroundImage, (getWidth() - imageWidth) / 2, (getHeight() - imageHeight) / 2, imageWidth, imageHeight, this);
     }
 
     /**
@@ -52,7 +76,6 @@ public class Menu extends javax.swing.JPanel {
         exitbtn = new javax.swing.JButton();
         mutebtn = new javax.swing.JButton();
         unmutebtn = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 102, 102));
         setPreferredSize(new java.awt.Dimension(800, 600));
@@ -155,7 +178,6 @@ public class Menu extends javax.swing.JPanel {
         exitbtn.setBorderPainted(false);
         exitbtn.setContentAreaFilled(false);
         exitbtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        exitbtn.setPreferredSize(new java.awt.Dimension(163, 41));
         exitbtn.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/images/exitbutton-hover.png"))); // NOI18N
         jPanel9.add(exitbtn);
 
@@ -203,10 +225,6 @@ public class Menu extends javax.swing.JPanel {
         });
         add(unmutebtn);
         unmutebtn.setBounds(40, 500, 30, 30);
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/bg_gif.gif"))); // NOI18N
-        add(jLabel1);
-        jLabel1.setBounds(0, 0, 800, 600);
     }// </editor-fold>//GEN-END:initComponents
 
     private void startbtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_startbtnMouseEntered
@@ -241,7 +259,6 @@ public class Menu extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton exitbtn;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
