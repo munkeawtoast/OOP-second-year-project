@@ -104,7 +104,6 @@ public class GameController implements ActionListener {
                 if (model.getPredict1().isPair(model.getPredict2())) {
                     currentAnim = CardController.ANIM_GOOD;
                     model.setScore(model.getScore()+model.getScoreIncrease());
-                    System.out.println("Score + " + model.getScoreIncrease());
                    
 //                    getGUIView().setScore(model.getScore());
 getGUIView().getScoreView().setnumber(model.getScore());
@@ -121,7 +120,7 @@ getGUIView().getScoreView().repaint();
                         getGUIView().getScoreView().repaint();
                      
                     frame.playWrongSound();
-                    System.out.println("Score - " + model.getScoreDecrease());
+                    
                     cardpair = false;
                 }
                 model.getPredict1().runAnimation(currentAnim);
@@ -143,6 +142,7 @@ getGUIView().getScoreView().repaint();
         if(winnum == model.getWinnum()){
           
             model.getTimer().stopTime();
+            frame.remove(getGUIView());
               
               if(model.getScore() > 0 ){
               frame.getBoard().getModel().addToList(model);
@@ -152,6 +152,7 @@ getGUIView().getScoreView().repaint();
               frame.alert("You Win!!   Score: " + model.getScore() );
               }
               else{
+                  frame.stopMusic();
                    frame.playLoseMusic();
                   frame.alert("You Lose T^T    Try Again?");
               }

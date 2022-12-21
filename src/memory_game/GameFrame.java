@@ -51,7 +51,13 @@ import memory_game.game.GameController;
 // what is this? -Pine
 // i think project should only have one main function -Pine
 public class GameFrame extends JFrame implements ActionListener, WindowListener {
-
+    private Thread gameThread;
+    private Thread Clicksound;
+    private Thread BackClickSound;
+    private Thread WrongSound;
+    private Thread CorrectSound;
+    private Thread CardSound;
+    private Thread StartSound;
     Menu menu = new Menu();
     StartMenu startmenu = new StartMenu();
     InsertName insertname = new InsertName();
@@ -187,13 +193,11 @@ public class GameFrame extends JFrame implements ActionListener, WindowListener 
             validate();
 
         } else if (e.getActionCommand().equals("Restart")) {
-
+            remove(game.getGUIView());
             playClickSound();
-
             playBackgroundMusic();
             alert.setVisible(false);
-
-            remove(game.getGUIView());
+            
             loadGame(insertname.getNameTF().getText(), gamemode);
 
         } else if (e.getActionCommand().equals("Tomenu")) {
@@ -201,10 +205,13 @@ public class GameFrame extends JFrame implements ActionListener, WindowListener 
 
             playBackgroundMusic();
             alert.setVisible(false);
-            setContentPane(menu);
             remove(game.getGUIView());
-
-            pack();
+            setContentPane(menu);
+          
+            invalidate();
+            validate();
+            
+       
 
         } else if (e.getActionCommand().equals("mute")) {
             System.out.println("Mute");
@@ -217,20 +224,36 @@ public class GameFrame extends JFrame implements ActionListener, WindowListener 
     }
 
     public void loadGame(String name, int difficulty) {
+    // 
+    if (gameThread != null) {
+        gameThread.interrupt();
+    }
+    //
+    gameThread = new Thread(new Runnable() {
+        @Override
+        public void run() {
+            try {
+                createGameController(name, difficulty);
 
-        playGameMusic();
+                setContentPane(game.getGUIView());
+                game.initialize();
+                invalidate();
+                validate();
+                pack();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    });
+
+    gameThread.start();
+}
+    private void createGameController(String name, int difficulty){
         game = new GameController(name, difficulty, this);
          game.getGUIView().getJLabel().setFont(pixelFont_24);
-        game.getGUIView().getJLabel2().setFont(pixelFont_24);
-        game.getGUIView().getScore().setFont(pixelFont_24);
-        game.getModel().getTimer().getView().setFont(pixelFont_24);
-       
-        setContentPane(game.getGUIView());
-        game.initialize();
-        invalidate();
-        validate();
-        pack();
-
+                game.getGUIView().getJLabel2().setFont(pixelFont_24);
+                game.getGUIView().getScore().setFont(pixelFont_24);
+                game.getModel().getTimer().getView().setFont(pixelFont_24);
     }
 
     @Override
@@ -291,33 +314,53 @@ public class GameFrame extends JFrame implements ActionListener, WindowListener 
     }
 
     public void playClickSound() {
-        new Thread() {
-            @Override
-            public void run() {
-                try {
+          if (Clicksound != null) {
+        Clicksound.interrupt();
+    }
+    //
+    Clicksound = new Thread(new Runnable() {
+        @Override
+        public void run() {
+          
+                  try {
                     sound = new Sound(getClass().getResource("/sounds/click.wav"));
-                } catch (Exception e) {
-                }
-                InputStream stream
+                       InputStream stream
                         = new ByteArrayInputStream(sound.getSamples());
                 sound.play(stream);
+               
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-        }.start();//clicksound
+        }
+    });
+
+    Clicksound.start();
     }
 
     public void playBackClickSound() {
-        new Thread() {
-            @Override
-            public void run() {
-                try {
-                    sound = new Sound(getClass().getResource("/sounds/backclick.wav"));
-                } catch (Exception e) {
-                }
-                InputStream stream
+           if (BackClickSound != null) {
+        BackClickSound.interrupt();
+    }
+    //
+    BackClickSound = new Thread(new Runnable() {
+        @Override
+        public void run() {
+           
+                  try {
+                    sound = new Sound(getClass().getResource("/sounds/correct.wav"));
+                      InputStream stream
                         = new ByteArrayInputStream(sound.getSamples());
                 sound.play(stream);
-            }
-        }.start();//clicksound
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+              
+           
+            
+        }
+    });
+
+    BackClickSound.start();
     }
 
     public void playBackgroundMusic() {
@@ -381,7 +424,7 @@ public class GameFrame extends JFrame implements ActionListener, WindowListener 
     public void alert(String text) {
         alert.setVisible(true);
         alert.getScoreLabel().setText(text);
-        alert.setVisible(true);
+    
         alert.setLocationRelativeTo(this);
         alert.getRestartBtn().addActionListener(this);
         alert.getExtiBtn().addActionListener(this);
@@ -389,69 +432,106 @@ public class GameFrame extends JFrame implements ActionListener, WindowListener 
     }
 
     public void playCardSound() {
-        new Thread() {
-            @Override
-            public void run() {
-                try {
+        if (CardSound != null) {
+        CardSound.interrupt();
+    }
+    //
+    CardSound = new Thread(new Runnable() {
+        @Override
+        public void run() {
+        
+                  try {
                     sound = new Sound(getClass().getResource("/sounds/card.wav"));
-                } catch (Exception e) {
-                }
-                InputStream stream
+                     InputStream stream
                         = new ByteArrayInputStream(sound.getSamples());
                 sound.play(stream);
+                } 
+               
+           
+           catch (Exception e) {
+                e.printStackTrace();
             }
-        }.start();
+        }
+    });
+
+    CardSound.start();
+        
+       
     }
 
     public void playWrongSound() {
-        new Thread() {
-            @Override
-            public void run() {
-
-                try {
-                    Thread.sleep(300);
+        if (WrongSound != null) {
+        WrongSound.interrupt();
+    }
+    //
+    WrongSound = new Thread(new Runnable() {
+        @Override
+        public void run() {
+            try {
+                 
                     sound = new Sound(getClass().getResource("/sounds/wrong.wav"));
-                } catch (Exception e) {
-                }
+               
                 InputStream stream
                         = new ByteArrayInputStream(sound.getSamples());
                 sound.play(stream);
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-        }.start();
+        }
+    });
+
+    WrongSound.start();
+        
     }
 
     public void playCorrectSound() {
-        new Thread() {
-            @Override
-            public void run() {
-
-                try {
-                    Thread.sleep(300);
+           if (CorrectSound != null) {
+        CorrectSound.interrupt();
+    }
+    //
+    CorrectSound = new Thread(new Runnable() {
+        @Override
+        public void run() {
+           
+                  try {
                     sound = new Sound(getClass().getResource("/sounds/correct.wav"));
-                } catch (Exception e) {
-                }
+               
                 InputStream stream
                         = new ByteArrayInputStream(sound.getSamples());
                 sound.play(stream);
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-        }.start();
+        }
+    });
+
+    CorrectSound.start();
+        
     }
 
     public void playStartSound() {
-        new Thread() {
-            @Override
-            public void run() {
-
-                try {
-
-                    sound = new Sound(getClass().getResource("/sounds/game-start.wav"));
-                } catch (Exception e) {
-                }
-                InputStream stream
+         if (StartSound != null) {
+        StartSound.interrupt();
+    }
+    //
+    StartSound = new Thread(new Runnable() {
+        @Override
+        public void run() {
+            
+                  try {
+                        InputStream stream
                         = new ByteArrayInputStream(sound.getSamples());
                 sound.play(stream);
-            }
-        }.start();
+                    sound = new Sound(getClass().getResource("/sounds/game-start.wav"));
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+              
+           
+        }
+    });
+
+    StartSound.start();
     }
 
     public void playWinMusic() {
@@ -484,7 +564,7 @@ public class GameFrame extends JFrame implements ActionListener, WindowListener 
             stopMusic();
             Random rand = new Random();
             int randomNum = rand.nextInt(2) + 1;
-            System.out.println(randomNum);
+        
             AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(this.getClass().getResource("/sounds/GameSong" + randomNum + ".wav"));
             // Load the audio file
 

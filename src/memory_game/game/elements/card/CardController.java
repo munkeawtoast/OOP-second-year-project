@@ -18,18 +18,20 @@ import memory_game.game.util.*;
  * @author ACER
  */
 public class CardController implements Serializable {
+
+    private Thread good;
+    private Thread bad;
+    private Thread pick;
     public static final String ANIM_GOOD = "animation-good";
     public static final String ANIM_BAD = "animation-bad";
-    public static final String ANIM_PICK = "animation-pick";    
+    public static final String ANIM_PICK = "animation-pick";
     private Card model;
     private CardView view;
-    
 
     public CardController(String cardName, Dimension size, ImageIcon frontImage, ImageIcon backImage) {
         model = new Card(cardName, size, frontImage, backImage);
         view = new CardView(this);
     }
-    
 
     public Card getModel() {
         return model;
@@ -38,14 +40,21 @@ public class CardController implements Serializable {
     public CardView getView() {
         return view;
     }
-    
+
     public void setPair(Card card) {
         model.setPair(card);
     }
-    
-    private  void triggerGood() {
+
+    private void triggerGood() {
+        
         view.setEnabled(false);
-        new Thread(() -> {
+        if (good != null){
+            good.interrupt();
+        }
+     
+         good = new Thread(new Runnable() {
+        @Override
+        public void run() {
             view.changeToFront();
             TransitionPlayer up = view.getUpTransition();
             TransitionPlayer down = view.getDownTransition();
@@ -72,7 +81,7 @@ public class CardController implements Serializable {
                     Logger.getLogger(CardController.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
-            
+
             Thread temp = new Thread(() -> {
                 while (true) {
                     try {
@@ -88,7 +97,7 @@ public class CardController implements Serializable {
             } catch (InterruptedException ex) {
                 Logger.getLogger(CardController.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
+
             down.start();
             try {
                 down.join(250);
@@ -96,12 +105,23 @@ public class CardController implements Serializable {
                 Logger.getLogger(CardController.class.getName()).log(Level.SEVERE, null, ex);
             }
             view.setIsAnimating(false);
-        }).start();
-    }
+        }});
+        good.start();
     
-    private  void triggerBad() {
-        view.setEnabled(false);
-        new Thread(() -> {
+    }
+
+    private void triggerBad() {
+      
+        if(bad!= null){
+//            bad.interrupt();
+        }
+       
+        bad = new Thread(new Runnable() {
+        @Override
+        public void run() {
+       
+               
+              view.setEnabled(false);
             view.changeToFront();
             TransitionPlayer up = view.getUpTransition();
             TransitionPlayer shake = view.getShakeTransition();
@@ -128,7 +148,7 @@ public class CardController implements Serializable {
                     Logger.getLogger(CardController.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
-            
+
             shake.start();
             try {
                 shake.join(100);
@@ -144,22 +164,25 @@ public class CardController implements Serializable {
             view.changeToBack();
             view.setIsAnimating(false);
             view.setEnabled(true);
-        }).start();
-    }
+        }}); 
+        bad.start();
     
-    private  void triggerPick() {
+    }
+
+    private void triggerPick() {
         view.setEnabled(false);
-        if (view.getIsAnimating()) { return; }
+        if (view.getIsAnimating()) {
+            return;
+        }
         view.setIsAnimating(true);
         view.changeToFront(); ///////////////////////////////////////////////////////
         view.getUpTransition().start();
-        
-        
+
         view.setEnabled(true);
     }
-     
-     public void runAnimation(String type) {
-        switch(type) {
+
+    public void runAnimation(String type) {
+        switch (type) {
             case ANIM_GOOD -> {
                 triggerGood();
             }
@@ -171,10 +194,10 @@ public class CardController implements Serializable {
             }
         }
     }
-    
+
     public boolean isPair(CardController cardController) {
         return this.getModel().getPair() == cardController.getModel();
     }
-    
+
     //TODO
 }
