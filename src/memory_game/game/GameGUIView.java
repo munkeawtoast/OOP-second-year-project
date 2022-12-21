@@ -14,7 +14,7 @@ import javax.swing.JPanel;
 
 import memory_game.Panel.ScoreView;
 import memory_game.game.elements.card.CardController;
-import memory_game.game.elements.card.CardView;
+
 import memory_game.game.elements.timer.TimerView;
 
 
@@ -31,16 +31,16 @@ public class GameGUIView extends JPanel implements IGameView {
     private TimerView timer;
     private ScoreView scoreview;
     private Image backgroundImage;
-     private javax.swing.JPanel Headpanel;
-    private javax.swing.JLabel JLabel;
-    private javax.swing.JLabel JLabel2;
-    private javax.swing.JPanel Scorepanel;
-    private javax.swing.JPanel Timepanel;
-    private javax.swing.JPanel gamePanel;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JLabel score;
+     private JPanel Headpanel;
+    private JLabel JLabel;
+    private JLabel JLabel2;
+    private JPanel Scorepanel;
+    private JPanel Timepanel;
+    private JPanel gamePanel;
+    private JLabel jLabel3;
+    private JLabel jLabel4;
+    private JPanel jPanel1;
+    private JLabel score;
   
     
     public GameGUIView(GameController gameController) {

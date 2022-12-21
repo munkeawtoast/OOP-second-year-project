@@ -67,7 +67,7 @@ public class GameFrame extends JFrame implements ActionListener, WindowListener 
     Alert alert;
 
     public GameFrame() throws FontFormatException {
-        alert = new Alert();
+      
         //add new font 
         try {
             // load a custom font in your project folder
@@ -190,7 +190,7 @@ public class GameFrame extends JFrame implements ActionListener, WindowListener 
             playClickSound();
 
             playBackgroundMusic();
-            alert.setVisible(false);
+    
 
             remove(game.getGUIView());
             loadGame(insertname.getNameTF().getText(), gamemode);
@@ -199,7 +199,7 @@ public class GameFrame extends JFrame implements ActionListener, WindowListener 
             playClickSound();
 
             playBackgroundMusic();
-            alert.setVisible(false);
+     
             setContentPane(menu);
             remove(game.getGUIView());
 
@@ -238,7 +238,7 @@ public class GameFrame extends JFrame implements ActionListener, WindowListener 
 
         File f = new File("LeaderBoard.dat");
         if (f.exists()) {
-            System.out.println("Board data found");
+            
             try ( FileInputStream fis = new FileInputStream(f);  ObjectInputStream ois = new ObjectInputStream(fis)) {
                 ArrayList<Game> savelist = (ArrayList<Game>) ois.readObject();
 
@@ -250,6 +250,7 @@ public class GameFrame extends JFrame implements ActionListener, WindowListener 
             } catch (ClassNotFoundException ce) {
                 System.out.println("Class not found: " + ce);
             }
+            System.out.println("Board data found");
         }
     }
 
@@ -378,7 +379,7 @@ public class GameFrame extends JFrame implements ActionListener, WindowListener 
     }
 
     public void alert(String text) {
-        alert.setVisible(true);
+          alert = new Alert();
         alert.getScoreLabel().setText(text);
         alert.setVisible(true);
         alert.setLocationRelativeTo(this);

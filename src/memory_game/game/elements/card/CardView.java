@@ -24,6 +24,7 @@ public class CardView extends JButton {
     private boolean isHover = false;
 
     public CardView(CardController cardController) {
+       
         super(cardController.getModel().getImageBack());
         this.setDisabledIcon(cardController.getModel().getImageFront());
         this.controller = cardController;
@@ -31,6 +32,7 @@ public class CardView extends JButton {
         setBorder(emptyBorder);
         setContentAreaFilled(false);
         setCursor(new Cursor(Cursor.HAND_CURSOR));
+         setFocusable(false);
                 
 //        setPreferredSize(new Dimension(200, 300));
         this.controller = cardController;
@@ -38,7 +40,9 @@ public class CardView extends JButton {
     }
     
     public TransitionPlayer getFadeTransition() {
+
         return new TransitionPlayer(this, new Transition(Transition.LINEAR), Transition.OPACITY, 250, 1);
+
     }
     
     public TransitionPlayer getShakeTransition() {
@@ -46,10 +50,12 @@ public class CardView extends JButton {
     }
     
     public TransitionPlayer getUpTransition() {
+
         return new TransitionPlayer(this, new Transition(Transition.EASE_IN_SINE), Transition.NORTH, 250, 20);
     }
     public TransitionPlayer getDownTransition() {
         return new TransitionPlayer(this, new Transition(Transition.EASE_IN_SINE), Transition.SOUTH, 250, 20);
+
     }
     
     public void setIsAnimating(boolean isAnimating) {

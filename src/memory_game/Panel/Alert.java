@@ -19,7 +19,7 @@ import memory_game.game.GameGUIView;
  *
  * @author Gungai
  */
-public class Alert extends JFrame {
+public class Alert extends JFrame implements ActionListener {
 
     /**
      * Creates new form alert
@@ -27,7 +27,8 @@ public class Alert extends JFrame {
     public Alert() {
         setUndecorated(true); 
         initComponents();
-      ;
+      this.extiBtn.addActionListener(this);
+      this.restartBtn.addActionListener(this);
        
      
         
@@ -148,6 +149,14 @@ setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Already there
 
     public void setRestartBtn(JButton restartBtn) {
         this.restartBtn = restartBtn;
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if(e.getSource().equals(this.extiBtn) || e.getSource().equals(this.restartBtn)){
+            this.dispose();
+            
+        }
     }
 
     
