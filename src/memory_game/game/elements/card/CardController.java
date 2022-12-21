@@ -5,7 +5,7 @@
 package memory_game.game.elements.card;
 
 import java.awt.Dimension;
-import java.io.Serializable;
+//import java.io.Serializable;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -113,7 +113,7 @@ public class CardController {
     private void triggerBad() {
       
         if(bad!= null){
-//            bad.interrupt();
+            bad.interrupt();
         }
        
         bad = new Thread(new Runnable() {
@@ -151,13 +151,13 @@ public class CardController {
 
             shake.start();
             try {
-                shake.join(100);
+                shake.join(250);
             } catch (InterruptedException ex) {
                 Logger.getLogger(CardController.class.getName()).log(Level.SEVERE, null, ex);
             }
             down.start();
             try {
-                down.join();
+                down.join(250);
             } catch (InterruptedException ex) {
                 Logger.getLogger(CardController.class.getName()).log(Level.SEVERE, null, ex);
             }
