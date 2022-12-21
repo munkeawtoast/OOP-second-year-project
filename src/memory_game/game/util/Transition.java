@@ -20,6 +20,15 @@ public class Transition {
     public static final int EASE_IN_SINE = 2;
     public static final int EASE_IN_OUT_CUBIC = 3;
 
+    public int type;
+    public Transition(int type) {
+        this.type = type;
+    }
+
+    public int getType() {
+        return type;
+    }
+
     public static double linear(double x) {
         return x;
     }

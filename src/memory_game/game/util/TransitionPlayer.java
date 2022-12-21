@@ -12,7 +12,7 @@ import javax.swing.JComponent;
 
 public class TransitionPlayer extends Thread {
     private JComponent target;
-    private int transition;
+    private Transition transition;
     private int duration;
     private int direction;
     private int amount;
@@ -21,7 +21,7 @@ public class TransitionPlayer extends Thread {
     private boolean isPaused;
     private Point initialPosition;
 
-    public TransitionPlayer(JComponent target, int transition, int direction , int duration, int amount) {
+    public TransitionPlayer(JComponent target, Transition transition, int direction , int duration, int amount) {
         this.target = target;
         this.transition = transition;
         this.direction = direction;
@@ -65,9 +65,9 @@ public class TransitionPlayer extends Thread {
                 checkPaused();
                 elapsedDuration += 1;
                 elapsedPercentage = (double) elapsedDuration / (double) duration;
-                if (transition != Transition.OPACITY) {
+                if (transition.getType() != Transition.OPACITY) {
                     double translatePercentage = 0;
-                    switch(transition) {
+                    switch(transition.getType()) {
                         case (Transition.EASE_IN_SINE) -> {
                             translatePercentage = Transition.easeInSine(elapsedPercentage);
                         }

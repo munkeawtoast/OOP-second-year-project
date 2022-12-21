@@ -38,18 +38,18 @@ public class CardView extends JButton {
     }
     
     public TransitionPlayer getFadeTransition() {
-        return new TransitionPlayer(this, Transition.SHAKE, Transition.OPACITY, 250, 1);
+        return new TransitionPlayer(this, new Transition(Transition.LINEAR), Transition.OPACITY, 250, 1);
     }
     
     public TransitionPlayer getShakeTransition() {
-        return new TransitionPlayer(this, Transition.SHAKE, Transition.EAST, 100, 30);
+        return new TransitionPlayer(this, new Transition(Transition.SHAKE), Transition.EAST, 100, 30);
     }
     
     public TransitionPlayer getUpTransition() {
-        return new TransitionPlayer(this, Transition.EASE_IN_SINE, Transition.NORTH, 250, 20);
+        return new TransitionPlayer(this, new Transition(Transition.EASE_IN_SINE), Transition.NORTH, 250, 20);
     }
     public TransitionPlayer getDownTransition() {
-        return new TransitionPlayer(this, Transition.EASE_IN_SINE, Transition.SOUTH, 250, 20);
+        return new TransitionPlayer(this, new Transition(Transition.EASE_IN_SINE), Transition.SOUTH, 250, 20);
     }
     
     public void setIsAnimating(boolean isAnimating) {
